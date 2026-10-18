@@ -28,6 +28,7 @@ type Config struct {
 	DatabaseUser              string
 	Environment               string
 	Hostname                  string
+	ListenHost                string
 	JWTSecret                 []byte
 	Port                      int
 	RollbarToken              string
@@ -77,6 +78,8 @@ func New() (*Config, error) {
 	}
 
 	switch os.Getenv(environmentENV) {
+	case "local":
+		loadLocalConfig(cfg)
 	case "development", "":
 		loadDevelopmentConfig(cfg)
 	case "test":

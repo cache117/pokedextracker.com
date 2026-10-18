@@ -1,6 +1,7 @@
 import type { Game, GameFamily } from './games';
 
 export interface Pokemon {
+  reference_details_imported?: boolean;
   id: number;
   national_id: number;
   name: string;

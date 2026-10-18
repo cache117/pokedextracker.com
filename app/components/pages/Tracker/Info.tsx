@@ -1,4 +1,5 @@
 import find from 'lodash/find';
+import { Config } from '../../../../config';
 import keyBy from 'lodash/keyBy';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
@@ -114,9 +115,13 @@ export function Info ({ selectedPokemon, setSelectedPokemon }: Props) {
           <h2>#{padding(dex.dex_type.tags.includes('regional') ? (pokemon.dex_number === -1 ? '---' : pokemon.dex_number) : nationalId(pokemon.national_id), dex.total >= 1000 ? 4 : 3)}</h2>
         </div>
 
-        <InfoLocations locations={pokemon.locations} />
-
-        <EvolutionFamily family={pokemon.evolution_family} setSelectedPokemon={setSelectedPokemon} />
+        {pokemon.locations.length > 0 ? <InfoLocations locations={pokemon.locations} /> : null}
+        {(pokemon.reference_details_imported === false || (pokemon.reference_details_imported === undefined && Config.REFERENCE_DETAILS_AVAILABLE === false))
+          ? <div style={{ padding: '24px' }}>{pokemon.locations.length > 0 ? 'Evolution details haven’t been imported yet.' : 'Encounter locations and evolution details haven’t been imported into your personal tracker yet.'}</div>
+          : <>
+            {pokemon.locations.length === 0 ? <div style={{ padding: '24px' }}>No encounters match your source settings.</div> : null}
+            <EvolutionFamily family={pokemon.evolution_family} setSelectedPokemon={setSelectedPokemon} />
+          </>}
 
         <div className="info-footer">
           <a

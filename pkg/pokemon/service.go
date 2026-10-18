@@ -2,11 +2,13 @@ package pokemon
 
 import (
 	"context"
+	"os"
 	"regexp"
 
 	"github.com/go-pg/pg/v10"
 	"github.com/go-pg/pg/v10/orm"
 	"github.com/pkg/errors"
+	"github.com/pokedextracker/pokedextracker.com/pkg/catalog"
 	"github.com/pokedextracker/pokedextracker.com/pkg/dextypes"
 	"github.com/pokedextracker/pokedextracker.com/pkg/errcodes"
 )
@@ -70,6 +72,13 @@ func (svc *Service) RetrievePokemon(ctx context.Context, opts RetrievePokemonOpt
 		return nil, errors.WithStack(err)
 	}
 
+	var sourceSettings catalog.Settings
+	if os.Getenv("ENVIRONMENT") == "local" {
+		sourceSettings, err = svc.applyPersonalOverrides(ctx, pokemon)
+		if err != nil {
+			return nil, errors.WithStack(err)
+		}
+	}
 	// Filter out the locations based on the game family and region status.
 	if opts.DexType != nil {
 		// Determine if this dex type is a regional one based on the tags.
@@ -98,7 +107,7 @@ func (svc *Service) RetrievePokemon(ctx context.Context, opts RetrievePokemonOpt
 				continue
 			}
 
-			if opts.DexType.GameFamily.Generation >= location.Game.GameFamily.Generation {
+			if opts.DexType.GameFamilyID == "home" || opts.DexType.GameFamily.Generation >= location.Game.GameFamily.Generation {
 				// This is a national dex, so we want to show all locations up to this game's generation.
 				locations = append(locations, location)
 			}
@@ -106,6 +115,9 @@ func (svc *Service) RetrievePokemon(ctx context.Context, opts RetrievePokemonOpt
 		pokemon.Locations = locations
 	}
 
+	if os.Getenv("ENVIRONMENT") == "local" && opts.DexType != nil && opts.DexType.GameFamilyID == "home" {
+		pokemon.Locations = filterPersonalLocations(pokemon.Locations, sourceSettings)
+	}
 	// Fetch the evolution family and attach it to the Pokemon model.
 	var dexTypeID *int
 	var gameFamilyID *string
@@ -146,6 +158,14 @@ func (svc *Service) RetrievePokemon(ctx context.Context, opts RetrievePokemonOpt
 	}
 
 	pokemon.EvolutionFamily = family
+	if os.Getenv("ENVIRONMENT") == "local" {
+		var imported bool
+		_, err := svc.db.QueryOneContext(ctx, pg.Scan(&imported), "SELECT EXISTS(SELECT 1 FROM personal_reference_imports WHERE pokemon_id=?)", pokemon.ID)
+		if err != nil {
+			return nil, errors.WithStack(err)
+		}
+		pokemon.ReferenceDetailsImported = &imported
+	}
 
 	return pokemon, nil
 }

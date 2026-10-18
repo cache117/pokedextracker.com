@@ -13,6 +13,7 @@ import (
 	"github.com/pokedextracker/pokedextracker.com/pkg/auth"
 	"github.com/pokedextracker/pokedextracker.com/pkg/binder"
 	"github.com/pokedextracker/pokedextracker.com/pkg/captures"
+	"github.com/pokedextracker/pokedextracker.com/pkg/catalog"
 	"github.com/pokedextracker/pokedextracker.com/pkg/config"
 	"github.com/pokedextracker/pokedextracker.com/pkg/dexes"
 	"github.com/pokedextracker/pokedextracker.com/pkg/dextypes"
@@ -53,12 +54,15 @@ func New(cfg *config.Config, db *pg.DB) (*http.Server, error) {
 	games.RegisterRoutes(e, db, nonEnforcedAuth)
 	pokemon.RegisterRoutes(e, db, nonEnforcedAuth)
 	users.RegisterRoutes(e, cfg, db, enforcedAuth, nonEnforcedAuth)
+	if cfg.ListenHost == "127.0.0.1" {
+		catalog.RegisterRoutes(e, db, enforcedAuth, nonEnforcedAuth)
+	}
 
 	echo.NotFoundHandler = notFoundHandler
 	e.HTTPErrorHandler = errcodes.NewHandler().Handle
 
 	srv := &http.Server{
-		Addr:              fmt.Sprintf(":%d", cfg.Port),
+		Addr:              fmt.Sprintf("%s:%d", cfg.ListenHost, cfg.Port),
 		Handler:           e,
 		ReadHeaderTimeout: 2 * time.Second,
 	}

@@ -10,20 +10,21 @@ import (
 type Pokemon struct {
 	tableName struct{} `pg:"pokemon,alias:p"`
 
-	ID                int               `json:"id"`
-	NationalID        int               `json:"national_id"`
-	Name              string            `json:"name"`
-	GameFamilyID      string            `json:"-"`
-	GameFamily        *games.GameFamily `pg:"gf,rel:has-one" json:"game_family"`
-	Form              *string           `json:"form"`
-	Box               *string           `pg:"-" json:"box"`
-	DexNumber         int               `pg:"-" json:"dex_number"`
-	Locations         []*Location       `pg:"l,rel:has-many" json:"locations"`
-	NationalOrder     int               `json:"-"`
-	EvolutionFamilyID int               `json:"-"`
-	EvolutionFamily   *EvolutionFamily  `pg:"-" json:"evolution_family"`
-	DateCreated       time.Time         `json:"-"`
-	DateModified      time.Time         `json:"-"`
+	ID                       int               `json:"id"`
+	NationalID               int               `json:"national_id"`
+	Name                     string            `json:"name"`
+	GameFamilyID             string            `json:"-"`
+	GameFamily               *games.GameFamily `pg:"gf,rel:has-one" json:"game_family"`
+	Form                     *string           `json:"form"`
+	Box                      *string           `pg:"-" json:"box"`
+	DexNumber                int               `pg:"-" json:"dex_number"`
+	Locations                []*Location       `pg:"l,rel:has-many" json:"locations"`
+	NationalOrder            int               `json:"-"`
+	EvolutionFamilyID        int               `json:"-"`
+	EvolutionFamily          *EvolutionFamily  `pg:"-" json:"evolution_family"`
+	ReferenceDetailsImported *bool             `pg:"-" json:"reference_details_imported,omitempty"`
+	DateCreated              time.Time         `json:"-"`
+	DateModified             time.Time         `json:"-"`
 }
 
 type Location struct {

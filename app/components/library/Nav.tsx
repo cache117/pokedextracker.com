@@ -28,6 +28,7 @@ export function Nav () {
   const links = (
     <>
       <Link to="/">Pokédex Tracker</Link>
+      <Link to="/manage">Manage sources</Link>
       <a className="tooltip tooltip-below" onClick={handleNightModeClick}>
         <FontAwesomeIcon icon={isNightMode ? faSun : faMoon} />
         <span className="tooltip-text">Night Mode {isNightMode ? 'Off' : 'On'}</span>

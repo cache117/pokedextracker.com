@@ -1,10 +1,12 @@
 # Personal Windows fork
 
 This checkout is a local Git fork of https://github.com/pokedextracker/pokedextracker.com.
-The `upstream` remote points to that repository; the `personal` branch carries the
-personal changes. Upstream history and its README, licenses, CSV seeds, dependency
-locks, and normal directory layout are retained. No GitHub repository was created
-or published for this local fork.
+The `upstream` remote points to that repository; `origin` points to
+https://github.com/cache117/pokedextracker.com. The `personal` branch carries the
+personal changes and tracks `origin/personal`. Upstream history, licenses, CSV
+seeds, dependency locks, and normal directory layout are retained.
+The GitHub fork's default branch is `personal`; `master` is kept as a clean
+upstream branch. Databases, credential files, and backups stay outside this repo.
 
 ## Upstream baseline
 
@@ -59,6 +61,12 @@ in a transaction. The importer refuses identity conflicts and changes that would
 hide caught Pokémon from upstream dex templates. Do not run `mise db:reset`
 against the personal database. Avoid the upstream replacement seeder for this
 installation; it does not know about personal source games or overrides.
+
+After validation, push `personal` to `origin`. The clean GitHub `master` branch
+can be fast-forwarded from `upstream/master` independently. Fetching or syncing
+`master` alone does not upgrade the personal app, import new data, or rebuild the
+running server; review and merge those updates into `personal` first. Never
+force-push over personal commits to synchronize the fork.
 
 The seed CSVs stay exactly as upstream published them. Put personal encounter
 changes in the source editor, then export the configuration for portability.

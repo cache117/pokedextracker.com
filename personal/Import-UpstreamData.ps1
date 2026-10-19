@@ -1,10 +1,10 @@
 $ErrorActionPreference='Stop'
 $taskSource=Split-Path $PSScriptRoot -Parent
 $taskRoot=Split-Path $taskSource -Parent
-$taskRevision=git -C $taskSource rev-parse upstream/master
+$taskRevision=git -C $taskSource merge-base HEAD upstream/master
 if($LASTEXITCODE -ne 0){throw 'Cannot identify upstream revision'}
 git -C $taskSource diff --quiet $taskRevision -- seeds
-if($LASTEXITCODE -ne 0){throw 'Seed files differ from upstream/master. Review those changes before importing.'}
+if($LASTEXITCODE -ne 0){throw 'Seed files differ from the merged upstream revision. Review those changes before importing.'}
 $taskSecrets=Get-Content -LiteralPath "$taskRoot/private.local.json" -Raw|ConvertFrom-Json
 $env:ENVIRONMENT='local';$env:DATABASE_NAME='pokedex_tracker';$env:DATABASE_PORT='9876'
 $env:DATABASE_PASSWORD=$taskSecrets.database_password;$env:JWT_SECRET=$taskSecrets.jwt_secret

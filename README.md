@@ -1,5 +1,9 @@
 # pokedextracker.com
 
+Personal Windows fork: see [PERSONAL-FORK.md](PERSONAL-FORK.md) for local setup,
+custom source settings, and the upstream update process. The original project
+documentation follows below.
+
 [![CI](https://github.com/pokedextracker/pokedextracker.com/actions/workflows/ci.yml/badge.svg)](https://github.com/pokedextracker/pokedextracker.com/actions/workflows/ci.yml)
 
 A website to track your completion of a Living Pokedex. This repo holds both

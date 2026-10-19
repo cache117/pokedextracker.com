@@ -4,7 +4,8 @@ $taskSource=Split-Path $PSScriptRoot -Parent
 $taskRoot=Split-Path $taskSource -Parent
 Push-Location $taskSource
 try {
-  $taskRevision=git rev-parse --short upstream/master
+  $taskRevision=git merge-base HEAD upstream/master
+  if($taskRevision){$taskRevision=$taskRevision.Substring(0,7)}
   if($LASTEXITCODE -ne 0){throw 'Cannot identify upstream revision'}
   $env:NODE_ENV='production'
   $env:VERSION='personal-'+$taskRevision

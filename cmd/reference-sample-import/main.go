@@ -6,6 +6,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -38,6 +39,8 @@ type metadata struct {
 	SHA256      string    `json:"sha256"`
 }
 
+var errImportRejected = errors.New("reference import rejected")
+
 func main() {
 	if err := run(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -46,18 +49,18 @@ func main() {
 }
 func run() error {
 	if len(os.Args) != 2 && len(os.Args) != 4 {
-		return fmt.Errorf("usage: reference-sample-import reference-snapshot-folder [start-id count]")
+		return fmt.Errorf("%w: usage: reference-sample-import reference-snapshot-folder [start-id count]", errImportRejected)
 	}
 	start, count := 1, 10
 	if len(os.Args) == 4 {
 		var err error
 		start, err = strconv.Atoi(os.Args[2])
 		if err != nil || start < 1 {
-			return fmt.Errorf("invalid start ID")
+			return fmt.Errorf("%w: invalid start ID", errImportRejected)
 		}
 		count, err = strconv.Atoi(os.Args[3])
 		if err != nil || count < 1 || count > 10 {
-			return fmt.Errorf("batch must contain 1 to 10 Pokémon")
+			return fmt.Errorf("%w: batch must contain 1 to 10 Pokémon", errImportRejected)
 		}
 	}
 	var records []record
@@ -79,20 +82,20 @@ func run() error {
 		}
 		sum := sha256.Sum256(raw)
 		if r.ID != id || r.Meta.SHA256 != hex.EncodeToString(sum[:]) || r.Meta.SourceURL != fmt.Sprintf("https://pokedextracker.com/api/pokemon/%d?dex_type=21", id) || r.Meta.RetrievedAt.IsZero() {
-			return fmt.Errorf("invalid record or provenance for %d", id)
+			return fmt.Errorf("%w: invalid record or provenance for %d", errImportRejected, id)
 		}
 		// The sample contains simple, unbranched families. Refuse ambiguous mappings.
 		if len(r.Family.Pokemon) == 0 || len(r.Family.Evolutions) != len(r.Family.Pokemon)-1 {
-			return fmt.Errorf("unexpected evolution stages for %d", id)
+			return fmt.Errorf("%w: unexpected evolution stages for %d", errImportRejected, id)
 		}
 		for _, stage := range r.Family.Pokemon {
 			if len(stage) != 1 {
-				return fmt.Errorf("branched families require an explicit edge mapping; refusing %d", id)
+				return fmt.Errorf("%w: branched families require an explicit edge mapping; refusing %d", errImportRejected, id)
 			}
 		}
 		for _, stage := range r.Family.Evolutions {
 			if len(stage) != 1 {
-				return fmt.Errorf("ambiguous evolution trigger for %d", id)
+				return fmt.Errorf("%w: ambiguous evolution trigger for %d", errImportRejected, id)
 			}
 		}
 		records = append(records, r)
@@ -114,14 +117,14 @@ func run() error {
 				return err
 			}
 			if nationalID != r.NationalID {
-				return fmt.Errorf("identity mismatch for %d", r.ID)
+				return fmt.Errorf("%w: identity mismatch for %d", errImportRejected, r.ID)
 			}
 			for _, l := range r.Locations {
 				if l.Game.ID == "" || len(l.Value) == 0 {
-					return fmt.Errorf("incomplete location for %d", r.ID)
+					return fmt.Errorf("%w: incomplete location for %d", errImportRejected, r.ID)
 				}
 				if strings.Join(l.Value, "\x00") != strings.Join(l.Values, "\x00") {
-					return fmt.Errorf("conflicting location fields for %d", r.ID)
+					return fmt.Errorf("%w: conflicting location fields for %d", errImportRejected, r.ID)
 				}
 				if _, err := tx.Exec(`INSERT INTO locations (game_id,pokemon_id,value,"values") VALUES (?,?,?,?) ON CONFLICT (game_id,pokemon_id) DO UPDATE SET value=EXCLUDED.value,"values"=EXCLUDED."values"`, l.Game.ID, r.ID, strings.Join(l.Value, ", "), pg.Array(l.Value)); err != nil {
 					return err
@@ -136,7 +139,7 @@ func run() error {
 					return err
 				}
 				if existing != member.NationalID {
-					return fmt.Errorf("evolution member mismatch: %d", member.ID)
+					return fmt.Errorf("%w: evolution member mismatch: %d", errImportRejected, member.ID)
 				}
 				if _, err := tx.Exec(`UPDATE pokemon SET evolution_family_id=? WHERE id=?`, familyID, member.ID); err != nil {
 					return err

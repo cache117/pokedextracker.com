@@ -4,6 +4,7 @@ package catalog
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"regexp"
 	"time"
@@ -106,61 +107,63 @@ func load(ctx context.Context, db *pg.DB, includeOverrides bool) (Export, error)
 	return out, err
 }
 
+var errInvalidCatalogue = errors.New("invalid catalogue configuration")
+
 var idPattern = regexp.MustCompile(`^[a-z][a-z0-9_]{0,59}$`)
 
 func Validate(s Settings, overrides []Override) error {
 	if s.Version != 1 {
-		return fmt.Errorf("unsupported catalogue version")
+		return fmt.Errorf("%w: unsupported catalogue version", errInvalidCatalogue)
 	}
 	if s.HomeMode != "all" && s.HomeMode != "current" && s.HomeMode != "owned" {
-		return fmt.Errorf("choose all, current, or owned HOME sources")
+		return fmt.Errorf("%w: choose all, current, or owned HOME sources", errInvalidCatalogue)
 	}
 	if len(s.Games) > 1000 || len(s.Routes) > 100 || len(overrides) > 50000 {
-		return fmt.Errorf("configuration is too large")
+		return fmt.Errorf("%w: configuration is too large", errInvalidCatalogue)
 	}
 	routes := map[string]bool{}
 	games := map[string]bool{}
 	for _, r := range s.Routes {
 		if !idPattern.MatchString(r.ID) || routes[r.ID] || len(r.Name) == 0 || len(r.Name) > 200 {
-			return fmt.Errorf("invalid or duplicate transfer route")
+			return fmt.Errorf("%w: invalid or duplicate transfer route", errInvalidCatalogue)
 		}
 		if r.StartsAt != nil && r.EndsAt != nil && !r.StartsAt.Before(*r.EndsAt) {
-			return fmt.Errorf("route start must be before its end")
+			return fmt.Errorf("%w: route start must be before its end", errInvalidCatalogue)
 		}
 		routes[r.ID] = true
 	}
 	for _, g := range s.Games {
 		if !idPattern.MatchString(g.ID) || games[g.ID] || len(g.Name) == 0 || len(g.Name) > 200 || len(g.Platform) > 100 || g.Generation < 1 || g.Generation > 100 || len(g.Groups) > 30 {
-			return fmt.Errorf("invalid or duplicate game")
+			return fmt.Errorf("%w: invalid or duplicate game", errInvalidCatalogue)
 		}
 		if !routes[g.RouteID] {
-			return fmt.Errorf("unknown route for %s", g.Name)
+			return fmt.Errorf("%w: unknown route for %s", errInvalidCatalogue, g.Name)
 		}
 		for _, tag := range g.Groups {
 			if len(tag) == 0 || len(tag) > 100 {
-				return fmt.Errorf("invalid game group")
+				return fmt.Errorf("%w: invalid game group", errInvalidCatalogue)
 			}
 		}
 		games[g.ID] = true
 	}
 	if len(s.HiddenGroups) > 100 {
-		return fmt.Errorf("too many hidden groups")
+		return fmt.Errorf("%w: too many hidden groups", errInvalidCatalogue)
 	}
 	for _, group := range s.HiddenGroups {
 		if len(group) > 100 {
-			return fmt.Errorf("group name too long")
+			return fmt.Errorf("%w: group name too long", errInvalidCatalogue)
 		}
 	}
 	seen := map[string]bool{}
 	for _, o := range overrides {
 		key := fmt.Sprintf("%d:%s", o.PokemonID, o.GameID)
 		if o.PokemonID <= 0 || !games[o.GameID] || len(o.Values) > 100 || seen[key] {
-			return fmt.Errorf("invalid or duplicate encounter override")
+			return fmt.Errorf("%w: invalid or duplicate encounter override", errInvalidCatalogue)
 		}
 		seen[key] = true
 		for _, v := range o.Values {
 			if len(v) == 0 || len(v) > 2000 {
-				return fmt.Errorf("encounter lines must contain 1–2000 characters")
+				return fmt.Errorf("%w: encounter lines must contain 1–2000 characters", errInvalidCatalogue)
 			}
 		}
 	}

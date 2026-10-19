@@ -8,6 +8,7 @@ import (
 	"crypto/sha256"
 	"encoding/csv"
 	"encoding/hex"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -45,6 +46,8 @@ func quoted(cols []string) string {
 	return strings.Join(out, ",")
 }
 
+var errImportRejected = errors.New("reference import rejected")
+
 func main() {
 	if err := run(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -53,10 +56,10 @@ func main() {
 }
 func run() error {
 	if len(os.Args) != 3 || !revisionPattern.MatchString(os.Args[2]) {
-		return fmt.Errorf("usage: personal-seed-import seeds-directory upstream-commit-sha")
+		return fmt.Errorf("%w: usage: personal-seed-import seeds-directory upstream-commit-sha", errImportRejected)
 	}
 	if os.Getenv("ENVIRONMENT") != "local" {
-		return fmt.Errorf("only local instances may use this importer")
+		return fmt.Errorf("%w: only local instances may use this importer", errImportRejected)
 	}
 	cfg, err := config.New()
 	if err != nil {
@@ -98,19 +101,19 @@ func run() error {
 				return err
 			}
 			if len(rows) < 2 {
-				return fmt.Errorf("empty seed table %s", spec.name)
+				return fmt.Errorf("%w: empty seed table %s", errImportRejected, spec.name)
 			}
 			columns := rows[0]
 			seen := map[string]bool{}
 			for _, c := range columns {
 				if !identifier.MatchString(c) || seen[c] {
-					return fmt.Errorf("invalid CSV header for %s", spec.name)
+					return fmt.Errorf("%w: invalid CSV header for %s", errImportRejected, spec.name)
 				}
 				seen[c] = true
 			}
 			for _, k := range spec.keys {
 				if !seen[k] {
-					return fmt.Errorf("missing primary key for %s", spec.name)
+					return fmt.Errorf("%w: missing primary key for %s", errImportRejected, spec.name)
 				}
 			}
 			temp := "seed_" + spec.name
@@ -126,7 +129,7 @@ func run() error {
 					return err
 				}
 				if conflicts > 0 {
-					return fmt.Errorf("upstream Pokémon IDs conflict with %d local identities", conflicts)
+					return fmt.Errorf("%w: upstream Pokémon IDs conflict with %d local identities", errImportRejected, conflicts)
 				}
 			}
 			sets := []string{}
@@ -152,7 +155,7 @@ func run() error {
 			return err
 		}
 		if lost > 0 {
-			return fmt.Errorf("refusing to hide %d caught Pokémon absent from upstream templates", lost)
+			return fmt.Errorf("%w: refusing to hide %d caught Pokémon absent from upstream templates", errImportRejected, lost)
 		}
 		if _, err := tx.Exec(`DELETE FROM dex_types_pokemon p WHERE p.dex_type_id IN(SELECT id FROM seed_dex_types) AND NOT EXISTS(SELECT 1 FROM seed_dex_types_pokemon s WHERE s.dex_type_id=p.dex_type_id AND s.pokemon_id=p.pokemon_id)`); err != nil {
 			return err
@@ -186,7 +189,7 @@ func run() error {
 				return err
 			}
 			if sum != fingerprints[table] {
-				return fmt.Errorf("protected table %s changed; rolling back", table)
+				return fmt.Errorf("%w: protected table %s changed; rolling back", errImportRejected, table)
 			}
 		}
 		return nil

@@ -5,6 +5,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"sort"
@@ -28,6 +29,8 @@ type snapshot struct {
 	Captures map[string][]captures.Capture `json:"captures_by_slug"`
 }
 
+var errImportRejected = errors.New("reference import rejected")
+
 func main() {
 	if err := run(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -36,7 +39,7 @@ func main() {
 }
 func run() error {
 	if len(os.Args) != 2 {
-		return fmt.Errorf("usage: personal-import snapshot.json")
+		return fmt.Errorf("%w: usage: personal-import snapshot.json", errImportRejected)
 	}
 	raw, err := os.ReadFile(os.Args[1])
 	if err != nil {
@@ -47,7 +50,7 @@ func run() error {
 		return err
 	}
 	if len(s.Profile.Dexes) == 0 || os.Getenv("PERSONAL_PASSWORD") == "" {
-		return fmt.Errorf("snapshot and PERSONAL_PASSWORD are required")
+		return fmt.Errorf("%w: snapshot and PERSONAL_PASSWORD are required", errImportRejected)
 	}
 	cfg, err := config.New()
 	if err != nil {
@@ -71,12 +74,12 @@ func run() error {
 	for _, d := range s.Profile.Dexes {
 		cs, ok := s.Captures[d.Slug]
 		if !ok || len(cs) != d.Total {
-			return fmt.Errorf("incomplete dex %s", d.Slug)
+			return fmt.Errorf("%w: incomplete dex %s", errImportRejected, d.Slug)
 		}
 		caught := 0
 		for _, c := range cs {
 			if c.Pokemon == nil || c.Pokemon.GameFamily == nil {
-				return fmt.Errorf("missing Pokémon data in %s", d.Slug)
+				return fmt.Errorf("%w: missing Pokémon data in %s", errImportRejected, d.Slug)
 			}
 			if c.Captured {
 				caught++
@@ -86,15 +89,15 @@ func run() error {
 			mons[p.ID] = &pokemon.Pokemon{ID: p.ID, NationalID: p.NationalID, Name: p.Name, Form: p.Form, GameFamilyID: p.GameFamily.ID, NationalOrder: p.NationalID, EvolutionFamilyID: 0}
 		}
 		if caught != d.Caught {
-			return fmt.Errorf("caught count mismatch in %s", d.Slug)
+			return fmt.Errorf("%w: caught count mismatch in %s", errImportRejected, d.Slug)
 		}
 		if previous, exists := membership[d.DexType.ID]; exists {
 			if len(previous) != len(cs) {
-				return fmt.Errorf("conflicting membership for dex type %d", d.DexType.ID)
+				return fmt.Errorf("%w: conflicting membership for dex type %d", errImportRejected, d.DexType.ID)
 			}
 			for i := range cs {
 				if previous[i].Pokemon.ID != cs[i].Pokemon.ID || previous[i].Pokemon.DexNumber != cs[i].Pokemon.DexNumber {
-					return fmt.Errorf("conflicting order or numbering for dex type %d", d.DexType.ID)
+					return fmt.Errorf("%w: conflicting order or numbering for dex type %d", errImportRejected, d.DexType.ID)
 				}
 			}
 		} else {
@@ -107,7 +110,7 @@ func run() error {
 			return e
 		}
 		if n != 0 {
-			return fmt.Errorf("refusing import: database already has accounts")
+			return fmt.Errorf("%w: refusing import: database already has accounts", errImportRejected)
 		}
 		for _, f := range families {
 			if _, e := tx.Exec(`INSERT INTO game_families (id,generation,regional_total,national_total,regional_support,national_support,"order",published) VALUES (?,?,?,?,?,?,?,?)`, f.ID, f.Generation, f.RegionalTotal, f.NationalTotal, f.RegionalSupport, f.NationalSupport, f.Order, f.Published); e != nil {
@@ -115,6 +118,7 @@ func run() error {
 			}
 		}
 		for _, g := range s.Games {
+			g := g
 			g.GameFamilyID = g.GameFamily.ID
 			if _, e := tx.Model(&g).Insert(); e != nil {
 				return e
@@ -133,6 +137,7 @@ func run() error {
 		}
 		// Base types are inserted before references to them.
 		for _, dt := range s.DexTypes {
+			dt := dt
 			if dt.BaseDexTypeID != nil {
 				continue
 			}
@@ -141,6 +146,7 @@ func run() error {
 			}
 		}
 		for _, dt := range s.DexTypes {
+			dt := dt
 			if dt.BaseDexTypeID == nil {
 				continue
 			}

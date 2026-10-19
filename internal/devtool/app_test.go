@@ -101,6 +101,11 @@ func (f *fakeProcesses) Test(_ context.Context, _ Environment, target DatabaseTa
 	return nil
 }
 
+func (f *fakeProcesses) E2E(_ context.Context, _ Environment, target DatabaseTarget, port int, args ...string) error {
+	f.calls = append(f.calls, fmt.Sprintf("e2e %s %s:%d on %d %s", target.Environment, target.Name, target.Port, port, strings.Join(args, " ")))
+	return nil
+}
+
 type fixedPorts struct{ next int }
 
 type fixedLease struct{ port int }
@@ -286,7 +291,20 @@ func TestStartWebStagingUsesTheStagingAPI(t *testing.T) {
 	require.NoError(t, h.app.Run(context.Background(), []string{"start", "web-staging"}))
 
 	assert.Empty(t, h.database.calls)
-	assert.Equal(t, stagingAPIURL, h.processes.servers.APIURL)
+	assert.Equal(t, stagingURL, h.processes.servers.APIURL)
+}
+
+func TestStartPreviewRunsOnlyTheBinary(t *testing.T) {
+	h := newHarness(t, false)
+	h.database.databases["pdt_worktree"] = true
+
+	require.NoError(t, h.app.Run(context.Background(), []string{"start", "preview"}))
+
+	assert.Equal(t, startPreview, h.processes.mode)
+	assert.Equal(t, defaultAPIPort, h.processes.servers.APIPort)
+	assert.Zero(t, h.processes.servers.WebPort, "the binary serves the frontend itself")
+	assert.Equal(t, "pdt_worktree", h.processes.servers.Database.Name)
+	assert.Contains(t, h.stdout.String(), "Preview (production build of the frontend and API): http://localhost:8647")
 }
 
 func TestStartRejectsUnknownModes(t *testing.T) {
@@ -504,4 +522,45 @@ func TestPullWritesSeedsForThisWorktree(t *testing.T) {
 	assert.Contains(t, h.stdout.String(), "pokemon")
 	assert.Contains(t, h.stdout.String(), "3 rows")
 	assert.NotContains(t, h.stdout.String(), "1 rows")
+}
+
+func TestE2ERebuildsItsDatabaseAndRunsOneBrowser(t *testing.T) {
+	h := newHarness(t, false)
+	writeSeeds(t, h)
+
+	require.NoError(t, h.app.Run(context.Background(), []string{"e2e", "chromium", "e2e/home.spec.ts"}))
+
+	assert.Equal(t, []string{"ensure", "reset pdt_worktree_e2e", "seed pdt_worktree_e2e seeds"}, h.database.calls)
+	assert.Equal(t, []string{
+		"migrate development pdt_worktree_e2e:9876 migrate",
+		"e2e development pdt_worktree_e2e:9876 on 8700 --project=chromium e2e/home.spec.ts",
+	}, h.processes.calls)
+}
+
+func TestE2EAllRunsEveryBrowser(t *testing.T) {
+	h := newHarness(t, false)
+	writeSeeds(t, h)
+
+	require.NoError(t, h.app.Run(context.Background(), []string{"e2e", "all"}))
+
+	require.Len(t, h.processes.calls, 2)
+	assert.NotContains(t, h.processes.calls[1], "--project", "every browser runs")
+}
+
+func TestE2ERejectsUnknownBrowsers(t *testing.T) {
+	h := newHarness(t, false)
+	writeSeeds(t, h)
+
+	assert.Error(t, h.app.Run(context.Background(), []string{"e2e"}))
+	assert.Error(t, h.app.Run(context.Background(), []string{"e2e", "safari"}))
+	assert.Empty(t, h.database.calls)
+}
+
+func TestE2ENeedsSeedFiles(t *testing.T) {
+	h := newHarness(t, false)
+
+	err := h.app.Run(context.Background(), []string{"e2e", "chromium"})
+
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "mise db:pull")
 }

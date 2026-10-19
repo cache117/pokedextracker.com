@@ -1,5 +1,4 @@
 import find from 'lodash/find';
-import { Config } from '../../../../config';
 import keyBy from 'lodash/keyBy';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
@@ -116,7 +115,7 @@ export function Info ({ selectedPokemon, setSelectedPokemon }: Props) {
         </div>
 
         {pokemon.locations.length > 0 ? <InfoLocations locations={pokemon.locations} /> : null}
-        {(pokemon.reference_details_imported === false || (pokemon.reference_details_imported === undefined && Config.REFERENCE_DETAILS_AVAILABLE === false))
+        {pokemon.reference_details_imported === false
           ? <div style={{ padding: '24px' }}>{pokemon.locations.length > 0 ? 'Evolution details haven’t been imported yet.' : 'Encounter locations and evolution details haven’t been imported into your personal tracker yet.'}</div>
           : <>
             {pokemon.locations.length === 0 ? <div style={{ padding: '24px' }}>No encounters match your source settings.</div> : null}

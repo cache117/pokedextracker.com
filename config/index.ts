@@ -1,23 +1,35 @@
 import { Development } from './development';
-import { Local } from './local';
-import { Production } from './production';
-import { Staging } from './staging';
-import { Environment } from './types';
 
 import type { Config as ConfigType } from './types';
 
-const ENVIRONMENTS: Record<string, Environment> = {
-  'pokedextracker.com': Environment.Production,
-  'staging.pokedextracker.com': Environment.Staging,
-};
+// The Go server adds this to index.html (pkg/server's frontendConfig), so the
+// same build reports the right environment wherever it runs.
+interface ServerConfig {
+  environment: string;
+  googleAnalyticsId: string;
+  rollbarToken: string;
+  version: string;
+}
 
-const environment = ENVIRONMENTS[window.location.hostname] || Environment.Local;
+declare global {
+  interface Window {
+    POKEDEXTRACKER_CONFIG?: ServerConfig;
+  }
+}
 
-const Configs: Record<Environment, ConfigType> = {
-  [Environment.Local]: Local,
-  [Environment.Development]: Development,
-  [Environment.Production]: Production,
-  [Environment.Staging]: Staging,
-};
+// Any field the server leaves out falls back to the development value.
+function fromServer (server: Partial<ServerConfig>): ConfigType {
+  return {
+    API_HOST: '/api',
+    ENVIRONMENT: server.environment || Development.ENVIRONMENT,
+    GA_ID: server.googleAnalyticsId ?? Development.GA_ID,
+    ROLLBAR_TOKEN: server.rollbarToken ?? Development.ROLLBAR_TOKEN,
+    VERSION: server.version || Development.VERSION,
+  };
+}
 
-export const Config = Configs[environment] as ConfigType;
+const server = window.POKEDEXTRACKER_CONFIG;
+
+// Without the server's config (the webpack dev server), the app uses the
+// development config.
+export const Config: ConfigType = server ? fromServer(server) : Development;

@@ -12,23 +12,26 @@ the React frontend (`app/`) and the Go API (`cmd/` and `pkg/`).
 ## Setup
 
 This repo uses [mise](https://mise.jdx.dev/) to manage tools (Go, Node.js,
-Yarn, Air, golangci-lint) and tasks, and Docker to run PostgreSQL.
+pnpm, Air, golangci-lint) and tasks, and Docker to run PostgreSQL.
 
 ```sh
 mise setup
 ```
 
-That installs the tools and dependencies, starts PostgreSQL in the background,
-and creates and migrates this worktree's development and test databases.
+That installs the tools and dependencies, downloads the browsers the
+end-to-end tests use, starts PostgreSQL in the background, and creates and
+migrates this worktree's development and test databases.
 
 ## Development
 
 ```sh
 mise start              # API with hot reload, plus the frontend dev server using it
 mise start:web:staging  # Just the frontend, using the staging API
+mise start:preview      # The production build: one binary serving the API and frontend
 mise lint               # golangci-lint, ESLint, and TypeScript checks
 mise test:go            # Go tests
-mise build              # Build the API and migrations into build/, and the frontend into build/web
+mise test:e2e           # End-to-end tests in Chromium (test:e2e:all for every browser)
+mise build              # Build the frontend, then the API (which embeds it) and migrations
 mise db:migrate         # Run pending migrations
 mise psql               # Open psql against this worktree's database
 mise db:seed            # Reload this worktree's Pokémon, games, and dexes from seeds/
@@ -58,6 +61,34 @@ Because the database and ports are chosen by the launcher, running the API or
 `mise start:api` and `mise test:go`, which also accepts `go test` arguments,
 like `mise test:go -run TestNew ./pkg/config`.
 
+### End-to-end tests
+
+The end-to-end tests in `e2e/` use [Playwright](https://playwright.dev) to run
+through the site in a real browser. `mise test:e2e` builds the site the way
+it's deployed (one binary serving the API and the production frontend), starts
+it against a separate `_e2e` database rebuilt from `seeds/` on every run, and
+runs the tests in Chromium. Your development database isn't touched.
+`mise setup` downloads the browsers; after a Playwright upgrade, get the new
+ones with `mise install:browsers`.
+
+```sh
+mise test:e2e                     # Chromium, the quick check
+mise test:e2e:all                 # Chromium, Firefox, and WebKit, like CI
+mise test:e2e:webkit              # One browser (also test:e2e:firefox)
+mise test:e2e -- e2e/auth.spec.ts # Arguments after -- go to Playwright
+mise test:e2e -- --headed         # Watch the browser while it runs
+```
+
+Each test makes its own users through the API, so tests run in parallel and
+don't depend on each other. Everything the site loads from other domains
+(fonts, analytics) is blocked, and an uncaught error on the page fails the
+test. When a test fails, `pnpm exec playwright show-trace` on the trace in
+`test-results/` replays it step by step, and the server's log is in
+`build/e2e/server.log`.
+
+The tests use the Legends: Z-A regional dex from `seeds/`, so a `mise db:pull`
+that changes that dex may mean updating them too.
+
 If you used this repo before the launcher existed, the old setup's container
 (named after the checkout, like `pokedextracker-com-postgres-1`) and its
 `tmp/pgdata` directory can be deleted. Nothing carries over from them.
@@ -84,28 +115,28 @@ PRODUCTION_DATABASE_URL=postgres://USER:PASSWORD@HOST:5432/DATABASE?sslmode=disa
 
 Editing `seeds/` doesn't change production. See [`seeds/README.md`](seeds/README.md).
 
-## Docker
+## How it's served
 
-Every time we deploy, we build new Docker images and upload them to Docker
-Hub, tagged with the first 7 characters of the commit hash. The API image
-listens on port 8647, so if you run it locally, make sure that traffic is
-forwarded to that port. For example:
-
-```sh
-docker run --rm --publish 8647:8647 --name pokedextracker-api pokedextracker/api.pokedextracker.com:$(git rev-parse --short HEAD)
-```
+One Go binary serves the whole site: the API under `/api`, the frontend
+(embedded into the binary from `internal/webapp/dist`) for everything else,
+and `/blog`, which it forwards to the hosted Ghost blog. It also redirects
+`www.` to the bare domain. Hashed JavaScript is cached forever, `index.html`
+and `/version` are always revalidated, and other static files are cached for
+an hour. `mise start:preview` runs this same build locally.
 
 ## Deployments
 
 > Note: you need the necessary permissions to be able to deploy.
 
-The frontend and API currently deploy separately. Each deploy script builds a
-multi-arch Docker image (`linux/amd64` and `linux/arm64`), pushes it to Docker
-Hub, and deploys it to staging on [Fly.io](https://fly.io/). Once you've
-checked staging, type `yes` at the prompt to deploy the same image to
-production. Anything else skips production.
+`mise deploy` builds a multi-arch image (`linux/amd64` and `linux/arm64`)
+from the `Dockerfile`, pushes it to the GitHub Container Registry
+(`ghcr.io/pokedextracker/pokedextracker.com`), uploads source maps to Rollbar,
+and deploys it to the `pokedextracker-staging` app on [Fly.io](https://fly.io/).
+Once you've checked staging, type `yes` at the prompt to deploy the same image
+to `pokedextracker-production`. Anything else skips production. Pushing uses
+your `gh` login, which needs the `write:packages` scope once:
 
 ```sh
-mise deploy:web     # Frontend
-mise deploy:api     # API
+gh auth refresh -s write:packages
+mise deploy
 ```

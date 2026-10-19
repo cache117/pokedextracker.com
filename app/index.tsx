@@ -13,13 +13,13 @@ Modal.setAppElement('#root');
 
 function run () {
   render(
-        <QueryClientProvider client={queryClient}>
-          <SessionProvider>
-            <LocalStorageContextProvider>
-              <App />
-            </LocalStorageContextProvider>
-          </SessionProvider>
-        </QueryClientProvider>,
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider>
+        <LocalStorageContextProvider>
+          <App />
+        </LocalStorageContextProvider>
+      </SessionProvider>
+    </QueryClientProvider>,
     document.getElementById('root')
   );
 }

@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [master, personal]
   pull_request:
 
 permissions:
@@ -19,24 +19,24 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # Installs the Node.js and Yarn versions pinned in mise.toml.
+      # Installs the Node.js and pnpm versions pinned in mise.toml.
       - uses: jdx/mise-action@v5
         with:
-          install_args: node yarn
+          install_args: node pnpm
 
       - uses: actions/cache@v6
         with:
           path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('mise.toml', 'yarn.lock') }}
+          key: node-modules-${{ runner.os }}-${{ hashFiles('mise.toml', 'pnpm-lock.yaml', 'pnpm-workspace.yaml') }}
 
       - name: Install dependencies
         run: mise install:web
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Type check
-        run: yarn lint:types
+        run: pnpm lint:types
 
       - name: Build
         run: mise build:web
@@ -108,3 +108,78 @@ jobs:
 
       - name: Test
         run: mise test:go
+
+  e2e:
+    name: E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      # Installs the Go, Node.js, and pnpm versions pinned in mise.toml.
+      - uses: jdx/mise-action@v5
+        with:
+          install_args: go node pnpm
+
+      - uses: actions/cache@v6
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('mise.toml', 'pnpm-lock.yaml', 'pnpm-workspace.yaml') }}
+
+      # Its own key, since this job builds ./cmd/api, which the Backend job's
+      # cache doesn't hold.
+      - uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: go-e2e-${{ runner.os }}-${{ hashFiles('mise.toml', 'go.sum') }}
+
+      - name: Install dependencies
+        run: |
+          mise install:go
+          mise install:web
+          echo "PLAYWRIGHT_VERSION=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_ENV"
+
+      # The browsers only change with the Playwright version.
+      - uses: actions/cache@v6
+        id: browsers
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ env.PLAYWRIGHT_VERSION }}
+
+      # The cache only holds the browsers, so the system libraries they need
+      # are installed either way.
+      - name: Install browsers
+        run: |
+          if [ "${{ steps.browsers.outputs.cache-hit }}" = "true" ]; then
+            pnpm exec playwright install-deps chromium firefox webkit
+          else
+            mise install:browsers -- --with-deps
+          fi
+
+      # The dev launcher starts PostgreSQL in Docker, the same as locally.
+      - name: Test
+        run: mise test:e2e:all
+
+      - name: Upload the report
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+            build/e2e/server.log
+          retention-days: 14
+
+  image:
+    name: Image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Builds the image without pushing it, to catch packaging breakage
+      # before a deploy does.
+      - name: Build the image
+        run: docker build --build-arg VERSION=ci .

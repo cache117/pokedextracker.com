@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strconv"
 	"syscall"
 	"time"
@@ -39,6 +40,9 @@ type ProcessManager interface {
 	Start(ctx context.Context, env Environment, mode string, servers Servers) error
 	Migrate(ctx context.Context, env Environment, target DatabaseTarget, args ...string) error
 	Test(ctx context.Context, env Environment, target DatabaseTarget, args ...string) error
+	// E2E serves the production build on port against target, and runs
+	// Playwright against it with args.
+	E2E(ctx context.Context, env Environment, target DatabaseTarget, port int, args ...string) error
 }
 
 // OSProcesses runs development commands as child process groups.
@@ -55,7 +59,9 @@ func (p *OSProcesses) Start(ctx context.Context, env Environment, mode string, s
 	case startAPI:
 		err = runSingleProcess(ctx, env.CurrentRoot, environment, "go", "run", "./cmd/api")
 	case startWeb, startWebStaging:
-		err = runSingleProcess(ctx, env.CurrentRoot, environment, "yarn", "start")
+		err = runSingleProcess(ctx, env.CurrentRoot, environment, "pnpm", "start")
+	case startPreview:
+		err = runPreview(ctx, env.CurrentRoot, environment)
 	default:
 		return fmt.Errorf("unknown start mode %q", mode)
 	}
@@ -78,6 +84,67 @@ func (p *OSProcesses) Migrate(ctx context.Context, env Environment, target Datab
 func (p *OSProcesses) Test(ctx context.Context, env Environment, target DatabaseTarget, args ...string) error {
 	commandArgs := append([]string{"test"}, args...)
 	return runSingleProcess(ctx, env.CurrentRoot, apiEnvironment(target), "go", commandArgs...)
+}
+
+func (p *OSProcesses) E2E(ctx context.Context, env Environment, target DatabaseTarget, port int, args ...string) error {
+	root := env.CurrentRoot
+	environment := append(apiEnvironment(target), "PORT="+strconv.Itoa(port))
+	binary, err := buildSite(ctx, root, environment, "e2e")
+	if err != nil {
+		return err
+	}
+
+	// The server logs every request, which would bury Playwright's output, so
+	// it goes to a file instead.
+	logPath := e2eServerLog(env)
+	log, err := os.Create(logPath)
+	if err != nil {
+		return fmt.Errorf("create e2e server log: %w", err)
+	}
+	defer func() { _ = log.Close() }()
+
+	server := newProcess(root, environment, binary)
+	server.Stdout = log
+	server.Stderr = log
+	if err := server.Start(); err != nil {
+		return fmt.Errorf("start e2e server: %w", err)
+	}
+	serverDone := waitForProcess(server)
+	if exited, err := waitForAPI(ctx, port, serverDone); err != nil {
+		if !exited {
+			terminateProcess(server)
+			awaitTermination(server, serverDone)
+		}
+		return fmt.Errorf("%w (log in %s)", err, logPath)
+	}
+
+	// If the server dies, stop the tests instead of letting every remaining
+	// one fail to connect.
+	testsCtx, stopTests := context.WithCancel(ctx)
+	defer stopTests()
+	serverExited := make(chan error, 1)
+	go func() {
+		serverExited <- <-serverDone
+		stopTests()
+	}()
+
+	tests := append(os.Environ(), "E2E_BASE_URL="+apiURL(port))
+	err = runSingleProcess(testsCtx, root, tests, "pnpm", append([]string{"exec", "playwright", "test"}, args...)...)
+	select {
+	case <-serverExited:
+		if ctx.Err() == nil {
+			return fmt.Errorf("e2e server stopped during the tests; see %s", logPath)
+		}
+	default:
+		terminateProcess(server)
+		awaitTermination(server, serverExited)
+	}
+	return err
+}
+
+// e2eServerLog is where the e2e server's output goes, next to its binary.
+func e2eServerLog(env Environment) string {
+	return filepath.Join(env.CurrentRoot, "build", "e2e", "server.log")
 }
 
 // apiEnvironment points the API's config at a database. The development and
@@ -116,6 +183,30 @@ func serverEnvironment(servers Servers) []string {
 	return values
 }
 
+// runPreview builds the site and runs the binary.
+func runPreview(ctx context.Context, root string, environment []string) error {
+	binary, err := buildSite(ctx, root, environment, "preview")
+	if err != nil {
+		return err
+	}
+	return runSingleProcess(ctx, root, environment, binary)
+}
+
+// buildSite builds the frontend for production into internal/webapp/dist,
+// then the binary that embeds it, and returns the binary's path. name is the
+// version the frontend reports and the build directory.
+func buildSite(ctx context.Context, root string, environment []string, name string) (string, error) {
+	build := append(append([]string{}, environment...), "NODE_ENV=production", "VERSION="+name)
+	if err := runSingleProcess(ctx, root, build, "pnpm", "build"); err != nil {
+		return "", err
+	}
+	binary := filepath.Join(root, "build", name, "api")
+	if err := runSingleProcess(ctx, root, environment, "go", "build", "-o", binary, "./cmd/api"); err != nil {
+		return "", err
+	}
+	return binary, nil
+}
+
 // runDevelopmentProcesses starts the API under Air, waits for it to answer its
 // health check, then starts the frontend dev server. Either exiting stops the
 // other.
@@ -137,7 +228,7 @@ func runDevelopmentProcesses(ctx context.Context, root string, environment []str
 		return err
 	}
 
-	web := newProcess(root, environment, "yarn", "start")
+	web := newProcess(root, environment, "pnpm", "start")
 	if err := web.Start(); err != nil {
 		terminateProcess(api)
 		awaitTermination(api, apiDone)

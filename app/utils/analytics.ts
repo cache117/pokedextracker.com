@@ -4,9 +4,15 @@ import { Config } from '../../config';
 
 const ReactGA = Config.ENVIRONMENT === 'development'
   ? {
-    event: (..._args: Parameters<typeof RealGA.event>) => {},
-    set: (..._args: Parameters<typeof RealGA.set>) => {},
-    pageview: (..._args: Parameters<typeof RealGA.pageview>) => {},
+    event: (...args: Parameters<typeof RealGA.event>) => {
+      void args;
+    },
+    set: (...args: Parameters<typeof RealGA.set>) => {
+      void args;
+    },
+    pageview: (...args: Parameters<typeof RealGA.pageview>) => {
+      void args;
+    },
   }
   : RealGA;
 

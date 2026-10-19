@@ -10,5 +10,10 @@ func loadLocalConfig(cfg *Config) {
 	cfg.DatabasePassword = os.Getenv("DATABASE_PASSWORD")
 	cfg.JWTSecret = []byte(os.Getenv("JWT_SECRET"))
 	cfg.RollbarToken = ""
+	cfg.GoogleAnalyticsID = ""
+	cfg.RollbarClientToken = ""
+	if Version != "" {
+		cfg.Version = Version
+	}
 	cfg.CORSAllowedOrigins = []string{"http://localhost:9898", "http://127.0.0.1:9898"}
 }

@@ -110,7 +110,7 @@ func run() error {
 			return fmt.Errorf("refusing import: database already has accounts")
 		}
 		for _, f := range families {
-			if _, e := tx.Exec(`INSERT INTO game_families (id,generation,regional_total,national_total,regional_support,national_support,"order",published) VALUES (?,?,?,?,?,?,?,?)`, f.ID,f.Generation,f.RegionalTotal,f.NationalTotal,f.RegionalSupport,f.NationalSupport,f.Order,f.Published); e != nil {
+			if _, e := tx.Exec(`INSERT INTO game_families (id,generation,regional_total,national_total,regional_support,national_support,"order",published) VALUES (?,?,?,?,?,?,?,?)`, f.ID, f.Generation, f.RegionalTotal, f.NationalTotal, f.RegionalSupport, f.NationalSupport, f.Order, f.Published); e != nil {
 				return e
 			}
 		}

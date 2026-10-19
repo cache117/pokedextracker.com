@@ -363,3 +363,6 @@ tags
 build
 cmd/scratch
 tmp
+internal/webapp/dist
+playwright-report
+test-results

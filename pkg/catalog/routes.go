@@ -13,7 +13,7 @@ import (
 	"github.com/pokedextracker/pokedextracker.com/pkg/errcodes"
 )
 
-func RegisterRoutes(e *echo.Echo, db *pg.DB, enforce, optional echo.MiddlewareFunc) {
+func RegisterRoutes(e *echo.Group, db *pg.DB, enforce, optional echo.MiddlewareFunc) {
 	owner := func(c echo.Context) bool {
 		s := auth.FromContext(c)
 		if s == nil {

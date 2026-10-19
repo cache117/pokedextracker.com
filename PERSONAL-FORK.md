@@ -92,6 +92,40 @@ Z-A regional has 237 entries, Full Lumiose 380, and Hyperspace 148 (forms includ
 Existing personal progress is verified against the pre-upgrade backup.
 New templates do not create collections automatically; use Create a New Dex.
 
+## FireRed and LeafGreen (Generation III)
+
+The personal seed importer applies `cmd/personal-seed-import/fire_red_leaf_green.sql`
+after the unmodified upstream CSVs, within the same protected transaction. It
+publishes upstream's existing `fire_red` and `leaf_green` games and adds normal
+`dex_types` / `dex_types_pokemon` rows: Regional (151) and Full National (386).
+The website and API use their normal create/edit/track flows without a parallel
+custom dex implementation. Serebii links use the Generation III Pokédex.
+
+Membership follows upstream's X/Y and OR/AS base-species policy: `form IS NULL`,
+`national_order >= 0`, and original Generation I-III identities. Both lists
+include Mythical Pokémon; National also includes species requiring other games
+or events. Unown and Deoxys each occupy one species entry. Later evolutions,
+regional forms and duplicate encounter identities are excluded. Sources:
+https://www.serebii.net/fireredleafgreen/kantopokedex.shtml and
+https://www.serebii.net/pokedex-rs/386.shtml.
+
+Personal template IDs 1000001 and 1000002 avoid upstream's generated IDs; the
+import refuses collisions or identity changes requiring review. Refreshes
+reapply publication and memberships, preserving collections and captures.
+If upstream adds official FR/LG templates, review a deliberate migration of
+personal collections to those IDs instead of deleting or replacing templates.
+No production seed CSVs are edited and no upstream schema changes are needed.
+
+This enables dex tracking, not a complete Generation III encounter database.
+Upstream currently supplies no FR/LG encounter rows. Evolution details reuse
+upstream's shared data, filtered to the selected dex; historical game-specific
+methods are not independently audited. Add location corrections through Manage.
+The separate personal Switch rerelease source IDs are retained unchanged.
+
+Run `personal/Test-FireRedLeafGreen.ps1` with the same trial-server/database
+parameters as `Test-Local.ps1` to check both games, both lists, evolution scope,
+capturing and repeat-import preservation. Tests create disposable trial users.
+
 Pre-unified-server backups: `../backups/before-unified-upstream.dump` and
 `../backups/before-unified-api.exe`. Earlier source checkouts are retained in
 `../backups/legacy-api` and `../backups/legacy-web`. `source/` is the active repo.

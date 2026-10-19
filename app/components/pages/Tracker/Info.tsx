@@ -19,6 +19,7 @@ import { useUser } from '../../../hooks/queries/users';
 import type { Dex } from '../../../types';
 
 const SEREBII_LINKS: Record<string, string> = {
+  fire_red_leaf_green: 'pokedex-rs',
   x_y: 'pokedex-xy',
   omega_ruby_alpha_sapphire: 'pokedex-xy',
   sun_moon: 'pokedex-sm',
@@ -118,7 +119,7 @@ export function Info ({ selectedPokemon, setSelectedPokemon }: Props) {
         {pokemon.reference_details_imported === false
           ? <div style={{ padding: '24px' }}>{pokemon.locations.length > 0 ? 'Evolution details haven’t been imported yet.' : 'Encounter locations and evolution details haven’t been imported into your personal tracker yet.'}</div>
           : <>
-            {pokemon.locations.length === 0 ? <div style={{ padding: '24px' }}>No encounters match your source settings.</div> : null}
+            {pokemon.locations.length === 0 ? <div style={{ padding: '24px' }}>{dex.game.game_family.id === 'home' ? 'No encounters match your source settings.' : 'No encounter locations are available for this dex yet.'}</div> : null}
             <EvolutionFamily family={pokemon.evolution_family} setSelectedPokemon={setSelectedPokemon} />
           </>}
 

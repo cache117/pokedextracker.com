@@ -160,6 +160,9 @@ func run() error {
 		if _, err := tx.Exec(`DELETE FROM dex_types_pokemon p WHERE p.dex_type_id IN(SELECT id FROM seed_dex_types) AND NOT EXISTS(SELECT 1 FROM seed_dex_types_pokemon s WHERE s.dex_type_id=p.dex_type_id AND s.pokemon_id=p.pokemon_id)`); err != nil {
 			return err
 		}
+		if err := importPersonalDexes(tx); err != nil {
+			return fmt.Errorf("personal dex extensions: %w", err)
+		}
 		// Personal names stay personal; the source CSVs remain byte-for-byte upstream.
 		if _, err := tx.Exec(`UPDATE games g SET name=j->>'name' FROM personal_catalog_settings c, jsonb_array_elements(c.document->'games') j WHERE g.id=j->>'id'`); err != nil {
 			return err
@@ -200,6 +203,7 @@ func run() error {
 	for _, spec := range tables {
 		fmt.Printf("Merged %s: %d upstream rows\n", spec.name, counts[spec.name])
 	}
+	fmt.Println("Applied personal FireRed/LeafGreen templates: Regional (151) and Full National (386).")
 	fmt.Println("Verified users, dexes, captures, personal settings, and encounter overrides unchanged.")
 	return nil
 }

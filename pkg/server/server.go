@@ -103,7 +103,7 @@ func newServer(cfg *config.Config, db *pg.DB, frontend http.Handler) (*http.Serv
 	e.HTTPErrorHandler = errcodes.NewHandler().Handle
 
 	srv := &http.Server{
-		Addr:              fmt.Sprintf(":%d", cfg.Port),
+		Addr:              fmt.Sprintf("%s:%d", cfg.ListenHost, cfg.Port),
 		Handler:           e,
 		ReadHeaderTimeout: 2 * time.Second,
 	}

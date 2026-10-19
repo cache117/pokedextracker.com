@@ -86,6 +86,14 @@ func TestPersonalCatalogueUsesAPIPrefixAndRequiresAuthentication(t *testing.T) {
 	assert.Contains(t, w.Body.String(), "frontend /personal/catalog")
 }
 
+func TestLocalServerBindsOnlyLoopback(t *testing.T) {
+	db := pg.Connect(&pg.Options{Addr: "127.0.0.1:1"})
+	t.Cleanup(func() { _ = db.Close() })
+	srv, err := newServer(&config.Config{ListenHost: "127.0.0.1", Port: 9898}, db, fakeFrontend)
+	require.NoError(t, err)
+	assert.Equal(t, "127.0.0.1:9898", srv.Addr)
+}
+
 func TestFrontendServesEverythingElse(t *testing.T) {
 	h := testServer(t, &config.Config{})
 

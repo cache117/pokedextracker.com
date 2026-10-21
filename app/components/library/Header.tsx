@@ -1,50 +1,51 @@
-import keyBy from 'lodash/keyBy';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router';
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import keyBy from "lodash/keyBy";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 
-import { DexIndicator } from './DexIndicator';
-import { DonatedFlair } from './DonatedFlair';
-import { ReactGA } from '../../utils/analytics';
-import { Share } from './Share';
-import { useSession } from '../../hooks/contexts/use-session';
-import { useUser } from '../../hooks/queries/users';
-
-import type { Dex } from '../../types';
-import type { MouseEvent } from 'react';
+import { useSession } from "../../hooks/contexts/use-session";
+import { useUser } from "../../hooks/queries/users";
+import { useUserParams } from "../../hooks/use-user-params";
+import type { Dex } from "../../types";
+import { trackEvent } from "../../utils/analytics";
+import { DexIndicator } from "./DexIndicator";
+import { DonatedFlair } from "./DonatedFlair";
+import { Share } from "./Share";
 
 interface Props {
   profile?: boolean;
 }
 
-export function Header ({ profile = false }: Props) {
-  const { username, slug } = useParams<{ username: string; slug: string }>();
+export function Header({ profile = false }: Props) {
+  const { username, slug } = useUserParams();
 
   const { session } = useSession();
   const user = useUser(username).data!;
-  const dex = useMemo<Dex | null>(() => !profile ? keyBy(user.dexes, 'slug')[slug] : null, [profile, user, slug]);
+  const dex = useMemo<Dex | null>(
+    () => (!profile ? keyBy(user.dexes, "slug")[slug] : null),
+    [profile, user, slug],
+  );
 
   const [showShare, setShowShare] = useState(false);
 
   useEffect(() => {
     const closeShare = () => setShowShare(false);
 
-    window.addEventListener('click', closeShare);
+    window.addEventListener("click", closeShare);
 
-    return () => window.removeEventListener('click', closeShare);
+    return () => window.removeEventListener("click", closeShare);
   }, []);
 
   const handleShareClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.stopPropagation();
 
-    ReactGA.event({ action: showShare ? 'close' : 'open', category: 'Share' });
+    trackEvent("Share", showShare ? "close" : "open");
 
     setShowShare((prev) => !prev);
   };
 
-  const handleTweetClick = () => ReactGA.event({ action: 'click tweet', category: 'Share' });
+  const handleTweetClick = () => trackEvent("Share", "click tweet");
 
   const ownPage = session?.id === user.id;
 
@@ -53,12 +54,12 @@ export function Header ({ profile = false }: Props) {
       <h1>
         {dex?.title || `${user.username}'s Profile`}
         <div className="share-container">
-          <a onClick={handleShareClick}>
+          <a data-testid="share-toggle" onClick={handleShareClick}>
             <FontAwesomeIcon icon={faLink} />
             {showShare && <Share profile={profile} />}
           </a>
           <a
-            href={`https://twitter.com/intent/tweet?text=Check out ${ownPage ? 'my' : `${user.username}'s`} ${profile ? 'profile' : 'living dex progress'} on @PokedexTracker! https://pokedextracker.com/u/${user.username}${dex ? `/${dex.slug}` : ''}`}
+            href={`https://twitter.com/intent/tweet?text=Check out ${ownPage ? "my" : `${user.username}'s`} ${profile ? "profile" : "living dex progress"} on @PokedexTracker! https://pokedextracker.com/u/${user.username}${dex ? `/${dex.slug}` : ""}`}
             onClick={handleTweetClick}
             rel="noopener noreferrer"
             target="_blank"

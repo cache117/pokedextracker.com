@@ -10,7 +10,8 @@ func loadLocalConfig(cfg *Config) {
 	cfg.DatabasePassword = os.Getenv("DATABASE_PASSWORD")
 	cfg.JWTSecret = []byte(os.Getenv("JWT_SECRET"))
 	cfg.RollbarToken = ""
-	cfg.GoogleAnalyticsID = ""
+	cfg.UmamiURL = ""
+	cfg.UmamiWebsiteID = ""
 	cfg.RollbarClientToken = ""
 	if Version != "" {
 		cfg.Version = Version

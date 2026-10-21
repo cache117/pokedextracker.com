@@ -1,12 +1,10 @@
-import { Development } from './development';
-
-import type { Config as ConfigType } from './types';
+import { Development } from "./development";
+import type { Config as ConfigType } from "./types";
 
 // The Go server adds this to index.html (pkg/server's frontendConfig), so the
 // same build reports the right environment wherever it runs.
 interface ServerConfig {
   environment: string;
-  googleAnalyticsId: string;
   rollbarToken: string;
   version: string;
 }
@@ -18,11 +16,10 @@ declare global {
 }
 
 // Any field the server leaves out falls back to the development value.
-function fromServer (server: Partial<ServerConfig>): ConfigType {
+function fromServer(server: Partial<ServerConfig>): ConfigType {
   return {
-    API_HOST: '/api',
+    API_HOST: "/api",
     ENVIRONMENT: server.environment || Development.ENVIRONMENT,
-    GA_ID: server.googleAnalyticsId ?? Development.GA_ID,
     ROLLBAR_TOKEN: server.rollbarToken ?? Development.ROLLBAR_TOKEN,
     VERSION: server.version || Development.VERSION,
   };
@@ -30,6 +27,6 @@ function fromServer (server: Partial<ServerConfig>): ConfigType {
 
 const server = window.POKEDEXTRACKER_CONFIG;
 
-// Without the server's config (the webpack dev server), the app uses the
+// Without the server's config (the Vite dev server), the app uses the
 // development config.
 export const Config: ConfigType = server ? fromServer(server) : Development;

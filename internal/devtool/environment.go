@@ -19,9 +19,10 @@ const (
 	// PostgreSQL truncates identifiers longer than 63 bytes.
 	maxIdentifierLength = 63
 	testDatabaseSuffix  = "_test"
-	// The e2e database's suffix is no longer than the test database's, so
-	// names leave room for both.
-	e2eDatabaseSuffix = "_e2e"
+	// The e2e and visual databases' suffixes are no longer than the test
+	// database's, so names leave room for all of them.
+	e2eDatabaseSuffix    = "_e2e"
+	visualDatabaseSuffix = "_vis"
 )
 
 // Environment describes the repository and worktree resources used by a
@@ -40,6 +41,19 @@ func (e Environment) IsMain() bool {
 	return samePath(e.MainRoot, e.CurrentRoot)
 }
 
+// TokenNamespace names where this worktree's frontend keeps its login token.
+// Every worktree's dev server can end up on the same localhost port, and
+// browsers keep localStorage per host and port, so worktrees would otherwise
+// share a login, along with a user id from another worktree's database. The
+// main checkout keeps the plain key. A linked worktree gets its directory name
+// and a hash of its path, as its database name does.
+func (e Environment) TokenNamespace() string {
+	if e.IsMain() {
+		return ""
+	}
+	return sanitizeIdentifier(filepath.Base(e.CurrentRoot)) + "_" + shortHash(e.CurrentRoot)
+}
+
 // TestDatabase is the database this worktree's Go tests run against.
 func (e Environment) TestDatabase() string {
 	return e.CurrentDatabase + testDatabaseSuffix
@@ -49,6 +63,12 @@ func (e Environment) TestDatabase() string {
 // run.
 func (e Environment) E2EDatabase() string {
 	return e.CurrentDatabase + e2eDatabaseSuffix
+}
+
+// VisualDatabase is the database the visual comparison runs against. It's
+// rebuilt for each side of every comparison.
+func (e Environment) VisualDatabase() string {
+	return e.CurrentDatabase + visualDatabaseSuffix
 }
 
 // ResolveEnvironment finds the main checkout and current worktree from git.

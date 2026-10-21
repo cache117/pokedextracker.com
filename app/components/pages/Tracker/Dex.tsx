@@ -1,22 +1,25 @@
-import keyBy from 'lodash/keyBy';
-import { Link } from 'react-router-dom';
-import { useMemo } from 'react';
-import { useParams } from 'react-router';
+import keyBy from "lodash/keyBy";
+import {
+  useMemo,
+  type Dispatch,
+  type MouseEventHandler,
+  type SetStateAction,
+} from "react";
+import { Link } from "react-router";
 
-import { Box } from './Box';
-import { DonatedFlair } from '../../library/DonatedFlair';
-import { FriendCode } from '../../library/FriendCode';
-import { Header } from '../../library/Header';
-import { Notification } from '../../library/Notification';
-import { Progress } from '../../library/Progress';
-import { ReactGA } from '../../../utils/analytics';
-import { Scroll } from './Scroll';
-import { SearchResults } from './SearchResults';
-import { groupBoxes } from '../../../utils/pokemon';
-import { useTrackerContext } from './use-tracker';
-import { useUser } from '../../../hooks/queries/users';
-
-import type { Dispatch, MouseEventHandler, SetStateAction } from 'react';
+import { useUser } from "../../../hooks/queries/users";
+import { useUserParams } from "../../../hooks/use-user-params";
+import { trackEvent } from "../../../utils/analytics";
+import { groupBoxes } from "../../../utils/pokemon";
+import { DonatedFlair } from "../../library/DonatedFlair";
+import { FriendCode } from "../../library/FriendCode";
+import { Header } from "../../library/Header";
+import { Notification } from "../../library/Notification";
+import { Progress } from "../../library/Progress";
+import { Box } from "./Box";
+import { Scroll } from "./Scroll";
+import { SearchResults } from "./SearchResults";
+import { useTrackerContext } from "./use-tracker";
 
 const DEFER_CUTOFF = 1;
 
@@ -30,7 +33,7 @@ interface Props {
   showScrollButton: boolean;
 }
 
-export function Dex ({
+export function Dex({
   hideCaught,
   onScrollButtonClick,
   query,
@@ -39,14 +42,17 @@ export function Dex ({
   setSelectedPokemon,
   showScrollButton,
 }: Props) {
-  const { username, slug } = useParams<{ username: string; slug: string }>();
+  const { username, slug } = useUserParams();
 
   const user = useUser(username).data!;
-  const dex = useMemo(() => keyBy(user.dexes, 'slug')[slug], [user, slug]);
+  const dex = useMemo(() => keyBy(user.dexes, "slug")[slug], [user, slug]);
 
   const { captures } = useTrackerContext();
 
-  const caught = useMemo(() => captures.filter(({ captured }) => captured).length, [captures]);
+  const caught = useMemo(
+    () => captures.filter(({ captured }) => captured).length,
+    [captures],
+  );
   const total = captures.length;
 
   const groupedCaptures = useMemo(() => groupBoxes(captures), [captures]);
@@ -60,7 +66,7 @@ export function Dex ({
         setSelectedPokemon={setSelectedPokemon}
       />
     ));
-  }, [groupedCaptures]);
+  }, [groupedCaptures, dex.total, setSelectedPokemon]);
 
   return (
     <div className="dex">
@@ -70,7 +76,12 @@ export function Dex ({
         <header>
           <Header />
           <h3>
-            <Link onClick={() => ReactGA.event({ action: 'click view profile', category: 'User' })} to={`/u/${username}`}>/u/{username}</Link>
+            <Link
+              onClick={() => trackEvent("User", "click view profile")}
+              to={`/u/${username}`}
+            >
+              /u/{username}
+            </Link>
             <DonatedFlair user={user} />
           </h3>
           <FriendCode />
@@ -78,7 +89,7 @@ export function Dex ({
         <div className="percentage">
           <Progress caught={caught} total={total} />
         </div>
-        {query.length > 0 || hideCaught ?
+        {query.length > 0 || hideCaught ? (
           <SearchResults
             captures={captures}
             hideCaught={hideCaught}
@@ -86,9 +97,10 @@ export function Dex ({
             setHideCaught={setHideCaught}
             setQuery={setQuery}
             setSelectedPokemon={setSelectedPokemon}
-          /> :
+          />
+        ) : (
           boxes
-        }
+        )}
       </div>
     </div>
   );

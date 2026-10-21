@@ -1,19 +1,20 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useMemo, useState } from 'react';
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
-import { useVersion } from '../../hooks/queries/version';
+import { useVersion } from "../../hooks/queries/version";
 
-export function Reload () {
+export function Reload() {
   const { data: version } = useVersion();
-  const [firstVersion, setFirstVersion] = useState<string | null>(version || null);
-  const shouldReload = useMemo(() => firstVersion && firstVersion !== version, [firstVersion, version]);
-
-  useEffect(() => {
-    if (!firstVersion && version) {
-      setFirstVersion(version);
-    }
-  }, [version, firstVersion]);
+  // The version this tab loaded with. When /version starts answering with
+  // something else, a new build is out.
+  const [firstVersion, setFirstVersion] = useState<string | null>(
+    version || null,
+  );
+  if (!firstVersion && version) {
+    setFirstVersion(version);
+  }
+  const shouldReload = firstVersion && firstVersion !== version;
 
   if (!shouldReload) {
     return null;
@@ -22,9 +23,13 @@ export function Reload () {
   const handleClick = () => window.location.reload();
 
   return (
-    <div className="reload">
+    <div className="reload" data-testid="reload-banner">
       <FontAwesomeIcon icon={faExclamationCircle} />
-      There&apos;s a new version of the app available &ndash; <a className="link" onClick={handleClick}>Refresh your browser</a> now!
+      There&apos;s a new version of the app available &ndash;{" "}
+      <a className="link" onClick={handleClick}>
+        Refresh your browser
+      </a>{" "}
+      now!
     </div>
   );
 }

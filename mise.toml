@@ -38,7 +38,6 @@ run = "go build -o ./build/api/api-air ./cmd/api"
 [tasks."build:web"]
 description = "Build the frontend into internal/webapp/dist"
 depends = ["install:web"]
-env = { NODE_ENV = "production" }
 run = "pnpm build"
 
 [tasks.clean]
@@ -107,8 +106,12 @@ env = { GOLANGCI_LINT_CACHE = "{{config_root}}/tmp/golangci-lint-cache" }
 run = "golangci-lint run"
 
 [tasks."lint:web"]
-description = "Run ESLint and TypeScript checks"
+description = "Run ESLint, Prettier, and TypeScript checks"
 run = "pnpm lint:all"
+
+[tasks.format]
+description = "Format the code with Prettier"
+run = "pnpm format"
 
 # === Testing ===
 
@@ -135,6 +138,19 @@ run = "go run ./cmd/dev e2e firefox"
 [tasks."test:e2e:webkit"]
 description = "Run the end-to-end tests in WebKit"
 run = "go run ./cmd/dev e2e webkit"
+
+# The visual tasks screenshot the site with the ref's build and then this
+# branch's, and list anything that looks different (see the README).
+
+[tasks."test:visual"]
+description = "Screenshot the site in Chromium and compare it with origin/master (or another ref), to check a change doesn't alter how it looks"
+usage = 'arg "[ref]" default="origin/master" help="The commit, branch, or tag to compare against"'
+run = 'go run ./cmd/dev visual chromium "$usage_ref"'
+
+[tasks."test:visual:all"]
+description = "Screenshot the site in Chromium, Firefox, and WebKit and compare it with origin/master (or another ref)"
+usage = 'arg "[ref]" default="origin/master" help="The commit, branch, or tag to compare against"'
+run = 'go run ./cmd/dev visual all "$usage_ref"'
 
 [tasks."test:cover"]
 description = "Open coverage report in browser"

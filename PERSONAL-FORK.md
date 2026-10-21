@@ -7,8 +7,9 @@ upstream branch. Keep personal database contents and credentials outside Git.
 
 ## Upstream baseline
 
-Merged through `e74d9d23cfc9b593bf2c129f37b80e52a83a7a70` (2026-10-19 review).
-This includes the unified Go server, upstream browser tests, Node 26.12.0 and
+Merged through `58de6e689696e8814e6e8c46816e124185c2af79` (2026-10-21 review).
+This includes the unified Go server, Vite 8, React 19, Router 8, Query 5,
+TypeScript 6, ESLint 9, upstream browser tests, Node 26.12.0 and
 pnpm 12.14.0. Upstream's structure, production seed CSVs, dependency lockfile,
 licenses and normal development/deployment code are retained.
 
@@ -46,8 +47,8 @@ Windows. GitHub CI runs upstream's Linux checks, including its browser tests.
 
 Use the tools pinned in `mise.toml`. With Go, Node 26 and pnpm available, install
 with `pnpm install --frozen-lockfile`, then run `personal/Build-Local.ps1`.
-The script type-checks application and browser tests, builds the frontend into
-upstream's `internal/webapp/dist`, copies public assets, and then builds the Go
+The script type-checks all three upstream TypeScript projects, builds with Vite into
+upstream's `internal/webapp/dist`, lets Vite copy public assets, and then builds the Go
 binary that embeds it. It also builds the data importer and migrations.
 Optional `-GoExe`, `-NodeExe` and `-PnpmScript` parameters support portable tools.
 
@@ -136,3 +137,8 @@ capturing and repeat-import preservation. Tests create disposable trial users.
 Pre-unified-server backups: `../backups/before-unified-upstream.dump` and
 `../backups/before-unified-api.exe`. Earlier source checkouts are retained in
 `../backups/legacy-api` and `../backups/legacy-web`. `source/` is the active repo.
+
+The Windows builder explicitly keeps the plain login token namespace so the normal
+installation retains its existing login. Local Go config clears both Umami settings
+even when inherited from the shell; the frontend honors a blank Rollbar token.
+The management screen uses Router 8 and React 19-compatible derived editor state.

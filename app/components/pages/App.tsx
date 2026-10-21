@@ -1,40 +1,48 @@
-import { Route, Router, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 
-import { Account } from './Account';
-import { Home } from './Home';
-import { Login } from './Login';
-import { Manage } from './Manage';
-import { NotFound } from './NotFound';
-import { Profile } from './Profile';
-import { ProfileRedirect } from './ProfileRedirect';
-import { Register } from './Register';
-import { Tracker } from './Tracker';
-import { logPageView } from '../../utils/analytics';
-import { useLocalStorageContext } from '../../hooks/contexts/use-local-storage-context';
+import { useLocalStorageContext } from "../../hooks/contexts/use-local-storage-context";
+import { Rollbar } from "../../utils/rollbar";
+import { Account } from "./Account";
+import { Home } from "./Home";
+import { Login } from "./Login";
+import { Manage } from "./Manage";
+import { NotFound } from "./NotFound";
+import { Profile } from "./Profile";
+import { ProfileRedirect } from "./ProfileRedirect";
+import { Register } from "./Register";
+import { Tracker } from "./Tracker";
 
-const history = createBrowserHistory();
-history.listen(() => logPageView());
-logPageView();
+// RollbarContext tags error reports with the page they happened on.
+function RollbarContext() {
+  const { pathname } = useLocation();
 
-export function App () {
+  useEffect(() => {
+    Rollbar.configure({ payload: { context: pathname } });
+  }, [pathname]);
+
+  return null;
+}
+
+export function App() {
   const { isNightMode } = useLocalStorageContext();
 
   return (
-    <Router history={history}>
-      <div className={`root ${isNightMode ? 'night-mode' : ''}`}>
-        <Switch>
-          <Route component={Home} exact path="/" />
-          <Route component={Login} exact path="/login" />
-          <Route component={Register} exact path="/register" />
-          <Route component={Account} exact path="/account" />
-          <Route component={Manage} exact path="/manage" />
-          <Route component={ProfileRedirect} exact path="/profile" />
-          <Route component={Profile} exact path="/u/:username" />
-          <Route component={Tracker} exact path="/u/:username/:slug" />
-          <Route component={NotFound} path="/" />
-        </Switch>
+    <BrowserRouter>
+      <RollbarContext />
+      <div className={`root ${isNightMode ? "night-mode" : ""}`}>
+        <Routes>
+          <Route element={<Home />} path="/" />
+          <Route element={<Login />} path="/login" />
+          <Route element={<Register />} path="/register" />
+          <Route element={<Account />} path="/account" />
+          <Route element={<Manage />} path="/manage" />
+          <Route element={<ProfileRedirect />} path="/profile" />
+          <Route element={<Profile />} path="/u/:username" />
+          <Route element={<Tracker />} path="/u/:username/:slug" />
+          <Route element={<NotFound />} path="*" />
+        </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }

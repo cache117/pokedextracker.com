@@ -12,13 +12,14 @@ try {
   if($PnpmScript){& $NodeExe $PnpmScript install --frozen-lockfile --ignore-scripts}
   else {pnpm install --frozen-lockfile --ignore-scripts}
   if($LASTEXITCODE -ne 0){throw 'Pinned dependency installation failed'}
-  & $NodeExe node_modules/typescript/bin/tsc --noEmit
+  & $NodeExe node_modules/typescript/bin/tsc -b --noEmit
   if($LASTEXITCODE -ne 0){throw 'TypeScript check failed'}
-  & $NodeExe node_modules/typescript/bin/tsc --noEmit -p tsconfig.e2e.json
-  if($LASTEXITCODE -ne 0){throw 'End-to-end test type check failed'}
-  & $NodeExe node_modules/webpack/bin/webpack.js
-  if($LASTEXITCODE -ne 0){throw 'Frontend build failed'}
-  Copy-Item -Path public/* -Destination internal/webapp/dist -Recurse -Force
+  # The normal installation keeps the plain token key, preserving its login.
+  $env:POKEDEXTRACKER_TOKEN_NAMESPACE=''
+  & $NodeExe node_modules/vite/bin/vite.js build
+  $taskBuildResult=$LASTEXITCODE
+  [IO.File]::WriteAllText((Join-Path $taskSource 'internal/webapp/dist/.gitkeep'),'')
+  if($taskBuildResult -ne 0){throw 'Frontend build failed'}
   [IO.File]::WriteAllText((Join-Path $taskSource 'internal/webapp/dist/version'),$env:VERSION)
   & $GoExe build -ldflags "-X github.com/pokedextracker/pokedextracker.com/pkg/config.Version=$($env:VERSION)" -o ../runtime/api-next.exe ./cmd/api
   if($LASTEXITCODE -ne 0){throw 'Unified server build failed'}

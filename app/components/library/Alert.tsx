@@ -1,20 +1,22 @@
-import classNames from 'classnames';
-
-import type { ReactNode } from 'react';
+import classNames from "classnames";
+import type { ReactNode } from "react";
 
 interface Props {
   className?: string;
   message: ReactNode;
-  type: 'error' | 'success';
+  type: "error" | "success";
 }
 
-export function Alert ({ className, message, type }: Props) {
+export function Alert({ className, message, type }: Props) {
   if (!message) {
     return null;
   }
 
   return (
-    <div className={classNames('alert', `alert-${type}`, className)}>
+    <div
+      className={classNames("alert", `alert-${type}`, className)}
+      data-testid={`alert-${type}`}
+    >
       {message}
     </div>
   );

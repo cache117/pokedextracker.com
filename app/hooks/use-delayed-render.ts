@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-export function useDelayedRender (delay: number): boolean {
+export function useDelayedRender(delay: number): boolean {
   const [render, setRender] = useState(delay <= 0);
 
   useEffect(() => {
@@ -8,7 +8,7 @@ export function useDelayedRender (delay: number): boolean {
       const id = setTimeout(() => setRender(true), delay);
       return () => clearTimeout(id);
     }
-  }, []);
+  }, [delay]);
 
   return render;
 }

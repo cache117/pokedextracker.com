@@ -5,12 +5,8 @@
     "retrieved_at": "2026-10-21T16:19:24.908276+00:00",
     "source_sha256": "508c0b1f229b11b732c4dd6cbb34cbe74b6d68fdd3cfcd7189328c88f598699f",
     "name": "Bulbasaur",
-    "fire_red": [
-      "Starter Pokémon Obtained in Pallet Town"
-    ],
-    "leaf_green": [
-      "Starter Pokémon Obtained in Pallet Town"
-    ]
+    "fire_red": ["Starter Pokémon Obtained in Pallet Town"],
+    "leaf_green": ["Starter Pokémon Obtained in Pallet Town"]
   },
   {
     "national_id": 2,
@@ -18,12 +14,8 @@
     "retrieved_at": "2026-10-21T16:20:24.258855+00:00",
     "source_sha256": "fe9e8c426b44cdfb0ff1cbb43348f31b956c32cc2acef5bb8b3dcf81264552e9",
     "name": "Ivysaur",
-    "fire_red": [
-      "Evolve Bulbasaur"
-    ],
-    "leaf_green": [
-      "Evolve Bulbasaur"
-    ]
+    "fire_red": ["Evolve Bulbasaur"],
+    "leaf_green": ["Evolve Bulbasaur"]
   },
   {
     "national_id": 3,
@@ -31,12 +23,8 @@
     "retrieved_at": "2026-10-21T16:20:24.257354+00:00",
     "source_sha256": "dfc88c26cfba833cbaf9072ea7d18c1737e0e4c1360b761dfa8b91c8577f73e8",
     "name": "Venusaur",
-    "fire_red": [
-      "Evolve Ivysaur"
-    ],
-    "leaf_green": [
-      "Evolve Ivysaur"
-    ]
+    "fire_red": ["Evolve Ivysaur"],
+    "leaf_green": ["Evolve Ivysaur"]
   },
   {
     "national_id": 4,
@@ -44,12 +32,8 @@
     "retrieved_at": "2026-10-21T16:20:25.148776+00:00",
     "source_sha256": "e1e8f4199d6dd3017ec08de0822c6e5d8ef1746fea138471acf7d84390f542a2",
     "name": "Charmander",
-    "fire_red": [
-      "Starter Pokémon Obtained in Pallet Town"
-    ],
-    "leaf_green": [
-      "Starter Pokémon Obtained in Pallet Town"
-    ]
+    "fire_red": ["Starter Pokémon Obtained in Pallet Town"],
+    "leaf_green": ["Starter Pokémon Obtained in Pallet Town"]
   },
   {
     "national_id": 5,
@@ -57,12 +41,8 @@
     "retrieved_at": "2026-10-21T16:20:25.186058+00:00",
     "source_sha256": "34a680235b4df29a0ad17c79ed3bdfd086b49e32a3ccb96b9fb5798b4867b221",
     "name": "Charmeleon",
-    "fire_red": [
-      "Evolve Charmander"
-    ],
-    "leaf_green": [
-      "Evolve Charmander"
-    ]
+    "fire_red": ["Evolve Charmander"],
+    "leaf_green": ["Evolve Charmander"]
   },
   {
     "national_id": 6,
@@ -70,12 +50,8 @@
     "retrieved_at": "2026-10-21T16:20:26.119102+00:00",
     "source_sha256": "c9ab1dbc55cfc90aa85ac480a8cb517382bc66bcce386524a87494c12c9ad781",
     "name": "Charizard",
-    "fire_red": [
-      "Evolve Charmeleon"
-    ],
-    "leaf_green": [
-      "Evolve Charmeleon"
-    ]
+    "fire_red": ["Evolve Charmeleon"],
+    "leaf_green": ["Evolve Charmeleon"]
   },
   {
     "national_id": 7,
@@ -83,12 +59,8 @@
     "retrieved_at": "2026-10-21T16:20:26.088186+00:00",
     "source_sha256": "db3fd3b3351081bb7ef17681d50ff7260f371ae066a63df9a47f633958f52f09",
     "name": "Squirtle",
-    "fire_red": [
-      "Starter Pokémon Obtained in Pallet Town"
-    ],
-    "leaf_green": [
-      "Starter Pokémon Obtained in Pallet Town"
-    ]
+    "fire_red": ["Starter Pokémon Obtained in Pallet Town"],
+    "leaf_green": ["Starter Pokémon Obtained in Pallet Town"]
   },
   {
     "national_id": 8,
@@ -96,12 +68,8 @@
     "retrieved_at": "2026-10-21T16:20:27.050600+00:00",
     "source_sha256": "265e7e009b94e8f1e23c9cb97de348e6b2ceb811fb19a28b21d22b03d228e3e8",
     "name": "Wartortle",
-    "fire_red": [
-      "Evolve Squirtle"
-    ],
-    "leaf_green": [
-      "Evolve Squirtle"
-    ]
+    "fire_red": ["Evolve Squirtle"],
+    "leaf_green": ["Evolve Squirtle"]
   },
   {
     "national_id": 9,
@@ -109,12 +77,8 @@
     "retrieved_at": "2026-10-21T16:20:27.090651+00:00",
     "source_sha256": "762c6ae73ac43c6bb5ad5ea2bc6b364fedae0d33ffb6de9abd57809fffdc4ae1",
     "name": "Blastoise",
-    "fire_red": [
-      "Evolve Wartortle"
-    ],
-    "leaf_green": [
-      "Evolve Wartortle"
-    ]
+    "fire_red": ["Evolve Wartortle"],
+    "leaf_green": ["Evolve Wartortle"]
   },
   {
     "national_id": 10,
@@ -122,12 +86,8 @@
     "retrieved_at": "2026-10-21T16:20:28.005899+00:00",
     "source_sha256": "1b6a27e0b51ea8a9130d0787601b50329ebb6495d2fd650abddfc5eb3c49f23b",
     "name": "Caterpie",
-    "fire_red": [
-      "Viridian Forest, Route 25, Pattern Bush"
-    ],
-    "leaf_green": [
-      "Viridian Forest, Route 25, Pattern Bush"
-    ]
+    "fire_red": ["Viridian Forest, Route 25, Pattern Bush"],
+    "leaf_green": ["Viridian Forest, Route 25, Pattern Bush"]
   },
   {
     "national_id": 11,
@@ -135,12 +95,8 @@
     "retrieved_at": "2026-10-21T16:20:28.008410+00:00",
     "source_sha256": "05113c32776d30cf55a86e9322744d284f311b92804ce44acb845fd2807ee0be",
     "name": "Metapod",
-    "fire_red": [
-      "Viridian Forest, Route 25, Pattern Bush"
-    ],
-    "leaf_green": [
-      "Viridian Forest, Route 25, Pattern Bush"
-    ]
+    "fire_red": ["Viridian Forest, Route 25, Pattern Bush"],
+    "leaf_green": ["Viridian Forest, Route 25, Pattern Bush"]
   },
   {
     "national_id": 12,
@@ -148,12 +104,8 @@
     "retrieved_at": "2026-10-21T16:20:28.896296+00:00",
     "source_sha256": "518055947c2537ac15d5fad932d01c39d5265d0c6ed1bfcbe07f99addd66c26f",
     "name": "Butterfree",
-    "fire_red": [
-      "Evolve Metapod"
-    ],
-    "leaf_green": [
-      "Evolve Metapod"
-    ]
+    "fire_red": ["Evolve Metapod"],
+    "leaf_green": ["Evolve Metapod"]
   },
   {
     "national_id": 13,
@@ -161,12 +113,8 @@
     "retrieved_at": "2026-10-21T16:20:28.919868+00:00",
     "source_sha256": "98c391422592a0428980936cae5448471ae682d4ddb9859d84a7b36dfbc13aa6",
     "name": "Weedle",
-    "fire_red": [
-      "Viridian Forest, Route 25, Pattern Bush"
-    ],
-    "leaf_green": [
-      "Viridian Forest, Route 25, Pattern Bush"
-    ]
+    "fire_red": ["Viridian Forest, Route 25, Pattern Bush"],
+    "leaf_green": ["Viridian Forest, Route 25, Pattern Bush"]
   },
   {
     "national_id": 14,
@@ -174,12 +122,8 @@
     "retrieved_at": "2026-10-21T16:20:29.773530+00:00",
     "source_sha256": "2835883e02b3d10efcc91776435cc9aadfa2e4a44ca310d519f0f9990a329dd5",
     "name": "Kakuna",
-    "fire_red": [
-      "Viridian Forest, Route 25, Pattern Bush"
-    ],
-    "leaf_green": [
-      "Viridian Forest, Route 25, Pattern Bush"
-    ]
+    "fire_red": ["Viridian Forest, Route 25, Pattern Bush"],
+    "leaf_green": ["Viridian Forest, Route 25, Pattern Bush"]
   },
   {
     "national_id": 15,
@@ -187,12 +131,8 @@
     "retrieved_at": "2026-10-21T16:20:29.761998+00:00",
     "source_sha256": "9bee9659f4ce6d54a8dc556ac601b2e61aed558f58fc133056a652fa8fe7bc54",
     "name": "Beedrill",
-    "fire_red": [
-      "Evolve Kakuna"
-    ],
-    "leaf_green": [
-      "Evolve Kakuna"
-    ]
+    "fire_red": ["Evolve Kakuna"],
+    "leaf_green": ["Evolve Kakuna"]
   },
   {
     "national_id": 16,
@@ -213,12 +153,8 @@
     "retrieved_at": "2026-10-21T16:20:30.731336+00:00",
     "source_sha256": "2751459d7e658061c21099b275c3922cb04e4f02277235895f5220793c5bd64b",
     "name": "Pidgeotto",
-    "fire_red": [
-      "Routes 13, 14, & 15, Bond Bridge, Five Isle Meadow"
-    ],
-    "leaf_green": [
-      "Routes 13, 14, & 15, Bond Bridge, Five Isle Meadow"
-    ]
+    "fire_red": ["Routes 13, 14, & 15, Bond Bridge, Five Isle Meadow"],
+    "leaf_green": ["Routes 13, 14, & 15, Bond Bridge, Five Isle Meadow"]
   },
   {
     "national_id": 18,
@@ -226,12 +162,8 @@
     "retrieved_at": "2026-10-21T16:20:31.644593+00:00",
     "source_sha256": "705e65ab6082ff47d72ef4ec7785df3e25fa15eb0ac57b81ada8705fb5d507e2",
     "name": "Pidgeot",
-    "fire_red": [
-      "Evolve Pidgeotto"
-    ],
-    "leaf_green": [
-      "Evolve Pidgeotto"
-    ]
+    "fire_red": ["Evolve Pidgeotto"],
+    "leaf_green": ["Evolve Pidgeotto"]
   },
   {
     "national_id": 19,
@@ -239,12 +171,8 @@
     "retrieved_at": "2026-10-21T16:20:31.640674+00:00",
     "source_sha256": "ebeaeb36b3f77bd16f3eff2e3d2471cf9b205d62f757d2b9d0a10c7c2b4a314e",
     "name": "Rattata",
-    "fire_red": [
-      "Routes 1, 2, 4, 9, 17, 18, 22 & Pokémon Mansion"
-    ],
-    "leaf_green": [
-      "Routes 1, 2, 4, 9, 17, 18, 22 & Pokémon Mansion"
-    ]
+    "fire_red": ["Routes 1, 2, 4, 9, 17, 18, 22 & Pokémon Mansion"],
+    "leaf_green": ["Routes 1, 2, 4, 9, 17, 18, 22 & Pokémon Mansion"]
   },
   {
     "national_id": 20,
@@ -252,12 +180,8 @@
     "retrieved_at": "2026-10-21T16:20:32.583039+00:00",
     "source_sha256": "3441ce3b991d417b2a1f87eabef93436b9d4c68ca92f32f32d34438914a2f3ea",
     "name": "Raticate",
-    "fire_red": [
-      "Routes 17, 18 & Pokémon Mansion"
-    ],
-    "leaf_green": [
-      "Routes 17, 18 & Pokémon Mansion"
-    ]
+    "fire_red": ["Routes 17, 18 & Pokémon Mansion"],
+    "leaf_green": ["Routes 17, 18 & Pokémon Mansion"]
   },
   {
     "national_id": 21,
@@ -291,12 +215,8 @@
     "retrieved_at": "2026-10-21T16:20:33.569016+00:00",
     "source_sha256": "9d0cfab243a19014dec8ca7b79fad6710c2b16ce12afa9ba737c975ab0c6f39e",
     "name": "Ekans",
-    "fire_red": [
-      "Routes 4, 8, 9, 10, 11, 22 & 23"
-    ],
-    "leaf_green": [
-      "Trade from FireRed"
-    ]
+    "fire_red": ["Routes 4, 8, 9, 10, 11, 22 & 23"],
+    "leaf_green": ["Trade from FireRed"]
   },
   {
     "national_id": 24,
@@ -304,9 +224,7 @@
     "retrieved_at": "2026-10-21T16:20:34.461621+00:00",
     "source_sha256": "54d0b6195abc4ccf84d44e39f3546a1861faec347ac81b90a6c38dc50a83013b",
     "name": "Arbok",
-    "fire_red": [
-      "Route 23 & Victory Road"
-    ],
+    "fire_red": ["Route 23 & Victory Road"],
     "leaf_green": [
       "Trade from FireRed/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -321,12 +239,8 @@
     "retrieved_at": "2026-10-21T16:20:34.525806+00:00",
     "source_sha256": "0eece14b3baca35e077f765955d4d1aa2e0f4c92301521b3e78119aa6ca6f306",
     "name": "Pikachu",
-    "fire_red": [
-      "Viridian Forest & Power Plant"
-    ],
-    "leaf_green": [
-      "Viridian Forest & Power Plant"
-    ]
+    "fire_red": ["Viridian Forest & Power Plant"],
+    "leaf_green": ["Viridian Forest & Power Plant"]
   },
   {
     "national_id": 26,
@@ -334,12 +248,8 @@
     "retrieved_at": "2026-10-21T16:20:35.413123+00:00",
     "source_sha256": "163a657727da08e33e7cc699b6ae64a59fb9d6f03619a7b159063941abaff016",
     "name": "Raichu",
-    "fire_red": [
-      "Evolve Pikachu"
-    ],
-    "leaf_green": [
-      "Evolve Pikachu"
-    ]
+    "fire_red": ["Evolve Pikachu"],
+    "leaf_green": ["Evolve Pikachu"]
   },
   {
     "national_id": 27,
@@ -351,9 +261,7 @@
       "Must Trade from Ruby/Sapphire/Emerald/LeafGreen/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Routes 4, 8, 9, 10, 11, 22 & 23"
-    ],
+    "leaf_green": ["Routes 4, 8, 9, 10, 11, 22 & 23"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -368,9 +276,7 @@
       "Must Trade from Ruby/Sapphire/Emerald/LeafGreen/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Route 23 & Victory Road"
-    ],
+    "leaf_green": ["Route 23 & Victory Road"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -381,12 +287,8 @@
     "retrieved_at": "2026-10-21T16:20:36.339511+00:00",
     "source_sha256": "2e48415aab65372583db9fac53caee5333dcbb9c321a0c0fa5110d6b9a0445b1",
     "name": "Nidoran♀",
-    "fire_red": [
-      "Route 3, Safari Zone Areas 1 & 2"
-    ],
-    "leaf_green": [
-      "Route 3, Safari Zone Areas 1, 2 & 3"
-    ]
+    "fire_red": ["Route 3, Safari Zone Areas 1 & 2"],
+    "leaf_green": ["Route 3, Safari Zone Areas 1, 2 & 3"]
   },
   {
     "national_id": 30,
@@ -394,12 +296,8 @@
     "retrieved_at": "2026-10-21T16:20:37.239072+00:00",
     "source_sha256": "16157ec147ace2d8067523aeb513d8fb73a928e73dccec11c19d34d7d580adbf",
     "name": "Nidorina",
-    "fire_red": [
-      "Safari Zone Area 2"
-    ],
-    "leaf_green": [
-      "Safari Zone Areas 1, 2 & 3"
-    ]
+    "fire_red": ["Safari Zone Area 2"],
+    "leaf_green": ["Safari Zone Areas 1, 2 & 3"]
   },
   {
     "national_id": 31,
@@ -407,12 +305,8 @@
     "retrieved_at": "2026-10-21T16:20:37.253160+00:00",
     "source_sha256": "7b4301d98842f4625d2bd320ff3a674d27ddf3903a98d39bdc623c5665365d8f",
     "name": "Nidoqueen",
-    "fire_red": [
-      "Evolve Nidorina"
-    ],
-    "leaf_green": [
-      "Evolve Nidorina"
-    ]
+    "fire_red": ["Evolve Nidorina"],
+    "leaf_green": ["Evolve Nidorina"]
   },
   {
     "national_id": 32,
@@ -420,12 +314,8 @@
     "retrieved_at": "2026-10-21T16:20:38.169218+00:00",
     "source_sha256": "e8e2c07ab0a564b752d34489d77743b88bd1b3e8b0de7dbaa3eb2743ab701c84",
     "name": "Nidoran♂",
-    "fire_red": [
-      "Route 3, Safari Zone Areas 1, 2 & 3"
-    ],
-    "leaf_green": [
-      "Route 3, Safari Zone Areas 1 & 3"
-    ]
+    "fire_red": ["Route 3, Safari Zone Areas 1, 2 & 3"],
+    "leaf_green": ["Route 3, Safari Zone Areas 1 & 3"]
   },
   {
     "national_id": 33,
@@ -433,12 +323,8 @@
     "retrieved_at": "2026-10-21T16:20:38.252450+00:00",
     "source_sha256": "4d8a50e5987478d53f287503dab79a35dd1c8cffe2507f01504bd904802df1bb",
     "name": "Nidorino",
-    "fire_red": [
-      "Safari Zone Areas 1, 2 & 3"
-    ],
-    "leaf_green": [
-      "Safari Zone Area 2"
-    ]
+    "fire_red": ["Safari Zone Areas 1, 2 & 3"],
+    "leaf_green": ["Safari Zone Area 2"]
   },
   {
     "national_id": 34,
@@ -446,12 +332,8 @@
     "retrieved_at": "2026-10-21T16:20:39.083760+00:00",
     "source_sha256": "e3cb859d02f633229ebf68f44d4b80cb6404f249050a5d336de0828b836bff24",
     "name": "Nidoking",
-    "fire_red": [
-      "Evolve Nidorino"
-    ],
-    "leaf_green": [
-      "Evolve Nidorino"
-    ]
+    "fire_red": ["Evolve Nidorino"],
+    "leaf_green": ["Evolve Nidorino"]
   },
   {
     "national_id": 35,
@@ -459,12 +341,8 @@
     "retrieved_at": "2026-10-21T16:20:39.192834+00:00",
     "source_sha256": "2bda4597d8e97eff172788afd5ec1fb120fa15ea125728219002b840e81c424e",
     "name": "Clefairy",
-    "fire_red": [
-      "Mt. Moon 1st Floor & Basement 2"
-    ],
-    "leaf_green": [
-      "Mt. Moon 1st Floor & Basement 2"
-    ]
+    "fire_red": ["Mt. Moon 1st Floor & Basement 2"],
+    "leaf_green": ["Mt. Moon 1st Floor & Basement 2"]
   },
   {
     "national_id": 36,
@@ -472,12 +350,8 @@
     "retrieved_at": "2026-10-21T16:20:39.937169+00:00",
     "source_sha256": "63f2466384cd661eeff3770e1092bd163c751faa0bb6057bf14f66b72f6ad897",
     "name": "Clefable",
-    "fire_red": [
-      "Evolve Clefairy"
-    ],
-    "leaf_green": [
-      "Evolve Clefairy"
-    ]
+    "fire_red": ["Evolve Clefairy"],
+    "leaf_green": ["Evolve Clefairy"]
   },
   {
     "national_id": 37,
@@ -489,9 +363,7 @@
       "Trade from Ruby/Sapphire/Emerald/LeafGreen/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Routes 7 & 8, Pokémon Mansion Floors 1, 2, 3 & Basement"
-    ],
+    "leaf_green": ["Routes 7 & 8, Pokémon Mansion Floors 1, 2, 3 & Basement"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -506,9 +378,7 @@
       "Trade from Ruby/Sapphire/Emerald/LeafGreen/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Evolve Vulpix"
-    ],
+    "leaf_green": ["Evolve Vulpix"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -519,12 +389,8 @@
     "retrieved_at": "2026-10-21T16:20:41.013997+00:00",
     "source_sha256": "a2c6d7ad52b6b961526a055ea1d7bc12fbbdfd0a0278bdee29b25d568c134d12",
     "name": "Jigglypuff",
-    "fire_red": [
-      "Route 3"
-    ],
-    "leaf_green": [
-      "Route 3"
-    ]
+    "fire_red": ["Route 3"],
+    "leaf_green": ["Route 3"]
   },
   {
     "national_id": 40,
@@ -532,12 +398,8 @@
     "retrieved_at": "2026-10-21T16:20:41.698062+00:00",
     "source_sha256": "8f4ad6ffb85e9fd0e6a8847ff9f4c52b233a09d6d70862a0f0db43c370d03410",
     "name": "Wigglytuff",
-    "fire_red": [
-      "Evolve Jigglypuff"
-    ],
-    "leaf_green": [
-      "Evolve Jigglypuff"
-    ]
+    "fire_red": ["Evolve Jigglypuff"],
+    "leaf_green": ["Evolve Jigglypuff"]
   },
   {
     "national_id": 41,
@@ -605,9 +467,7 @@
     "retrieved_at": "2026-10-21T16:20:43.663735+00:00",
     "source_sha256": "53bb8b6ab744e50ffd3cd011387dd8ea63e1471ef0e34ffd5aebdc54c4285b4b",
     "name": "Vileplume",
-    "fire_red": [
-      "Evolve Gloom"
-    ],
+    "fire_red": ["Evolve Gloom"],
     "leaf_green": [
       "Trade from Ruby/Sapphire/Emerald/FireRed",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -622,9 +482,7 @@
     "retrieved_at": "2026-10-21T16:20:44.442838+00:00",
     "source_sha256": "d1078053401ef60d57543d1997e3cc860b5255a3821798f38577b22edb056fee",
     "name": "Paras",
-    "fire_red": [
-      "Mt. Moon Floor 1 & Basements 1 & 2, Safari Zone Areas 1 & 2"
-    ],
+    "fire_red": ["Mt. Moon Floor 1 & Basements 1 & 2, Safari Zone Areas 1 & 2"],
     "leaf_green": [
       "Mt. Moon Floor 1 & Basements 1 & 2, Safari Zone Areas 1 & 2"
     ]
@@ -635,12 +493,8 @@
     "retrieved_at": "2026-10-21T16:20:44.560668+00:00",
     "source_sha256": "22f0953f03c0e7f450b154e055107402d99a163caddb2dd88fd6287c21d56df7",
     "name": "Parasect",
-    "fire_red": [
-      "Cerulean Cave Floors 1, 2 & Basement 1, Safari Zone Area 1"
-    ],
-    "leaf_green": [
-      "Cerulean Cave Floors 1, 2 & Basement 1, Safari Zone Area 1"
-    ]
+    "fire_red": ["Cerulean Cave Floors 1, 2 & Basement 1, Safari Zone Area 1"],
+    "leaf_green": ["Cerulean Cave Floors 1, 2 & Basement 1, Safari Zone Area 1"]
   },
   {
     "national_id": 48,
@@ -661,12 +515,8 @@
     "retrieved_at": "2026-10-21T16:20:45.458359+00:00",
     "source_sha256": "8cc5169b42511a5468b8947457814836602099f3e438589fb4710682afa3edf3",
     "name": "Venomoth",
-    "fire_red": [
-      "Berry Forest, Safari Zone Areas 2 & 3"
-    ],
-    "leaf_green": [
-      "Berry Forest, Safari Zone Areas 2 & 3"
-    ]
+    "fire_red": ["Berry Forest, Safari Zone Areas 2 & 3"],
+    "leaf_green": ["Berry Forest, Safari Zone Areas 2 & 3"]
   },
   {
     "national_id": 50,
@@ -674,12 +524,8 @@
     "retrieved_at": "2026-10-21T16:20:46.267164+00:00",
     "source_sha256": "a50dad759ccbe22cc5e0e7b34a590e3a51f86c58095ba6a1c08c25a7959eefcf",
     "name": "Diglett",
-    "fire_red": [
-      "Diglett Cave"
-    ],
-    "leaf_green": [
-      "Diglett Cave"
-    ]
+    "fire_red": ["Diglett Cave"],
+    "leaf_green": ["Diglett Cave"]
   },
   {
     "national_id": 51,
@@ -687,12 +533,8 @@
     "retrieved_at": "2026-10-21T16:20:46.387056+00:00",
     "source_sha256": "661b96cf580e571a75104bdf6c3cc9a011fcb0fa05d9389d7a8549f2da1fb304",
     "name": "Dugtrio",
-    "fire_red": [
-      "Diglett Cave"
-    ],
-    "leaf_green": [
-      "Diglett Cave"
-    ]
+    "fire_red": ["Diglett Cave"],
+    "leaf_green": ["Diglett Cave"]
   },
   {
     "national_id": 52,
@@ -760,12 +602,8 @@
     "retrieved_at": "2026-10-21T16:20:48.993915+00:00",
     "source_sha256": "a3fefae068951e019f2f50f0790a01a01ad861822eecf177a8bc01a6a45eac9a",
     "name": "Mankey",
-    "fire_red": [
-      "Route 3, 4, 22 & 23, Rock Tunnel Floor 1 & Basement 1"
-    ],
-    "leaf_green": [
-      "Route 3, 4, 22 & 23, Rock Tunnel Floor 1 & Basement 1"
-    ]
+    "fire_red": ["Route 3, 4, 22 & 23, Rock Tunnel Floor 1 & Basement 1"],
+    "leaf_green": ["Route 3, 4, 22 & 23, Rock Tunnel Floor 1 & Basement 1"]
   },
   {
     "national_id": 57,
@@ -773,12 +611,8 @@
     "retrieved_at": "2026-10-21T16:20:49.091624+00:00",
     "source_sha256": "4ed18693439188401e780280c1716298771622dbd8c0986b50ecc158c0c2791d",
     "name": "Primeape",
-    "fire_red": [
-      "Route 23, Cerulean Cave Floor 1, Victory Road Floor 2"
-    ],
-    "leaf_green": [
-      "Route 23, Cerulean Cave Floor 1, Victory Road Floor 2"
-    ]
+    "fire_red": ["Route 23, Cerulean Cave Floor 1, Victory Road Floor 2"],
+    "leaf_green": ["Route 23, Cerulean Cave Floor 1, Victory Road Floor 2"]
   },
   {
     "national_id": 58,
@@ -786,9 +620,7 @@
     "retrieved_at": "2026-10-21T16:20:49.914410+00:00",
     "source_sha256": "c01d44930881808f66f0466e684234a7263a3845d94eb742f6476e2f12956643",
     "name": "Growlithe",
-    "fire_red": [
-      "Routes 7 & 8, Pokémon Mansion Floors 1, 2 & 3 & Basement 1"
-    ],
+    "fire_red": ["Routes 7 & 8, Pokémon Mansion Floors 1, 2 & 3 & Basement 1"],
     "leaf_green": [
       "Trade from FireRed/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -803,9 +635,7 @@
     "retrieved_at": "2026-10-21T16:20:50.005204+00:00",
     "source_sha256": "0cf580ee5888a2fb9786a052d087d7b737801bf8a23ddcb23d9d9940d8d716a8",
     "name": "Arcanine",
-    "fire_red": [
-      "Evolve Growlithe"
-    ],
+    "fire_red": ["Evolve Growlithe"],
     "leaf_green": [
       "Trade from FireRed/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -846,12 +676,8 @@
     "retrieved_at": "2026-10-21T16:20:51.715362+00:00",
     "source_sha256": "2acd2f90de33e00e30803e9e4c979a302f23d7490d4aa6a7b7f74c1e3e1c4f20",
     "name": "Poliwrath",
-    "fire_red": [
-      "Evolve Poliwhirl"
-    ],
-    "leaf_green": [
-      "Evolve Poliwhirl"
-    ]
+    "fire_red": ["Evolve Poliwhirl"],
+    "leaf_green": ["Evolve Poliwhirl"]
   },
   {
     "national_id": 63,
@@ -859,12 +685,8 @@
     "retrieved_at": "2026-10-21T16:20:51.746000+00:00",
     "source_sha256": "3088da60ca7552a10a010b03ad6798e16a0e919d6c34a599eb0f5710291442ae",
     "name": "Abra",
-    "fire_red": [
-      "Routes 24 & 25"
-    ],
-    "leaf_green": [
-      "Routes 24 & 25"
-    ]
+    "fire_red": ["Routes 24 & 25"],
+    "leaf_green": ["Routes 24 & 25"]
   },
   {
     "national_id": 64,
@@ -872,12 +694,8 @@
     "retrieved_at": "2026-10-21T16:20:52.694817+00:00",
     "source_sha256": "cc1edd38d0f8205dee37db1121d5df81698a9bbcbe2ba52a79f38ddf61ded930",
     "name": "Kadabra",
-    "fire_red": [
-      "Cerulean Cave Floor 2 & Basement 1"
-    ],
-    "leaf_green": [
-      "Cerulean Cave Floor 2 & Basement 1"
-    ]
+    "fire_red": ["Cerulean Cave Floor 2 & Basement 1"],
+    "leaf_green": ["Cerulean Cave Floor 2 & Basement 1"]
   },
   {
     "national_id": 65,
@@ -885,12 +703,8 @@
     "retrieved_at": "2026-10-21T16:20:52.706995+00:00",
     "source_sha256": "3403d3c28797381517e7075397403aabb7cdf7042c20d4aea3e8be7073a73b68",
     "name": "Alakazam",
-    "fire_red": [
-      "Trade Kadabra."
-    ],
-    "leaf_green": [
-      "Trade Kadabra."
-    ]
+    "fire_red": ["Trade Kadabra."],
+    "leaf_green": ["Trade Kadabra."]
   },
   {
     "national_id": 66,
@@ -924,12 +738,8 @@
     "retrieved_at": "2026-10-21T16:20:54.548827+00:00",
     "source_sha256": "b582a2095a684dd0e78af37c5a47973f5b3276c8cc7d35d0d2e8ae03292c89dd",
     "name": "Machamp",
-    "fire_red": [
-      "Trade Machoke."
-    ],
-    "leaf_green": [
-      "Trade Machoke."
-    ]
+    "fire_red": ["Trade Machoke."],
+    "leaf_green": ["Trade Machoke."]
   },
   {
     "national_id": 69,
@@ -937,9 +747,7 @@
     "retrieved_at": "2026-10-21T16:20:54.595937+00:00",
     "source_sha256": "307fb8bd6dbf0e9d56cc8b2a2e4516687de79f20339d4f30a390b5c5c47e05b0",
     "name": "Bellsprout",
-    "fire_red": [
-      "Trade from LeafGreen"
-    ],
+    "fire_red": ["Trade from LeafGreen"],
     "leaf_green": [
       "Routes 5, 6, 7, 12, 13, 14, 15, 24, 25, Berry Forest, Bond Bridge, Cape Brink, Water Path"
     ]
@@ -971,9 +779,7 @@
       "Trade from LeafGreen/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Evolve Weepinbell"
-    ],
+    "leaf_green": ["Evolve Weepinbell"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -1036,12 +842,8 @@
     "retrieved_at": "2026-10-21T16:20:58.370810+00:00",
     "source_sha256": "cb71205d03960402d29748eb6913aa9c1b291da7ab62b08ab57ab4c940f16d38",
     "name": "Golem",
-    "fire_red": [
-      "Trade Graveler."
-    ],
-    "leaf_green": [
-      "Trade Graveler."
-    ]
+    "fire_red": ["Trade Graveler."],
+    "leaf_green": ["Trade Graveler."]
   },
   {
     "national_id": 77,
@@ -1049,12 +851,8 @@
     "retrieved_at": "2026-10-21T16:20:58.377248+00:00",
     "source_sha256": "d67e301e422cec013ad82bfc48c0ed6178536d284dea358432188f948cab9cf0",
     "name": "Ponyta",
-    "fire_red": [
-      "Kindle Road, Mt. Ember"
-    ],
-    "leaf_green": [
-      "Kindle Road, Mt. Ember"
-    ]
+    "fire_red": ["Kindle Road, Mt. Ember"],
+    "leaf_green": ["Kindle Road, Mt. Ember"]
   },
   {
     "national_id": 78,
@@ -1062,12 +860,8 @@
     "retrieved_at": "2026-10-21T16:20:59.333089+00:00",
     "source_sha256": "d6432486b746ce8e767149645e665605c0da9824e9338e00a6d370d7e4adfccf",
     "name": "Rapidash",
-    "fire_red": [
-      "Kindle Road, Mt. Ember"
-    ],
-    "leaf_green": [
-      "Kindle Road, Mt. Ember"
-    ]
+    "fire_red": ["Kindle Road, Mt. Ember"],
+    "leaf_green": ["Kindle Road, Mt. Ember"]
   },
   {
     "national_id": 79,
@@ -1075,9 +869,7 @@
     "retrieved_at": "2026-10-21T16:20:59.390688+00:00",
     "source_sha256": "ea8b5c008b90e306f9c4a86d102fc9afbfdb00baaabf16d72951c14f7484adbf",
     "name": "Slowpoke",
-    "fire_red": [
-      "Trade from LeafGreen"
-    ],
+    "fire_red": ["Trade from LeafGreen"],
     "leaf_green": [
       "Berry Forest, Bond Bridge, Canyon Entrance, Cape Brink, Five Isle Meadow, Icefall Cave Floor 1, Kindle Road, Ruin Valley, Seafoam Island Floors 1 & Basements 1, 2, 3 & 4, Treasure Beach, Water Path (Grass) Routes 6, 22, 23 & 25, Celadon City, Four Island, Fuchsia City, Viridian City, Berry Forest, Cape Brink, Cerulean Cave Floor 1 & Basement 1, Icefall Cave Floor 1, Safari Zone Areas 1, 2, 3 & Center, Seafoam Island Basements 3 & 4 (Surf) Routes 4, 6, 10, 11, 12, 13, 19, 20, 21 22, 23 & 25, Cerulean City, Cinnabar Island, Four Island, Fuchsia City, One Island, Pallet Town, Viridian City, Berry Forest, Bond Bridge, Cape Brink, Cerulean Cave Floor 1 & Basement 1, Five Isle Meadow, Green Path, Icefall Cave Floor 1, Kindle Road, Memorial Pillar, Outcast Island, Resort Gorgeous, Ruin Valley, Safari Zone Areas 1, 2, 3 & Center, Seafoam Island Basements 3 & 4, S.S. Anne, Tanoby Ruins, Trainer Tower, Treasure Beach, Water Labyrinth, Water Path (Fish)"
     ]
@@ -1088,9 +880,7 @@
     "retrieved_at": "2026-10-21T16:21:00.370478+00:00",
     "source_sha256": "1bbb12399bd0a2a3c49e771bc4428150fae2a12060f631014c9b17cee68aeb61",
     "name": "Slowbro",
-    "fire_red": [
-      "Trade from LeafGreen"
-    ],
+    "fire_red": ["Trade from LeafGreen"],
     "leaf_green": [
       "Seafoam Islands Basements 1 & 2 (Cave) & 3 & 4, Cape Brink (Surf & Cave), Berry Forest, Cerulean Cave Floor 1 & Basement 1 (Surf), Cinnabar Island (Fish)"
     ]
@@ -1101,12 +891,8 @@
     "retrieved_at": "2026-10-21T16:21:00.372091+00:00",
     "source_sha256": "9809758c421ab6a0567894a6a2c0567656eb8b60afa9a02774990b4e76fd50b8",
     "name": "Magnemite",
-    "fire_red": [
-      "Power Plant"
-    ],
-    "leaf_green": [
-      "Power Plant"
-    ]
+    "fire_red": ["Power Plant"],
+    "leaf_green": ["Power Plant"]
   },
   {
     "national_id": 82,
@@ -1114,12 +900,8 @@
     "retrieved_at": "2026-10-21T16:21:01.385217+00:00",
     "source_sha256": "fc8df7903584cad360655032de365b7d1e5595899e050e47fd3864292a24a209",
     "name": "Magneton",
-    "fire_red": [
-      "Cerulean Cave Floors 1 & 2 & Basement 1, Power Plant"
-    ],
-    "leaf_green": [
-      "Cerulean Cave Floors 1 & 2 & Basement 1, Power Plant"
-    ]
+    "fire_red": ["Cerulean Cave Floors 1 & 2 & Basement 1, Power Plant"],
+    "leaf_green": ["Cerulean Cave Floors 1 & 2 & Basement 1, Power Plant"]
   },
   {
     "national_id": 83,
@@ -1127,12 +909,8 @@
     "retrieved_at": "2026-10-21T16:21:01.578808+00:00",
     "source_sha256": "44b6d0ebdd72a2f0638d9c3cd0ba7d09998a39ff921c93c068b18c937a7adac4",
     "name": "Farfetch'd",
-    "fire_red": [
-      "Trade for Spearow in Vermillion City"
-    ],
-    "leaf_green": [
-      "Trade for Spearow in Vermillion City"
-    ]
+    "fire_red": ["Trade for Spearow in Vermillion City"],
+    "leaf_green": ["Trade for Spearow in Vermillion City"]
   },
   {
     "national_id": 84,
@@ -1140,12 +918,8 @@
     "retrieved_at": "2026-10-21T16:21:02.668103+00:00",
     "source_sha256": "404498cb4c4955b883aa4e47f34e65175b0e580b73fdd06f7595ae69557d08d2",
     "name": "Doduo",
-    "fire_red": [
-      "Routes 16, 17 & 18 & Safari Zone Areas 1 & 3"
-    ],
-    "leaf_green": [
-      "Routes 16, 17 & 18 & Safari Zone Areas 1 & 3"
-    ]
+    "fire_red": ["Routes 16, 17 & 18 & Safari Zone Areas 1 & 3"],
+    "leaf_green": ["Routes 16, 17 & 18 & Safari Zone Areas 1 & 3"]
   },
   {
     "national_id": 85,
@@ -1153,12 +927,8 @@
     "retrieved_at": "2026-10-21T16:21:02.778234+00:00",
     "source_sha256": "e09592edc426e42842a84558f93141793960cdd5414d4d31511fcfc26fd90a1f",
     "name": "Dodrio",
-    "fire_red": [
-      "Evolve Doduo"
-    ],
-    "leaf_green": [
-      "Evolve Doduo"
-    ]
+    "fire_red": ["Evolve Doduo"],
+    "leaf_green": ["Evolve Doduo"]
   },
   {
     "national_id": 86,
@@ -1205,12 +975,8 @@
     "retrieved_at": "2026-10-21T16:21:04.573363+00:00",
     "source_sha256": "a2a6e9c826c6bd8a622538a0f4eb1eebbf6bc7a5233ab0ef8674db1632dc9c41",
     "name": "Muk",
-    "fire_red": [
-      "Evolve Grimer"
-    ],
-    "leaf_green": [
-      "Pokémon Mansion Floors 1, 2, 3 & Basement 1"
-    ]
+    "fire_red": ["Evolve Grimer"],
+    "leaf_green": ["Pokémon Mansion Floors 1, 2, 3 & Basement 1"]
   },
   {
     "national_id": 90,
@@ -1235,9 +1001,7 @@
     "retrieved_at": "2026-10-21T16:21:05.474710+00:00",
     "source_sha256": "d471de85ffba413c5aaf9f9227915d6007fe48427e820a9c9ff7a12b9cb6d50f",
     "name": "Cloyster",
-    "fire_red": [
-      "Evolve Shellder"
-    ],
+    "fire_red": ["Evolve Shellder"],
     "leaf_green": [
       "Trade from FireRed/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -1252,12 +1016,8 @@
     "retrieved_at": "2026-10-21T16:21:06.317023+00:00",
     "source_sha256": "7e4fbf292af02493b3b02e5bdd9aba30d365734827fd97407bc87949645af557",
     "name": "Gastly",
-    "fire_red": [
-      "Lost Cave & Pokémon Tower Floors 3, 4, 5, 6 & 7"
-    ],
-    "leaf_green": [
-      "Lost Cave & Pokémon Tower Floors 3, 4, 5, 6 & 7"
-    ]
+    "fire_red": ["Lost Cave & Pokémon Tower Floors 3, 4, 5, 6 & 7"],
+    "leaf_green": ["Lost Cave & Pokémon Tower Floors 3, 4, 5, 6 & 7"]
   },
   {
     "national_id": 93,
@@ -1265,12 +1025,8 @@
     "retrieved_at": "2026-10-21T16:21:06.331511+00:00",
     "source_sha256": "784b77ad7747d44aaa753e85be32a9b9d151883dcaec3d3bb5e85c4eb7aaba04",
     "name": "Haunter",
-    "fire_red": [
-      "Lost Cave & Pokémon Tower Floors 3, 4, 5, 6 & 7"
-    ],
-    "leaf_green": [
-      "Lost Cave & Pokémon Tower Floors 3, 4, 5, 6 & 7"
-    ]
+    "fire_red": ["Lost Cave & Pokémon Tower Floors 3, 4, 5, 6 & 7"],
+    "leaf_green": ["Lost Cave & Pokémon Tower Floors 3, 4, 5, 6 & 7"]
   },
   {
     "national_id": 94,
@@ -1278,12 +1034,8 @@
     "retrieved_at": "2026-10-21T16:21:07.218138+00:00",
     "source_sha256": "127a215365ecc15b93b97fd906dc9369967972e781270ab26a763616f9e57af2",
     "name": "Gengar",
-    "fire_red": [
-      "Trade Haunter."
-    ],
-    "leaf_green": [
-      "Trade Haunter."
-    ]
+    "fire_red": ["Trade Haunter."],
+    "leaf_green": ["Trade Haunter."]
   },
   {
     "national_id": 95,
@@ -1304,12 +1056,8 @@
     "retrieved_at": "2026-10-21T16:21:08.156918+00:00",
     "source_sha256": "a946f97a794b3533bfaa95107f49c14a6ff2d1698670a63bc9427db549b62d89",
     "name": "Drowzee",
-    "fire_red": [
-      "Route 11, Berry Forest"
-    ],
-    "leaf_green": [
-      "Route 11, Berry Forest"
-    ]
+    "fire_red": ["Route 11, Berry Forest"],
+    "leaf_green": ["Route 11, Berry Forest"]
   },
   {
     "national_id": 97,
@@ -1317,12 +1065,8 @@
     "retrieved_at": "2026-10-21T16:21:08.158942+00:00",
     "source_sha256": "9b673ad1983c19a1003bf46ec20c24c811766c47c6e30651f22eaf44b94a8c51",
     "name": "Hypno",
-    "fire_red": [
-      "Berry Forest"
-    ],
-    "leaf_green": [
-      "Berry Forest"
-    ]
+    "fire_red": ["Berry Forest"],
+    "leaf_green": ["Berry Forest"]
   },
   {
     "national_id": 98,
@@ -1343,9 +1087,7 @@
     "retrieved_at": "2026-10-21T16:21:09.107006+00:00",
     "source_sha256": "1532d64444bf19b0da93d53095ced2caf13f603665b9377f225a2f2e1f0bead0",
     "name": "Kingler",
-    "fire_red": [
-      "Evolve Krabby"
-    ],
+    "fire_red": ["Evolve Krabby"],
     "leaf_green": [
       "Routes 19, 20, 21 & 25, One Island, Pallet Town, Bond Bridge, Five Isle Meadow, Green Path, Icefall Cave Floor 1, Kindle Road, Memorial Pillar, Outcast Island, Resort Gorgeous, Tanoby Ruins, Trainer Tower, Treasure Beach, Water Labyrinth, Water Path (Fish)"
     ]
@@ -1356,12 +1098,8 @@
     "retrieved_at": "2026-10-21T16:21:10.046278+00:00",
     "source_sha256": "625a145613948ffd20e01b6e350f1fd4858d08fcd9497d7dc4d883876ad0db0d",
     "name": "Voltorb",
-    "fire_red": [
-      "Route 10, Power Plant"
-    ],
-    "leaf_green": [
-      "Route 10, Power Plant"
-    ]
+    "fire_red": ["Route 10, Power Plant"],
+    "leaf_green": ["Route 10, Power Plant"]
   },
   {
     "national_id": 101,
@@ -1369,12 +1107,8 @@
     "retrieved_at": "2026-10-21T16:21:10.048133+00:00",
     "source_sha256": "9cad0f8d52ae3fcc4c5561282fcf6637da2df8f87d8723a9d2f3a9234193abd0",
     "name": "Electrode",
-    "fire_red": [
-      "Cerulean Cave Floors 1 & 2 & Basement 1"
-    ],
-    "leaf_green": [
-      "Cerulean Cave Floors 1 & 2 & Basement 1"
-    ]
+    "fire_red": ["Cerulean Cave Floors 1 & 2 & Basement 1"],
+    "leaf_green": ["Cerulean Cave Floors 1 & 2 & Basement 1"]
   },
   {
     "national_id": 102,
@@ -1382,12 +1116,8 @@
     "retrieved_at": "2026-10-21T16:21:10.918355+00:00",
     "source_sha256": "2d9f2ad305cdb0f79cf924c7814df8cc25ce110d1fb0776a6e5b177f199101aa",
     "name": "Exeggcute",
-    "fire_red": [
-      "Berry Forest, Safari Zone Areas 1, 2, 3 & Center"
-    ],
-    "leaf_green": [
-      "Berry Forest, Safari Zone Areas 1, 2, 3 & Center"
-    ]
+    "fire_red": ["Berry Forest, Safari Zone Areas 1, 2, 3 & Center"],
+    "leaf_green": ["Berry Forest, Safari Zone Areas 1, 2, 3 & Center"]
   },
   {
     "national_id": 103,
@@ -1395,12 +1125,8 @@
     "retrieved_at": "2026-10-21T16:21:10.929144+00:00",
     "source_sha256": "981b30417519b5da680ec285ed311024c1005e8989dc00afad8d6751bec1e5e3",
     "name": "Exeggutor",
-    "fire_red": [
-      "Evolve Exeggcute"
-    ],
-    "leaf_green": [
-      "Evolve Exeggcute"
-    ]
+    "fire_red": ["Evolve Exeggcute"],
+    "leaf_green": ["Evolve Exeggcute"]
   },
   {
     "national_id": 104,
@@ -1408,12 +1134,8 @@
     "retrieved_at": "2026-10-21T16:21:11.891703+00:00",
     "source_sha256": "4f8cb70d1841305d6327b6f7cd0aa6511eb6676cce4f1b9d9e6bcc5b637ddd8c",
     "name": "Cubone",
-    "fire_red": [
-      "Pokemon Tower Floors 3, 4, 5, 6 & 7, Seavault Canyon"
-    ],
-    "leaf_green": [
-      "Pokemon Tower Floors 3, 4, 5, 6 & 7, Seavault Canyon"
-    ]
+    "fire_red": ["Pokemon Tower Floors 3, 4, 5, 6 & 7, Seavault Canyon"],
+    "leaf_green": ["Pokemon Tower Floors 3, 4, 5, 6 & 7, Seavault Canyon"]
   },
   {
     "national_id": 105,
@@ -1421,12 +1143,8 @@
     "retrieved_at": "2026-10-21T16:21:11.922985+00:00",
     "source_sha256": "08f3bd5d7fb271a774843f929ea76ab3f338d7a9bb1addd8a8d13ccb640ea5bc",
     "name": "Marowak",
-    "fire_red": [
-      "Seavault Canyon, Victory Road Floors 1, 2 & 3"
-    ],
-    "leaf_green": [
-      "Seavault Canyon, Victory Road Floors 1, 2 & 3"
-    ]
+    "fire_red": ["Seavault Canyon, Victory Road Floors 1, 2 & 3"],
+    "leaf_green": ["Seavault Canyon, Victory Road Floors 1, 2 & 3"]
   },
   {
     "national_id": 106,
@@ -1434,12 +1152,8 @@
     "retrieved_at": "2026-10-21T16:21:12.859455+00:00",
     "source_sha256": "6e372f1710c8d4e70f0be63018d56742ee2fb5508d0c2f349f2ab78e208d4a73",
     "name": "Hitmonlee",
-    "fire_red": [
-      "Obtained after defeating Fighting Dojo in Saffron City"
-    ],
-    "leaf_green": [
-      "Obtained after defeating Fighting Dojo in Saffron City"
-    ]
+    "fire_red": ["Obtained after defeating Fighting Dojo in Saffron City"],
+    "leaf_green": ["Obtained after defeating Fighting Dojo in Saffron City"]
   },
   {
     "national_id": 107,
@@ -1447,12 +1161,8 @@
     "retrieved_at": "2026-10-21T16:21:12.916045+00:00",
     "source_sha256": "c6f0ea04f2d42e91870e9119cfa7da8e843c8680a025ad6f39eaf7f6d588d862",
     "name": "Hitmonchan",
-    "fire_red": [
-      "Obtained after defeating Fighting Dojo in Saffron City"
-    ],
-    "leaf_green": [
-      "Obtained after defeating Fighting Dojo in Saffron City"
-    ]
+    "fire_red": ["Obtained after defeating Fighting Dojo in Saffron City"],
+    "leaf_green": ["Obtained after defeating Fighting Dojo in Saffron City"]
   },
   {
     "national_id": 108,
@@ -1460,12 +1170,8 @@
     "retrieved_at": "2026-10-21T16:21:13.811791+00:00",
     "source_sha256": "6d55090ef3b386cf317cf3650ad4cdb2226d163cfc712cc5aa21b6ae638b1428",
     "name": "Lickitung",
-    "fire_red": [
-      "Trade for Golduck in Route 18 Gate"
-    ],
-    "leaf_green": [
-      "Trade for Slowbro in Route 18 Gate"
-    ]
+    "fire_red": ["Trade for Golduck in Route 18 Gate"],
+    "leaf_green": ["Trade for Slowbro in Route 18 Gate"]
   },
   {
     "national_id": 109,
@@ -1476,9 +1182,7 @@
     "fire_red": [
       "Celadon City (Surf/Rare), Pokemon Mansion Floors 1, 2, 3 & 4"
     ],
-    "leaf_green": [
-      "Celadon City (Surf), Pokemon Mansion Floors 1, 2, 3 & 4"
-    ]
+    "leaf_green": ["Celadon City (Surf), Pokemon Mansion Floors 1, 2, 3 & 4"]
   },
   {
     "national_id": 110,
@@ -1486,12 +1190,8 @@
     "retrieved_at": "2026-10-21T16:21:14.742639+00:00",
     "source_sha256": "43a417bcfd25220928c98b16ef14286c6c4d6c2de770a19dfb6a8626c84b6d50",
     "name": "Weezing",
-    "fire_red": [
-      "Pokemon Mansion Floors 1, 2, 3 & 4"
-    ],
-    "leaf_green": [
-      "Evolve Koffing"
-    ]
+    "fire_red": ["Pokemon Mansion Floors 1, 2, 3 & 4"],
+    "leaf_green": ["Evolve Koffing"]
   },
   {
     "national_id": 111,
@@ -1499,12 +1199,8 @@
     "retrieved_at": "2026-10-21T16:21:14.791614+00:00",
     "source_sha256": "d4f1c5d6311bce69fc56b0f2fd729cb28851b44bc66c274bf624e9dab159a2f3",
     "name": "Rhyhorn",
-    "fire_red": [
-      "Safari Zone Areas 2 & Center"
-    ],
-    "leaf_green": [
-      "Safari Zone Areas 2 & Center"
-    ]
+    "fire_red": ["Safari Zone Areas 2 & Center"],
+    "leaf_green": ["Safari Zone Areas 2 & Center"]
   },
   {
     "national_id": 112,
@@ -1512,12 +1208,8 @@
     "retrieved_at": "2026-10-21T16:21:15.754091+00:00",
     "source_sha256": "7982c62caf4bc59119471fff1f3d9b06cc609722b8e8f6fec4ebb1dfd7b28650",
     "name": "Rhydon",
-    "fire_red": [
-      "Evolve Rhyhorn"
-    ],
-    "leaf_green": [
-      "Evolve Rhyhorn"
-    ]
+    "fire_red": ["Evolve Rhyhorn"],
+    "leaf_green": ["Evolve Rhyhorn"]
   },
   {
     "national_id": 113,
@@ -1525,12 +1217,8 @@
     "retrieved_at": "2026-10-21T16:21:15.763529+00:00",
     "source_sha256": "aa27bd8b108186fe45990acb94b4876f9b1ee29d64432aec023f83865899d0ee",
     "name": "Chansey",
-    "fire_red": [
-      "Safari Zone Areas 2 & Center"
-    ],
-    "leaf_green": [
-      "Safari Zone Areas 2 & Center"
-    ]
+    "fire_red": ["Safari Zone Areas 2 & Center"],
+    "leaf_green": ["Safari Zone Areas 2 & Center"]
   },
   {
     "national_id": 114,
@@ -1538,12 +1226,8 @@
     "retrieved_at": "2026-10-21T16:21:16.703634+00:00",
     "source_sha256": "8327c1e2b599c6e85e131292d0a75de5a138b8833e8567a0fe3414ddf6529721",
     "name": "Tangela",
-    "fire_red": [
-      "Route 21 Grass, Treasure Beach"
-    ],
-    "leaf_green": [
-      "Route 21 Grass, Treasure Beach"
-    ]
+    "fire_red": ["Route 21 Grass, Treasure Beach"],
+    "leaf_green": ["Route 21 Grass, Treasure Beach"]
   },
   {
     "national_id": 115,
@@ -1551,12 +1235,8 @@
     "retrieved_at": "2026-10-21T16:21:16.747311+00:00",
     "source_sha256": "c2a1aeb674384ab81a50e583a50ccbddaed79eddcf27a0c92be6d88c3969ff0e",
     "name": "Kangaskhan",
-    "fire_red": [
-      "Safari Zone Areas 1 & 3"
-    ],
-    "leaf_green": [
-      "Safari Zone Areas 1 & 3"
-    ]
+    "fire_red": ["Safari Zone Areas 1 & 3"],
+    "leaf_green": ["Safari Zone Areas 1 & 3"]
   },
   {
     "national_id": 116,
@@ -1580,9 +1260,7 @@
     "fire_red": [
       "Routes 19, 20, 21, 24 & 25, Cerulan City, Cinnabar Island, One Island, Pallet Town, Berry Forest, Bond Bridge, Cape Brink, Five Isle Meadow, Green Path, Icefall Cave Floor 1, Kindle Road, Memorial Pillar, Outcast Island, Resort Gorgeous, Ruin Valley, Seafoam Island Basements 3 & 4, S.S. Anne, Tanoby Ruins, Trainer Tower, Treasure Beach, Water Labyrinth, Water Path (Fish)"
     ],
-    "leaf_green": [
-      "Evolve Horsea"
-    ]
+    "leaf_green": ["Evolve Horsea"]
   },
   {
     "national_id": 118,
@@ -1637,9 +1315,7 @@
       "Trade from Ruby/Sapphire/Emerald/LeafGreen/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Evolve Staryu"
-    ],
+    "leaf_green": ["Evolve Staryu"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -1650,12 +1326,8 @@
     "retrieved_at": "2026-10-21T16:21:20.487220+00:00",
     "source_sha256": "aa6591d9fee0bdab25ffcdfd818b8df6aa7a87d94216578ba332526212701400",
     "name": "Mr. Mime",
-    "fire_red": [
-      "Trade for Abra in house on Route 2"
-    ],
-    "leaf_green": [
-      "Trade for Abra in house on Route 2"
-    ]
+    "fire_red": ["Trade for Abra in house on Route 2"],
+    "leaf_green": ["Trade for Abra in house on Route 2"]
   },
   {
     "national_id": 123,
@@ -1663,9 +1335,7 @@
     "retrieved_at": "2026-10-21T16:21:20.440727+00:00",
     "source_sha256": "6e6ef17486d12a699124229fef6290ad18666f0fac4d7b37c7685b8aae382ac2",
     "name": "Scyther",
-    "fire_red": [
-      "Safari Zone Areas 1 & Center"
-    ],
+    "fire_red": ["Safari Zone Areas 1 & Center"],
     "leaf_green": [
       "Trade from FireRed/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -1680,12 +1350,8 @@
     "retrieved_at": "2026-10-21T16:21:21.358222+00:00",
     "source_sha256": "de413e9c11299ab50392f8e739d062d1f6da4a88194c05ed5d6afbcf61d0c8d1",
     "name": "Jynx",
-    "fire_red": [
-      "Trade for Poliwhirl in Cerulean City"
-    ],
-    "leaf_green": [
-      "Trade for Poliwhirl in Cerulean City"
-    ]
+    "fire_red": ["Trade for Poliwhirl in Cerulean City"],
+    "leaf_green": ["Trade for Poliwhirl in Cerulean City"]
   },
   {
     "national_id": 125,
@@ -1693,9 +1359,7 @@
     "retrieved_at": "2026-10-21T16:21:21.394554+00:00",
     "source_sha256": "733e59d729d0367303dd83c6dcf0b9beb76e1e04096b38bf686a89987322143e",
     "name": "Electabuzz",
-    "fire_red": [
-      "Power Plant"
-    ],
+    "fire_red": ["Power Plant"],
     "leaf_green": [
       "Trade from FireRed/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -1714,9 +1378,7 @@
       "Trade from LeafGreen/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Mt. Ember Grass"
-    ],
+    "leaf_green": ["Mt. Ember Grass"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -1731,9 +1393,7 @@
       "Trade from Ruby/Sapphire/Emerald/LeafGreen/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Safari Zone Areas 1 & Center"
-    ],
+    "leaf_green": ["Safari Zone Areas 1 & Center"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -1744,12 +1404,8 @@
     "retrieved_at": "2026-10-21T16:21:23.244644+00:00",
     "source_sha256": "db29c7d3671b11560b13da1446af7f8231f84c223af93f3c69aac4fd457c3c7c",
     "name": "Tauros",
-    "fire_red": [
-      "Safari Zone Areas 2 & 3"
-    ],
-    "leaf_green": [
-      "Safari Zone Areas 2 & 3"
-    ]
+    "fire_red": ["Safari Zone Areas 2 & 3"],
+    "leaf_green": ["Safari Zone Areas 2 & 3"]
   },
   {
     "national_id": 129,
@@ -1757,12 +1413,8 @@
     "retrieved_at": "2026-10-21T16:21:23.267329+00:00",
     "source_sha256": "1d2a3b2ab72a34d3349f0baa9a9d8739472c5144081c2ba01337a0b331da6f4b",
     "name": "Magikarp",
-    "fire_red": [
-      "Fish Everywhere With Old Rod"
-    ],
-    "leaf_green": [
-      "Fish Everywhere With Old Rod"
-    ]
+    "fire_red": ["Fish Everywhere With Old Rod"],
+    "leaf_green": ["Fish Everywhere With Old Rod"]
   },
   {
     "national_id": 130,
@@ -1783,12 +1435,8 @@
     "retrieved_at": "2026-10-21T16:21:24.213974+00:00",
     "source_sha256": "33c1b9acd21ab68764b5d9bb152d657343ba9ac0ed2f8eb3c98273f9d4a9f5bf",
     "name": "Lapras",
-    "fire_red": [
-      "Icefall Cave Floor 1 Inner"
-    ],
-    "leaf_green": [
-      "Icefall Cave Floor 1 Inner"
-    ]
+    "fire_red": ["Icefall Cave Floor 1 Inner"],
+    "leaf_green": ["Icefall Cave Floor 1 Inner"]
   },
   {
     "national_id": 132,
@@ -1809,12 +1457,8 @@
     "retrieved_at": "2026-10-21T16:21:25.180327+00:00",
     "source_sha256": "63939645004be6a42326cc26e956e9a3477b7e7bca39aa13cb4ef890efc8d7ee",
     "name": "Eevee",
-    "fire_red": [
-      "Given to you in Celadon Mansion"
-    ],
-    "leaf_green": [
-      "Given to you in Celadon Mansion"
-    ]
+    "fire_red": ["Given to you in Celadon Mansion"],
+    "leaf_green": ["Given to you in Celadon Mansion"]
   },
   {
     "national_id": 134,
@@ -1822,12 +1466,8 @@
     "retrieved_at": "2026-10-21T16:21:26.067930+00:00",
     "source_sha256": "b4aefeec5ec954cfac1d525bc891c2262d4522ae5e16f58cca8a4d8720f2603f",
     "name": "Vaporeon",
-    "fire_red": [
-      "Evolve Eevee"
-    ],
-    "leaf_green": [
-      "Evolve Eevee"
-    ]
+    "fire_red": ["Evolve Eevee"],
+    "leaf_green": ["Evolve Eevee"]
   },
   {
     "national_id": 135,
@@ -1835,12 +1475,8 @@
     "retrieved_at": "2026-10-21T16:21:26.075905+00:00",
     "source_sha256": "fc186f7fd79c9b5e49d41ffa717a6af34a7dcf6718b1600696b871770cba1e4a",
     "name": "Jolteon",
-    "fire_red": [
-      "Evolve Eevee"
-    ],
-    "leaf_green": [
-      "Evolve Eevee"
-    ]
+    "fire_red": ["Evolve Eevee"],
+    "leaf_green": ["Evolve Eevee"]
   },
   {
     "national_id": 136,
@@ -1848,12 +1484,8 @@
     "retrieved_at": "2026-10-21T16:21:27.011657+00:00",
     "source_sha256": "b1bd5e215b7c52c4bf1c98f7c21d4c47987dbff1d5dd4e0434a6a0972448cc05",
     "name": "Flareon",
-    "fire_red": [
-      "Evolve Eevee"
-    ],
-    "leaf_green": [
-      "Evolve Eevee"
-    ]
+    "fire_red": ["Evolve Eevee"],
+    "leaf_green": ["Evolve Eevee"]
   },
   {
     "national_id": 137,
@@ -1861,12 +1493,8 @@
     "retrieved_at": "2026-10-21T16:21:27.004465+00:00",
     "source_sha256": "d83b324f8ed11b442398d296ea1923eef40da3ee6937e3f6e2181aaf7a0952ea",
     "name": "Porygon",
-    "fire_red": [
-      "Celadon Game Corner 9999 Coins"
-    ],
-    "leaf_green": [
-      "Celadon Game Corner 6500 Coins"
-    ]
+    "fire_red": ["Celadon Game Corner 9999 Coins"],
+    "leaf_green": ["Celadon Game Corner 6500 Coins"]
   },
   {
     "national_id": 138,
@@ -1874,12 +1502,8 @@
     "retrieved_at": "2026-10-21T16:21:28.004258+00:00",
     "source_sha256": "a23e59b89434cd7946e23db63a353ca3784863de275b3ada9e238c94ecdcf04a",
     "name": "Omanyte",
-    "fire_red": [
-      "Revive From Helix Fossil"
-    ],
-    "leaf_green": [
-      "Revive From Helix Fossil"
-    ]
+    "fire_red": ["Revive From Helix Fossil"],
+    "leaf_green": ["Revive From Helix Fossil"]
   },
   {
     "national_id": 139,
@@ -1887,12 +1511,8 @@
     "retrieved_at": "2026-10-21T16:21:28.033796+00:00",
     "source_sha256": "874b338a5037f569a04fbcbd0f9e50ccb6aa909c52516dbcee9f99af3503a618",
     "name": "Omastar",
-    "fire_red": [
-      "Evolve Omanyte"
-    ],
-    "leaf_green": [
-      "Evolve Omanyte"
-    ]
+    "fire_red": ["Evolve Omanyte"],
+    "leaf_green": ["Evolve Omanyte"]
   },
   {
     "national_id": 140,
@@ -1900,12 +1520,8 @@
     "retrieved_at": "2026-10-21T16:21:28.979114+00:00",
     "source_sha256": "eca887255fb3e46ea7111da081a3b00dd9f780ad7f5e519122fb7a9752d9bbbf",
     "name": "Kabuto",
-    "fire_red": [
-      "Revive From Dome Fossil"
-    ],
-    "leaf_green": [
-      "Revive From Dome Fossil"
-    ]
+    "fire_red": ["Revive From Dome Fossil"],
+    "leaf_green": ["Revive From Dome Fossil"]
   },
   {
     "national_id": 141,
@@ -1913,12 +1529,8 @@
     "retrieved_at": "2026-10-21T16:21:28.998173+00:00",
     "source_sha256": "3f4889d4ec503ea80f016a9fb6cb11d2dc66625c4b7510b58409ec8a11cb2eeb",
     "name": "Kabutops",
-    "fire_red": [
-      "Evolve Kabuto"
-    ],
-    "leaf_green": [
-      "Evolve Kabuto"
-    ]
+    "fire_red": ["Evolve Kabuto"],
+    "leaf_green": ["Evolve Kabuto"]
   },
   {
     "national_id": 142,
@@ -1926,12 +1538,8 @@
     "retrieved_at": "2026-10-21T16:21:29.916133+00:00",
     "source_sha256": "827f51f1235b983017f4f64691d76c4ed6a574b8f42e5e9959a5423fe387ff72",
     "name": "Aerodactyl",
-    "fire_red": [
-      "Revive From Old Amber"
-    ],
-    "leaf_green": [
-      "Revive From Old Amber"
-    ]
+    "fire_red": ["Revive From Old Amber"],
+    "leaf_green": ["Revive From Old Amber"]
   },
   {
     "national_id": 143,
@@ -1939,12 +1547,8 @@
     "retrieved_at": "2026-10-21T16:21:29.982537+00:00",
     "source_sha256": "447e557aaddbb42d8aca0af5b487498ca9921b5eb9c4b8392230627ba3cefae4",
     "name": "Snorlax",
-    "fire_red": [
-      "Routes 12 & 16"
-    ],
-    "leaf_green": [
-      "Routes 12 & 16"
-    ]
+    "fire_red": ["Routes 12 & 16"],
+    "leaf_green": ["Routes 12 & 16"]
   },
   {
     "national_id": 144,
@@ -1952,12 +1556,8 @@
     "retrieved_at": "2026-10-21T16:21:30.937370+00:00",
     "source_sha256": "a069d10abb94e60849425818594e1e5ea897dddddc15203228e478ce0939fca8",
     "name": "Articuno",
-    "fire_red": [
-      "Seafoam Islands Floor 4"
-    ],
-    "leaf_green": [
-      "Seafoam Islands Floor 4"
-    ]
+    "fire_red": ["Seafoam Islands Floor 4"],
+    "leaf_green": ["Seafoam Islands Floor 4"]
   },
   {
     "national_id": 145,
@@ -1965,12 +1565,8 @@
     "retrieved_at": "2026-10-21T16:21:30.956895+00:00",
     "source_sha256": "970f7f6c31148164e552808a29d8ad164873e33635c5418cf3d7c1139b51087b",
     "name": "Zapdos",
-    "fire_red": [
-      "Power Plant"
-    ],
-    "leaf_green": [
-      "Power Plant"
-    ]
+    "fire_red": ["Power Plant"],
+    "leaf_green": ["Power Plant"]
   },
   {
     "national_id": 146,
@@ -1978,12 +1574,8 @@
     "retrieved_at": "2026-10-21T16:21:31.884585+00:00",
     "source_sha256": "429a77e15c49676405a62388e6ce69ee25951c3d421ac70aa13e5edaeaf0dbc0",
     "name": "Moltres",
-    "fire_red": [
-      "Mt. Ember Peak"
-    ],
-    "leaf_green": [
-      "Mt. Ember Peak"
-    ]
+    "fire_red": ["Mt. Ember Peak"],
+    "leaf_green": ["Mt. Ember Peak"]
   },
   {
     "national_id": 147,
@@ -1991,12 +1583,8 @@
     "retrieved_at": "2026-10-21T16:21:31.896289+00:00",
     "source_sha256": "3ba2e3588bf5c07025f0dd1949b96cbfafcbf9b166ca45e34acb01ddad323975",
     "name": "Dratini",
-    "fire_red": [
-      "Safari Zone Areas 1, 2, 3 & Center (Fish)"
-    ],
-    "leaf_green": [
-      "Safari Zone Areas 1, 2, 3 & Center (Fish)"
-    ]
+    "fire_red": ["Safari Zone Areas 1, 2, 3 & Center (Fish)"],
+    "leaf_green": ["Safari Zone Areas 1, 2, 3 & Center (Fish)"]
   },
   {
     "national_id": 148,
@@ -2004,12 +1592,8 @@
     "retrieved_at": "2026-10-21T16:21:32.944723+00:00",
     "source_sha256": "82f1c2c15806ceb68a5aa206d18dc94905dbb32a25c4f7f864e83805c9e7421e",
     "name": "Dragonair",
-    "fire_red": [
-      "Safari Zone Areas 1, 2, 3 & Center (Fish)"
-    ],
-    "leaf_green": [
-      "Safari Zone Areas 1, 2, 3 & Center (Fish)"
-    ]
+    "fire_red": ["Safari Zone Areas 1, 2, 3 & Center (Fish)"],
+    "leaf_green": ["Safari Zone Areas 1, 2, 3 & Center (Fish)"]
   },
   {
     "national_id": 149,
@@ -2017,12 +1601,8 @@
     "retrieved_at": "2026-10-21T16:21:32.991848+00:00",
     "source_sha256": "33f02748938defca0206fb424dbb557763d7edb3630d7d4ac41b4281526e43b3",
     "name": "Dragonite",
-    "fire_red": [
-      "Evolve Dragonair"
-    ],
-    "leaf_green": [
-      "Evolve Dragonair"
-    ]
+    "fire_red": ["Evolve Dragonair"],
+    "leaf_green": ["Evolve Dragonair"]
   },
   {
     "national_id": 150,
@@ -2030,12 +1610,8 @@
     "retrieved_at": "2026-10-21T16:21:33.975998+00:00",
     "source_sha256": "fb3d274b52b53bbe032f684ba1666e7d0f105fac6f071faaf9a5371a5ebe3a5b",
     "name": "Mewtwo",
-    "fire_red": [
-      "Cerulean Cave Basement 1"
-    ],
-    "leaf_green": [
-      "Cerulean Cave Basement 1"
-    ]
+    "fire_red": ["Cerulean Cave Basement 1"],
+    "leaf_green": ["Cerulean Cave Basement 1"]
   },
   {
     "national_id": 151,
@@ -2226,12 +1802,8 @@
     "retrieved_at": "2026-10-21T16:21:38.931590+00:00",
     "source_sha256": "dac62f433816e2e121702e58f63042b45d08d3fba38a2c77e02bae1719561c59",
     "name": "Sentret",
-    "fire_red": [
-      "Canyon Entrance, Five Isle Meadow, Water Path"
-    ],
-    "leaf_green": [
-      "Canyon Entrance, Five Isle Meadow, Water Path"
-    ]
+    "fire_red": ["Canyon Entrance, Five Isle Meadow, Water Path"],
+    "leaf_green": ["Canyon Entrance, Five Isle Meadow, Water Path"]
   },
   {
     "national_id": 162,
@@ -2239,14 +1811,8 @@
     "retrieved_at": "2026-10-21T16:21:39.884956+00:00",
     "source_sha256": "907ccdaea7050c59109df25eb358f4b8fc5d1bcc652b978057d14e64dd97cfa9",
     "name": "Furret",
-    "fire_red": [
-      "Evolve Sentret",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Sentret",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Sentret", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Sentret", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -2293,12 +1859,8 @@
     "retrieved_at": "2026-10-21T16:21:40.908251+00:00",
     "source_sha256": "5303a1520705bd4cfa449c736723461c8496f73db954beecb4990bdcca226748",
     "name": "Ledyba",
-    "fire_red": [
-      "Pattern Bush"
-    ],
-    "leaf_green": [
-      "Pattern Bush"
-    ]
+    "fire_red": ["Pattern Bush"],
+    "leaf_green": ["Pattern Bush"]
   },
   {
     "national_id": 166,
@@ -2306,14 +1868,8 @@
     "retrieved_at": "2026-10-21T16:21:41.875924+00:00",
     "source_sha256": "0115251a8d2bb06918600c6c1cf62ea880cf0b45d08e6479aa0b15b409b022c6",
     "name": "Ledian",
-    "fire_red": [
-      "Evolve Ledyba",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Ledyba",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Ledyba", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Ledyba", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -2324,12 +1880,8 @@
     "retrieved_at": "2026-10-21T16:21:41.879404+00:00",
     "source_sha256": "1989b46ef1c906883449c67afdc8892658d2cba4423ffbfdf3dfa8bc364298d9",
     "name": "Spinarak",
-    "fire_red": [
-      "Pattern Bush"
-    ],
-    "leaf_green": [
-      "Pattern Bush"
-    ]
+    "fire_red": ["Pattern Bush"],
+    "leaf_green": ["Pattern Bush"]
   },
   {
     "national_id": 168,
@@ -2337,14 +1889,8 @@
     "retrieved_at": "2026-10-21T16:21:42.834654+00:00",
     "source_sha256": "93c060de35e3edea6aeb957f9831b7714cc4b297bde0d42915ab956a9176b454",
     "name": "Ariados",
-    "fire_red": [
-      "Evolve Spinarak",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Spinarak",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Spinarak", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Spinarak", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -2355,14 +1901,8 @@
     "retrieved_at": "2026-10-21T16:21:42.839303+00:00",
     "source_sha256": "1d4d3fed0bdbad86d539edc954980b0aa8f804e3f2adfbd13deeec15e808b75c",
     "name": "Crobat",
-    "fire_red": [
-      "Evolve Golbat",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Golbat",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Golbat", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Golbat", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -2463,12 +2003,8 @@
     "retrieved_at": "2026-10-21T16:21:45.766211+00:00",
     "source_sha256": "58055489a5ee0eb13caa06c8df565280339d647548b73869557432063c18a1f2",
     "name": "Togepi",
-    "fire_red": [
-      "Egg Obtained on Water Path"
-    ],
-    "leaf_green": [
-      "Egg Obtained on Water Path"
-    ]
+    "fire_red": ["Egg Obtained on Water Path"],
+    "leaf_green": ["Egg Obtained on Water Path"]
   },
   {
     "national_id": 176,
@@ -2476,14 +2012,8 @@
     "retrieved_at": "2026-10-21T16:21:46.659044+00:00",
     "source_sha256": "a8d88296daca34484e7830148e06aa01e96c7b04f17addb01cf1a2eb9a17c959",
     "name": "Togetic",
-    "fire_red": [
-      "Evolve Togepi",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Togepi",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Togepi", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Togepi", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -2494,12 +2024,8 @@
     "retrieved_at": "2026-10-21T16:21:46.664492+00:00",
     "source_sha256": "ecaefce0ec8b7d25b38b5440cbaf65b99da5e63cf3bd27dadc9a75a98d0f33e1",
     "name": "Natu",
-    "fire_red": [
-      "Ruin Valley"
-    ],
-    "leaf_green": [
-      "Ruin Valley"
-    ]
+    "fire_red": ["Ruin Valley"],
+    "leaf_green": ["Ruin Valley"]
   },
   {
     "national_id": 178,
@@ -2507,14 +2033,8 @@
     "retrieved_at": "2026-10-21T16:21:47.684924+00:00",
     "source_sha256": "f14d710f142f08829f2489ecd32f402db200aca9d2c0397be6aea340a5c5f69f",
     "name": "Xatu",
-    "fire_red": [
-      "Evolve Natu",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Natu",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Natu", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Natu", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -2583,10 +2103,7 @@
     "retrieved_at": "2026-10-21T16:21:49.565157+00:00",
     "source_sha256": "1600874686d80978508bcac7919e66960d6cc45263854cfe5cf756089c9eea4e",
     "name": "Bellossom",
-    "fire_red": [
-      "Evolve Gloom",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Gloom", "Requires the National Pokedex."],
     "leaf_green": [
       "Trade from Ruby/Sapphire/Emerald/FireRed",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -2623,10 +2140,7 @@
       "Trade from Ruby/Sapphire/Emerald/LeafGreen",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Evolve Marill",
-      "Requires the National Pokedex."
-    ],
+    "leaf_green": ["Evolve Marill", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml",
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
@@ -2687,14 +2201,8 @@
     "retrieved_at": "2026-10-21T16:21:52.396877+00:00",
     "source_sha256": "64c129e247aac2c3b6e74ecc6264cbff7d28faf4efec20fe261adcaccfc4bc1c",
     "name": "Skiploom",
-    "fire_red": [
-      "Evolve Hoppip",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Hoppip",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Hoppip", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Hoppip", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -2705,14 +2213,8 @@
     "retrieved_at": "2026-10-21T16:21:52.458075+00:00",
     "source_sha256": "516dd30b9f60caead203d55ffa43ad6ddfec03bba72c5d7681d3de477a205ecc",
     "name": "Jumpluff",
-    "fire_red": [
-      "Evolve Skiploom",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Skiploom",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Skiploom", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Skiploom", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -2781,12 +2283,8 @@
     "retrieved_at": "2026-10-21T16:21:54.383597+00:00",
     "source_sha256": "c5e306053e1647259d57e45e85b3537ea7bdec87e127ad5e47543d1a1c2f7d5e",
     "name": "Yanma",
-    "fire_red": [
-      "Ruin Valley"
-    ],
-    "leaf_green": [
-      "Ruin Valley"
-    ]
+    "fire_red": ["Ruin Valley"],
+    "leaf_green": ["Ruin Valley"]
   },
   {
     "national_id": 194,
@@ -2811,10 +2309,7 @@
     "retrieved_at": "2026-10-21T16:21:55.404536+00:00",
     "source_sha256": "fe48c99d3bc581663c8fd97d1f2dd83afb8169b39ae8e8618f9715f40a09b96b",
     "name": "Quagsire",
-    "fire_red": [
-      "Evolve Wooper",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Wooper", "Requires the National Pokedex."],
     "leaf_green": [
       "Trade from Emerald/FireRed/Colosseum/XD",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -2866,9 +2361,7 @@
     "retrieved_at": "2026-10-21T16:21:57.396044+00:00",
     "source_sha256": "13f36527100614ce9739a012be3e6187e1a694bf3e8df501d6f6db6711717def",
     "name": "Murkrow",
-    "fire_red": [
-      "Lost Cave"
-    ],
+    "fire_red": ["Lost Cave"],
     "leaf_green": [
       "Trade from FireRed/Colosseum",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -2883,9 +2376,7 @@
     "retrieved_at": "2026-10-21T16:21:57.447117+00:00",
     "source_sha256": "6503e6fa64038dad09b9c78262e1939e2bddfe7050fa6cbc61b305c41f2cf776",
     "name": "Slowking",
-    "fire_red": [
-      "Trade from LeafGreen"
-    ],
+    "fire_red": ["Trade from LeafGreen"],
     "leaf_green": [
       "Trade Slowpoke holding a King's Rock.",
       "Requires the National Pokedex."
@@ -2904,9 +2395,7 @@
       "Trade from LeafGreen/Colosseum",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Lost Cave"
-    ],
+    "leaf_green": ["Lost Cave"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -2930,12 +2419,8 @@
     "retrieved_at": "2026-10-21T16:21:59.294873+00:00",
     "source_sha256": "00976ebeccd5ae9fc0b6341110b133675daff010397af2c8ca2c395043377e5e",
     "name": "Wobbuffet",
-    "fire_red": [
-      "Cerulean Cave Floors 1, 2 & Basement 1, Ruin Valley"
-    ],
-    "leaf_green": [
-      "Cerulean Cave Floors 1, 2 & Basement 1, Ruin Valley"
-    ]
+    "fire_red": ["Cerulean Cave Floors 1, 2 & Basement 1, Ruin Valley"],
+    "leaf_green": ["Cerulean Cave Floors 1, 2 & Basement 1, Ruin Valley"]
   },
   {
     "national_id": 203,
@@ -3001,12 +2486,8 @@
     "retrieved_at": "2026-10-21T16:22:01.132579+00:00",
     "source_sha256": "ef26d008cca4e3893dcf69b1d3b487cf334c021c4a1d99e822c817cc75993778",
     "name": "Dunsparce",
-    "fire_red": [
-      "Three Isle Port"
-    ],
-    "leaf_green": [
-      "Three Isle Port"
-    ]
+    "fire_red": ["Three Isle Port"],
+    "leaf_green": ["Three Isle Port"]
   },
   {
     "national_id": 207,
@@ -3144,12 +2625,8 @@
     "retrieved_at": "2026-10-21T16:22:04.994850+00:00",
     "source_sha256": "48c3c4811db809d40c248d4d0f178d805cb813e22726b51b155c665277dfb00d",
     "name": "Heracross",
-    "fire_red": [
-      "Pattern Bush"
-    ],
-    "leaf_green": [
-      "Pattern Bush"
-    ]
+    "fire_red": ["Pattern Bush"],
+    "leaf_green": ["Pattern Bush"]
   },
   {
     "national_id": 215,
@@ -3161,9 +2638,7 @@
       "Trade from LeafGreen/Colosseum",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Icefall Cave Floor 1 & Basement 1"
-    ],
+    "leaf_green": ["Icefall Cave Floor 1 & Basement 1"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -3227,12 +2702,8 @@
     "retrieved_at": "2026-10-21T16:22:06.988085+00:00",
     "source_sha256": "b107a6621b81e88b1ad87d95c065aee388d0c505777cf30a9f3879c55c98fb3e",
     "name": "Magcargo",
-    "fire_red": [
-      "Mt. Ember Basement 3 (Rock Smash)"
-    ],
-    "leaf_green": [
-      "Mt. Ember Basement 3 (Rock Smash)"
-    ]
+    "fire_red": ["Mt. Ember Basement 3 (Rock Smash)"],
+    "leaf_green": ["Mt. Ember Basement 3 (Rock Smash)"]
   },
   {
     "national_id": 220,
@@ -3240,12 +2711,8 @@
     "retrieved_at": "2026-10-21T16:22:07.888245+00:00",
     "source_sha256": "d1c3564b5fe218b56aae59bdea2116b37d2f1e647570582620eca8434f0929b0",
     "name": "Swinub",
-    "fire_red": [
-      "Icefall Cave Floor 1 & Basement 1"
-    ],
-    "leaf_green": [
-      "Icefall Cave Floor 1 & Basement 1"
-    ]
+    "fire_red": ["Icefall Cave Floor 1 & Basement 1"],
+    "leaf_green": ["Icefall Cave Floor 1 & Basement 1"]
   },
   {
     "national_id": 221,
@@ -3253,14 +2720,8 @@
     "retrieved_at": "2026-10-21T16:22:07.930672+00:00",
     "source_sha256": "8045e591a5124c5dd4ad24316aaa63e0ae7fdc7f565df359b2fbd9d3239b4b08",
     "name": "Piloswine",
-    "fire_red": [
-      "Evolve Swinub",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Swinub",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Swinub", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Swinub", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -3310,10 +2771,7 @@
       "Trade from Emerald/LeafGreen/Colosseum",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Evolve Remoraid",
-      "Requires the National Pokedex."
-    ],
+    "leaf_green": ["Evolve Remoraid", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml",
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
@@ -3325,9 +2783,7 @@
     "retrieved_at": "2026-10-21T16:22:09.806235+00:00",
     "source_sha256": "9d2b206d7929312aea5f45180b58e5170e4b28716ffe5efbf41eb39bc5b811ec",
     "name": "Delibird",
-    "fire_red": [
-      "Icefall Cave Floors 1 & Basement 1"
-    ],
+    "fire_red": ["Icefall Cave Floors 1 & Basement 1"],
     "leaf_green": [
       "Trade from FireRed/Colosseum",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -3346,9 +2802,7 @@
       "Trade from LeafGreen/Colosseum",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
     ],
-    "leaf_green": [
-      "Tanoby Ruins & Trainer Tower (Surf)"
-    ],
+    "leaf_green": ["Tanoby Ruins & Trainer Tower (Surf)"],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml"
     ]
@@ -3359,9 +2813,7 @@
     "retrieved_at": "2026-10-21T16:22:10.746274+00:00",
     "source_sha256": "7876ddf698c2996210ebfaa4fbbeff26d3db1791e9910a97b008ec2d6042b33e",
     "name": "Skarmory",
-    "fire_red": [
-      "Seavault Canyon"
-    ],
+    "fire_red": ["Seavault Canyon"],
     "leaf_green": [
       "Trade from Ruby/Sapphire/Emerald/FireRed/Colosseum",
       "For trades with Hoenn/GameCube games, unlock the National Pokedex and complete Celio's Ruby/Sapphire quest."
@@ -3434,12 +2886,8 @@
     "retrieved_at": "2026-10-21T16:22:12.666036+00:00",
     "source_sha256": "79ba6667fd32d4de2ceaaacf18fc296a3c5d33797105b5e9281796bdf36fdb82",
     "name": "Phanpy",
-    "fire_red": [
-      "Canyon Entrance, Seavault Canyon"
-    ],
-    "leaf_green": [
-      "Canyon Entrance, Seavault Canyon"
-    ]
+    "fire_red": ["Canyon Entrance, Seavault Canyon"],
+    "leaf_green": ["Canyon Entrance, Seavault Canyon"]
   },
   {
     "national_id": 232,
@@ -3447,14 +2895,8 @@
     "retrieved_at": "2026-10-21T16:22:13.639262+00:00",
     "source_sha256": "2a66e81b8c5bd3b9a68d033663df4ed83176bb43224e2d7c98d449e691173a28",
     "name": "Donphan",
-    "fire_red": [
-      "Evolve Phanpy",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Phanpy",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Phanpy", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Phanpy", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -3600,9 +3042,7 @@
     "retrieved_at": "2026-10-21T16:22:17.414545+00:00",
     "source_sha256": "746e227d56f10bccfe5ede341260481816762653f209bd5de521bf6d96a3db2d",
     "name": "Magby",
-    "fire_red": [
-      "Trade from LeafGreen"
-    ],
+    "fire_red": ["Trade from LeafGreen"],
     "leaf_green": [
       "Breed Magmar",
       "Requires the National Pokedex. Breeding uses the Four Island Day Care."
@@ -3635,14 +3075,8 @@
     "retrieved_at": "2026-10-21T16:22:18.393026+00:00",
     "source_sha256": "a9a337f27cd1a642d2c67783adddaadc224b9c235916bcc10fd62e8b3569b3f7",
     "name": "Blissey",
-    "fire_red": [
-      "Evolve Chansey",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Chansey",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Chansey", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Chansey", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -3692,12 +3126,8 @@
     "retrieved_at": "2026-10-21T16:22:20.366258+00:00",
     "source_sha256": "a307cfaf843ded95729cf16db7395e1d667aa654d3be609a8b33bca971e05e5e",
     "name": "Larvitar",
-    "fire_red": [
-      "Seavault Canyon"
-    ],
-    "leaf_green": [
-      "Seavault Canyon"
-    ]
+    "fire_red": ["Seavault Canyon"],
+    "leaf_green": ["Seavault Canyon"]
   },
   {
     "national_id": 247,
@@ -3705,14 +3135,8 @@
     "retrieved_at": "2026-10-21T16:22:20.364230+00:00",
     "source_sha256": "57363786ee1b482bbfe2988887ecb2a2a2425730cef56ad6a992e2cf512dfc9c",
     "name": "Pupitar",
-    "fire_red": [
-      "Evolve Larvitar",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Larvitar",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Larvitar", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Larvitar", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -3723,14 +3147,8 @@
     "retrieved_at": "2026-10-21T16:22:21.349263+00:00",
     "source_sha256": "bcedae8adf4f50091f825cc699149084f7bd56fe1952b9faf35fc0d8d3928a69",
     "name": "Tyranitar",
-    "fire_red": [
-      "Evolve Pupitar",
-      "Requires the National Pokedex."
-    ],
-    "leaf_green": [
-      "Evolve Pupitar",
-      "Requires the National Pokedex."
-    ],
+    "fire_red": ["Evolve Pupitar", "Requires the National Pokedex."],
+    "leaf_green": ["Evolve Pupitar", "Requires the National Pokedex."],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/evolution.shtml"
     ]
@@ -3747,9 +3165,7 @@
     "leaf_green": [
       "Navel Rock: requires the MysticTicket from a historical GBA event, or trade an existing Generation III specimen."
     ],
-    "additional_sources": [
-      "https://www.serebii.net/red_green/tickets.shtml"
-    ]
+    "additional_sources": ["https://www.serebii.net/red_green/tickets.shtml"]
   },
   {
     "national_id": 250,
@@ -3763,9 +3179,7 @@
     "leaf_green": [
       "Navel Rock: requires the MysticTicket from a historical GBA event, or trade an existing Generation III specimen."
     ],
-    "additional_sources": [
-      "https://www.serebii.net/red_green/tickets.shtml"
-    ]
+    "additional_sources": ["https://www.serebii.net/red_green/tickets.shtml"]
   },
   {
     "national_id": 251,

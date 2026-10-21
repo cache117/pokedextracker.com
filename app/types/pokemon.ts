@@ -1,4 +1,4 @@
-import type { Game, GameFamily } from './games';
+import type { Game, GameFamily } from "./games";
 
 export interface Pokemon {
   reference_details_imported?: boolean;

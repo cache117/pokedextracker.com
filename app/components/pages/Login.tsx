@@ -1,37 +1,48 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
-import { faAsterisk, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+import {
+  faAsterisk,
+  faLongArrowAltRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  useEffect,
+  useEffectEvent,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
+import { Link, useNavigate } from "react-router";
 
-import { Alert } from '../library/Alert';
-import { Footer } from '../library/Footer';
-import { Nav } from '../library/Nav';
-import { ReactGA } from '../../utils/analytics';
-import { Reload } from '../library/Reload';
-import { useLogin } from '../../hooks/queries/sessions';
-import { useSession } from '../../hooks/contexts/use-session';
+import { useSession } from "../../hooks/contexts/use-session";
+import { useLogin } from "../../hooks/queries/sessions";
+import { trackEvent } from "../../utils/analytics";
+import { Alert } from "../library/Alert";
+import { Footer } from "../library/Footer";
+import { Nav } from "../library/Nav";
+import { Reload } from "../library/Reload";
 
-import type { ChangeEvent, FormEvent } from 'react';
-
-export function Login () {
-  const history = useHistory();
+export function Login() {
+  const navigate = useNavigate();
 
   const { session, setToken } = useSession();
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const loginMutation = useLogin();
 
   useEffect(() => {
-    document.title = 'Login | Pokédex Tracker';
+    document.title = "Login | Pokédex Tracker";
   }, []);
 
-  useEffect(() => {
+  // Someone who's already logged in goes to their profile, but only when they
+  // arrive: logging in here navigates on its own.
+  const redirectIfLoggedIn = useEffectEvent(() => {
     if (session) {
-      history.push(`/u/${session.username}`);
+      navigate(`/u/${session.username}`);
     }
+  });
+  useEffect(() => {
+    redirectIfLoggedIn();
   }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -44,17 +55,19 @@ export function Login () {
     try {
       const { token } = await loginMutation.mutateAsync({ payload });
       setToken(token);
-      ReactGA.event({ action: 'login', category: 'Session' });
-      history.push(`/u/${username}`);
-    } catch (_) {
+      trackEvent("Session", "login");
+      navigate(`/u/${username}`);
+    } catch {
       // Since React Query catches the error and attaches it to the mutation, we don't need to do anything with this
       // error besides prevent it from bubbling up.
       window.scrollTo({ top: 0 });
     }
   };
 
-  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value);
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
+  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setUsername(e.target.value);
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setPassword(e.target.value);
 
   return (
     <div className="login-container">
@@ -98,8 +111,20 @@ export function Login () {
             />
             <FontAwesomeIcon className="input-icon" icon={faAsterisk} />
           </div>
-          <button className="btn btn-blue" disabled={loginMutation.isLoading} type="submit">Let&apos;s go! <FontAwesomeIcon icon={faLongArrowAltRight} /></button>
-          <p>Don&apos;t have an account yet? <Link className="link" to="/register">Register here</Link>!</p>
+          <button
+            className="btn btn-blue"
+            disabled={loginMutation.isPending}
+            type="submit"
+          >
+            Let&apos;s go! <FontAwesomeIcon icon={faLongArrowAltRight} />
+          </button>
+          <p>
+            Don&apos;t have an account yet?{" "}
+            <Link className="link" to="/register">
+              Register here
+            </Link>
+            !
+          </p>
         </form>
       </div>
       <Footer />

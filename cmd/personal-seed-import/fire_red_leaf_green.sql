@@ -30,9 +30,9 @@ END $$;
 INSERT INTO dex_types (id, name, game_family_id, "order", tags, description)
 VALUES
     (1000001, 'Regional', 'fire_red_leaf_green', 1, '{regional}',
-     'Original Generation III Kanto Pokedex: 151 species, including Mew. Encounter locations have not been added yet.'),
+     'Original Generation III Kanto Pokedex: 151 species, including Mew. Includes original GBA location and acquisition guidance.'),
     (1000002, 'Full National', 'fire_red_leaf_green', 2, '{"full national"}',
-     'Original Generation III National Pokedex: 386 species, including Mythical Pokemon. Includes species requiring other games or events. Encounter locations have not been added yet.')
+     'Original Generation III National Pokedex: 386 species, including Mythical Pokemon. Includes species requiring other games or events. Includes original GBA location and acquisition guidance.')
 ON CONFLICT (id) DO UPDATE SET name=EXCLUDED.name, "order"=EXCLUDED."order",
     tags=EXCLUDED.tags, description=EXCLUDED.description;
 

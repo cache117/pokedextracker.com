@@ -116,11 +116,18 @@ If upstream adds official FR/LG templates, review a deliberate migration of
 personal collections to those IDs instead of deleting or replacing templates.
 No production seed CSVs are edited and no upstream schema changes are needed.
 
-This enables dex tracking, not a complete Generation III encounter database.
-Upstream currently supplies no FR/LG encounter rows. Evolution details reuse
-upstream's shared data, filtered to the selected dex; historical game-specific
-methods are not independently audited. Add location corrections through Manage.
-The separate personal Switch rerelease source IDs are retained unchanged.
+The personal importer also loads `cmd/personal-seed-import/fire_red_leaf_green_locations.json`:
+386 species with separate FireRed/LeafGreen acquisition lists (772 game entries).
+Each record includes a source URL, retrieval time and raw-source SHA-256; curated
+prerequisites include additional references. The dataset was collected from
+Serebii's Generation III location tables, with reviewed corrections for event
+tickets, trade evolutions and unreleased Altering Cave encounters. See
+`personal/FRLG-LOCATIONS.md` for scope, sources, editing and verification.
+
+This data covers the original GBA releases. The separate personal Switch
+rerelease sources are unchanged. Evolution panels still use upstream's shared
+data, filtered to the selected dex; acquisition entries explicitly identify
+trade-evolution items and National Dex restrictions where applicable.
 
 Run `personal/Test-FireRedLeafGreen.ps1` with the same trial-server/database
 parameters as `Test-Local.ps1` to check both games, both lists, evolution scope,

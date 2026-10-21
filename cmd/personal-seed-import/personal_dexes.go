@@ -11,5 +11,8 @@ var fireRedLeafGreenSQL string
 
 func importPersonalDexes(tx *pg.Tx) error {
 	_, err := tx.Exec(fireRedLeafGreenSQL)
-	return err
+	if err != nil {
+		return err
+	}
+	return importPersonalLocations(tx)
 }

@@ -203,7 +203,7 @@ func run() error {
 	for _, spec := range tables {
 		fmt.Printf("Merged %s: %d upstream rows\n", spec.name, counts[spec.name])
 	}
-	fmt.Println("Applied personal FireRed/LeafGreen templates: Regional (151) and Full National (386).")
+	fmt.Println("Applied personal FireRed/LeafGreen templates and 772 location entries (386 per game).")
 	fmt.Println("Verified users, dexes, captures, personal settings, and encounter overrides unchanged.")
 	return nil
 }

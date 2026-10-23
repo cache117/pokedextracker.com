@@ -1,0 +1,384 @@
+/* The site's styles: Tailwind's theme and utilities, and a few base styles
+   under them. */
+@layer theme, base, components, utilities;
+
+/* No preflight. The pages are built on the browser's own styles (a heading's
+   margins, a list's padding), and its reset would change them all. */
+@import "tailwindcss/theme.css" layer(theme);
+
+/* Font Awesome's stylesheet, which the site's styles override (see
+   index.tsx), and the sprite sheet of Pokémon icons. */
+@import "@fortawesome/fontawesome-svg-core/styles.css" layer(base);
+@import "./pokesprite.css" layer(base);
+
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  *:focus {
+    outline: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  /* A link that doesn't set its own color takes night mode's. */
+  .dark a {
+    color: var(--color-night-mode-link);
+  }
+
+  .dark a:hover {
+    color: var(--color-night-mode-link-dark);
+  }
+}
+
+@theme {
+  /* Only the site's colors, as the old stylesheets' Sass computed them, so a
+     utility can't pick a color the site doesn't use. */
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-brand-primary: #ffd924;
+  --color-brand-primary-light: rgb(100%, 92.0386784851%, 54.1176470588%);
+  --color-brand-primary-dark: rgb(100%, 82.6688154714%, 0.1176470588%);
+  --color-brand-secondary: #18447d;
+  --color-brand-secondary-light: rgb(
+    11.6667982629%,
+    33.0559284116%,
+    60.7645742861%
+  );
+  --color-brand-secondary-dark: rgb(
+    7.1567311488%,
+    20.2774049217%,
+    37.2746414002%
+  );
+  --color-error: #ff0000;
+  --color-success: #00cc66;
+  --color-gray-light: #f1f1f1;
+  --color-gray-medium: #d2d2d2;
+  --color-gray-dark: #ababab;
+  /* Computed in the old stylesheets where they were used. */
+  --color-brand-primary-lighter: rgb(100%, 97.2441579371%, 84.1176470588%);
+  --color-gray-darker: #787878;
+  --color-gray-darkest: #454545;
+  --color-brand-primary-lighten-10: rgb(100%, 88.5683588504%, 34.1176470588%);
+  --color-brand-primary-lighten-15: rgb(100%, 90.3035186677%, 44.1176470588%);
+  --color-error-darken-5: rgb(90%, 0%, 0%);
+  --color-white-darken-1: rgb(99%, 99%, 99%);
+  --color-black-lighten-25: rgb(25%, 25%, 25%);
+  --color-black-lighten-35: rgb(35%, 35%, 35%);
+  --color-shiny-star: #d81118;
+  --color-brand-secondary-dark-darken-3: rgb(
+    6.1902881958%,
+    17.5391498881%,
+    32.2410843532%
+  );
+  --color-brand-secondary-dark-darken-5: rgb(
+    5.5459928938%,
+    15.7136465324%,
+    28.8853796552%
+  );
+  --color-night-mode-secondary-darken-4: rgb(
+    4.9683873549%,
+    13.9735894358%,
+    25.4629851941%
+  );
+  --color-night-mode-secondary-darken-6: rgb(
+    4.3153261305%,
+    12.1368547419%,
+    22.1160464186%
+  );
+  --color-gray-light-darken-6: rgb(
+    88.5098039216%,
+    88.5098039216%,
+    88.5098039216%
+  );
+  --color-night-mode: #121212;
+  --color-night-mode-01dp: rgb(12.0588235294%, 12.0588235294%, 12.0588235294%);
+  --color-night-mode-02dp: rgb(14.0588235294%, 14.0588235294%, 14.0588235294%);
+  --color-night-mode-03dp: rgb(15.0588235294%, 15.0588235294%, 15.0588235294%);
+  --color-night-mode-04dp: rgb(16.0588235294%, 16.0588235294%, 16.0588235294%);
+  --color-night-mode-06dp: rgb(18.0588235294%, 18.0588235294%, 18.0588235294%);
+  --color-night-mode-16dp: rgb(22.0588235294%, 22.0588235294%, 22.0588235294%);
+  --color-night-mode-24dp: rgb(23.0588235294%, 23.0588235294%, 23.0588235294%);
+  --color-night-mode-dark: rgb(0.0588235294%, 0.0588235294%, 0.0588235294%);
+  --color-night-mode-primary: #c7bd7d;
+  --color-night-mode-primary-dark: rgb(
+    67.8368121442%,
+    62.6185958254%,
+    29.2220113852%
+  );
+  --color-night-mode-secondary: #102d52;
+  --color-night-mode-secondary-dark: rgb(
+    3.9887955182%,
+    11.218487395%,
+    20.4425770308%
+  );
+  --color-night-mode-link: #3777ca;
+  --color-night-mode-link-dark: rgb(
+    18.180113152%,
+    40.1334573355%,
+    68.6042005735%
+  );
+  --color-night-mode-link-gray: #5f5f5f;
+  --color-night-mode-link-gray-dark: rgb(
+    30.2549019608%,
+    30.2549019608%,
+    30.2549019608%
+  );
+  --color-night-mode-error: #bb2323;
+  --color-night-mode-error-dark: rgb(
+    61.5405405405%,
+    11.5182829889%,
+    11.5182829889%
+  );
+
+  --font-*: initial;
+  --font-primary: "Alegreya Sans", "Helvetica", sans-serif;
+  --font-secondary: "Montserrat", "Helvetica", sans-serif;
+
+  /* One unit is one pixel (mt-15 is 15px), so sizes read like the
+     stylesheets they replace and don't change with the browser's font
+     size, which the old px values didn't either. */
+  --spacing: 1px;
+
+  /* The rest of the old stylesheets' values, named by value for now. Turning
+     them into scales (and merging near duplicates) is a design pass for after
+     the move, when any change it makes is deliberate. */
+  --text-*: initial;
+  --text-5: 5px;
+  --text-8: 8px;
+  --text-9: 9px;
+  --text-10: 10px;
+  --text-11: 11px;
+  --text-12: 12px;
+  --text-13: 13px;
+  --text-14: 14px;
+  --text-15: 15px;
+  --text-16: 16px;
+  --text-17: 17px;
+  --text-20: 20px;
+  --text-25: 25px;
+  --text-30: 30px;
+  --text-32: 32px;
+  --text-35: 35px;
+  --text-40: 40px;
+  --text-45: 45px;
+  --text-50: 50px;
+  --text-60: 60px;
+
+  --tracking-*: initial;
+  --tracking-0: 0;
+  --tracking-1: 1px;
+  --tracking-2: 2px;
+
+  --radius-*: initial;
+  --radius-3: 3px;
+  --radius-5: 5px;
+  /* Not rounded-full, which rounds the ends of a non-square box rather than
+     making an ellipse. */
+  --radius-half: 50%;
+
+  /* For box-shadow itself: Tailwind's shadow utilities stack a shadow with
+     empty ones, which WebKit draws a little differently. */
+  --shadow-*: initial;
+  --shadow-raised: 1px 1px 3px rgba(0, 0, 0, 0.5);
+
+  /* CSS's ease-out keyword, which the old stylesheets used. Tailwind's own is
+     a different curve. */
+  --ease-*: initial;
+  --ease-out: ease-out;
+
+  /* Pages slide up into place: the home page and 404 slowly, and the forms
+     and profile quickly. */
+  --animate-slide: slide 1s cubic-bezier(0, 0, 0.05, 1) forwards;
+  --animate-slide-fast: slide 0.5s ease-out forwards;
+
+  @keyframes slide {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      top: 0;
+      opacity: 1;
+    }
+  }
+}
+
+/* Role colors: what a color is for, with its value by day and in night mode,
+   so a class like bg-surface is right in both and needs no dark: variant.
+   The values are the palette colors above; dark: is left for the few places
+   whose night color is their own. A -hover role is what its base turns on
+   hover or focus. A new role takes a line in each of the three lists below,
+   in the same order. */
+@theme inline {
+  /* Text, and the page behind it, along with what sits flat on the page: the
+     search bar, share panel and modals. */
+  --color-text: var(--text);
+  --color-surface: var(--surface);
+  /* Raised a step (the progress bar's track), and two (inputs). */
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  /* The dex's grid lines, a caught tile's, and a caught tile. */
+  --color-line: var(--line);
+  --color-line-caught: var(--line-caught);
+  --color-caught: var(--caught);
+  /* The progress bar's fill and frame. */
+  --color-progress: var(--progress);
+  /* Form titles, the home page's title and the loading text; and text in the
+     brand's blue that's white at night, like a dex's or profile's title. */
+  --color-heading: var(--heading);
+  --color-strong: var(--strong);
+  /* Links, and the header's quieter ones, like the friend code's pencil. */
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-muted-link: var(--muted-link);
+  --color-muted-link-hover: var(--muted-link-hover);
+  /* Errors, and the link that deletes a dex. */
+  --color-danger: var(--danger);
+  --color-danger-hover: var(--danger-hover);
+  /* The info panel, its darker edges, and its links to Bulbapedia and Serebii. */
+  --color-info: var(--info);
+  --color-info-edge: var(--info-edge);
+  --color-info-link: var(--info-link);
+  --color-info-link-hover: var(--info-link-hover);
+  /* The nav bar, its links, and its dropdown's items. */
+  --color-nav: var(--nav);
+  --color-nav-hover: var(--nav-hover);
+  --color-nav-text-hover: var(--nav-text-hover);
+  --color-nav-raised: var(--nav-raised);
+  --color-nav-raised-hover: var(--nav-raised-hover);
+  /* The button colors: the button, its text where it isn't white, and its hover. */
+  --color-button-blue: var(--button-blue);
+  --color-button-blue-hover: var(--button-blue-hover);
+  --color-button-white: var(--button-white);
+  --color-button-white-text: var(--button-white-text);
+  --color-button-white-hover: var(--button-white-hover);
+  --color-button-yellow: var(--button-yellow);
+  --color-button-yellow-text: var(--button-yellow-text);
+  --color-button-yellow-hover: var(--button-yellow-hover);
+}
+
+@layer base {
+  :root {
+    --text: var(--color-black);
+    --surface: var(--color-white);
+    --surface-1: var(--color-white);
+    --surface-2: var(--color-white);
+    --line: var(--color-gray-light);
+    --line-caught: var(--color-brand-primary-lighten-15);
+    --caught: var(--color-brand-primary-light);
+    --progress: var(--color-brand-primary);
+    --heading: var(--color-brand-secondary);
+    --strong: var(--color-brand-secondary);
+    --link: var(--color-brand-secondary-light);
+    --link-hover: var(--color-brand-secondary-dark);
+    --muted-link: var(--color-black-lighten-25);
+    --muted-link-hover: var(--color-black);
+    --danger: var(--color-error);
+    --danger-hover: var(--color-error-darken-5);
+    --info: var(--color-brand-secondary);
+    --info-edge: var(--color-brand-secondary-dark-darken-3);
+    --info-link: var(--color-brand-secondary-dark);
+    --info-link-hover: var(--color-brand-secondary-dark-darken-3);
+    --nav: var(--color-brand-primary);
+    --nav-hover: var(--color-brand-primary-lighten-10);
+    --nav-text-hover: var(--color-brand-secondary);
+    --nav-raised: var(--color-brand-primary-lighten-10);
+    --nav-raised-hover: var(--color-brand-primary-lighten-15);
+    --button-blue: var(--color-brand-secondary-light);
+    --button-blue-hover: var(--color-brand-secondary);
+    --button-white: var(--color-white);
+    --button-white-text: var(--color-brand-secondary);
+    --button-white-hover: var(--color-white-darken-1);
+    --button-yellow: var(--color-brand-primary);
+    --button-yellow-text: var(--color-brand-secondary);
+    --button-yellow-hover: var(--color-brand-primary-dark);
+  }
+
+  .dark {
+    --text: var(--color-white);
+    --surface: var(--color-night-mode);
+    --surface-1: var(--color-night-mode-01dp);
+    --surface-2: var(--color-night-mode-02dp);
+    --line: var(--color-night-mode-01dp);
+    --line-caught: var(--color-night-mode-primary-dark);
+    --caught: var(--color-night-mode-primary);
+    --progress: var(--color-night-mode-primary-dark);
+    --heading: var(--color-night-mode-link);
+    --strong: var(--color-white);
+    --link: var(--color-night-mode-link);
+    --link-hover: var(--color-night-mode-link-dark);
+    --muted-link: var(--color-night-mode-link-gray);
+    --muted-link-hover: var(--color-night-mode-link-gray-dark);
+    --danger: var(--color-night-mode-error);
+    --danger-hover: var(--color-night-mode-error-dark);
+    --info: var(--color-night-mode-secondary);
+    --info-edge: var(--color-night-mode-secondary-dark);
+    --info-link: var(--color-night-mode-secondary-darken-4);
+    --info-link-hover: var(--color-night-mode-secondary-darken-6);
+    --nav: var(--color-night-mode-03dp);
+    --nav-hover: var(--color-night-mode-06dp);
+    --nav-text-hover: var(--color-night-mode-primary);
+    --nav-raised: var(--color-night-mode-04dp);
+    --nav-raised-hover: var(--color-night-mode-06dp);
+    --button-blue: var(--color-night-mode-secondary);
+    --button-blue-hover: var(--color-night-mode-secondary-dark);
+    --button-white: var(--color-gray-light);
+    --button-white-text: var(--color-night-mode-secondary);
+    --button-white-hover: var(--color-gray-light-darken-6);
+    --button-yellow: var(--color-night-mode-primary);
+    --button-yellow-text: var(--color-white);
+    --button-yellow-hover: var(--color-night-mode-primary-dark);
+  }
+}
+
+/* Hover applies on every device, as it did in the old stylesheets. Tailwind
+   4 limits it to devices that can hover, which would change taps on phones. */
+@custom-variant hover (&:hover);
+
+/* The .no-touch class (set in index.html on devices without touch), for the
+   few hover styles limited to those. It adds no specificity, like dark
+   below, so between the two the later utility wins, as the later rule did in
+   the old stylesheets. */
+@custom-variant no-touch (:where(.no-touch) &);
+
+/* Night mode, as Tailwind's dark variant: the dark class on <html>, which
+   index.html sets before the page draws, and the toggle in the nav changes.
+   Most colors are roles that change with it (above), so few classes need
+   it. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* The old stylesheets' breakpoints, exactly. Tailwind's max-* variants use
+   width < N rather than max-width: N, a pixel off. Widest first: utilities
+   come out in this order, so a narrower one wins where both apply, as the
+   later rule did in the old stylesheets. */
+@custom-variant max-1100 (@media (max-width: 1100px));
+@custom-variant max-750 (@media (max-width: 750px));
+@custom-variant max-700 (@media (max-width: 700px));
+@custom-variant max-600 (@media (max-width: 600px));
+@custom-variant max-550 (@media (max-width: 550px));
+@custom-variant max-500 (@media (max-width: 500px));
+@custom-variant max-400 (@media (max-width: 400px));
+@custom-variant min-751 (@media (min-width: 751px));

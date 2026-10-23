@@ -7,8 +7,8 @@ upstream branch. Keep personal database contents and credentials outside Git.
 
 ## Upstream baseline
 
-Merged through `58de6e689696e8814e6e8c46816e124185c2af79` (2026-10-21 review).
-This includes the unified Go server, Vite 8, React 19, Router 8, Query 5,
+Merged through `338dbff` (2026-10-23 review).
+This includes Tailwind CSS 4, device-default night mode, the unified Go server, Vite 8, React 19, Router 8, Query 5,
 TypeScript 6, ESLint 9, upstream browser tests, Node 26.12.0 and
 pnpm 12.14.0. Upstream's structure, production seed CSVs, dependency lockfile,
 licenses and normal development/deployment code are retained.
@@ -22,7 +22,7 @@ licenses and normal development/deployment code are retained.
 - Local database/session credentials come from `../private.local.json`.
   Analytics and error reporting stay disabled locally, including the frontend
   configuration injected by the unified server.
-- Owner-editable source catalogue, platform/group labels, HOME/Bank routes,
+- Owner-editable source catalogue, styled with native CSS nesting and the upstream `dark` theme selector, platform/group labels, HOME/Bank routes,
   ownership, HOME encounter filtering and personal encounter overrides. Only
   the first local account can change the catalogue; other accounts can browse.
 - A transactional `cmd/personal-seed-import` updates reference data without

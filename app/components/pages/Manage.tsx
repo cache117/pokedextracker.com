@@ -6,7 +6,7 @@ import { API } from "../../utils/api";
 import { queryClient } from "../../utils/query-client";
 import { Nav } from "../library/Nav";
 
-import "../../styles/manage.scss";
+import "../../styles/manage.css";
 
 interface SourceGame {
   id: string;

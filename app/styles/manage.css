@@ -40,6 +40,12 @@
   .catalogue-heading {
     margin-bottom: 28px;
   }
+  a {
+    color: var(--color-link);
+  }
+  a:hover {
+    color: var(--color-link-hover);
+  }
   .catalogue-heading a {
     font-weight: 700;
   }
@@ -237,7 +243,7 @@
     }
   }
 }
-.night-mode .catalogue {
+.dark .catalogue {
   color: #dce8f3;
   .catalogue-card {
     background: #173b5b;

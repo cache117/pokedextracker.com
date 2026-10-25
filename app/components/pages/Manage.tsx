@@ -39,6 +39,8 @@ interface Catalogue {
     version: number;
     home_mode: string;
     hidden_groups: string[];
+    hidden_platforms?: string[] | null;
+    hidden_routes?: string[] | null;
     games: SourceGame[];
     routes: TransferRoute[];
   };
@@ -80,6 +82,14 @@ function validConfiguration(value: Catalogue) {
       Array.isArray(value.settings.hidden_groups) &&
       value.settings.hidden_groups.every(
         (group) => typeof group === "string",
+      ) &&
+      [value.settings.hidden_platforms, value.settings.hidden_routes].every(
+        (items) =>
+          items === undefined ||
+          items === null ||
+          (Array.isArray(items) &&
+            items.length <= 100 &&
+            items.every((item) => typeof item === "string")),
       ) &&
       Array.isArray(value.settings.games) &&
       value.settings.games.length <= 1000 &&
@@ -123,6 +133,28 @@ function validConfiguration(value: Catalogue) {
   } catch {
     return false;
   }
+}
+
+function sourceStatus(game: SourceGame, settings: Catalogue["settings"]) {
+  if (!game.included) return "Excluded from HOME";
+  if (settings.hidden_platforms?.includes(game.platform))
+    return "Platform hidden";
+  if (settings.hidden_routes?.includes(game.route_id))
+    return "Transfer route hidden";
+  if (game.groups.some((group) => settings.hidden_groups.includes(group)))
+    return "Group hidden";
+  if (settings.home_mode === "all") return "Shown in HOME";
+  if (settings.home_mode === "owned" && !game.owned)
+    return "Not marked as owned";
+  const route = settings.routes.find((item) => item.id === game.route_id);
+  if (!route?.reaches_home) return "No HOME route configured";
+  if (!route.enabled) return "Transfer route disabled";
+  const now = Date.now();
+  if (route.starts_at && now < Date.parse(route.starts_at))
+    return "Transfer route not available yet";
+  if (route.ends_at && now >= Date.parse(route.ends_at))
+    return "Transfer route has ended";
+  return "Shown in HOME";
 }
 
 export function Manage() {
@@ -212,6 +244,13 @@ export function Manage() {
       ].sort(),
     [data],
   );
+  const platforms = useMemo(
+    () =>
+      [...new Set(data?.settings.games.map((game) => game.platform) || [])]
+        .filter(Boolean)
+        .sort(),
+    [data],
+  );
   if (!data)
     return (
       <>
@@ -224,6 +263,43 @@ export function Manage() {
     );
   const editable = !!data.is_owner;
   const dirty = JSON.stringify(payload(data)) !== saved;
+  const visibleGames = data.settings.games.filter(
+    (game) => sourceStatus(game, data.settings) === "Shown in HOME",
+  ).length;
+  const focusSwitchHome = () => {
+    const keepPlatforms = new Set(
+      data.settings.games
+        .filter(
+          (game) =>
+            /^switch(?:\s|$)/i.test(game.platform) || game.id === "home",
+        )
+        .map((game) => game.platform),
+    );
+    setData({
+      ...data,
+      settings: {
+        ...data.settings,
+        home_mode: "current",
+        hidden_platforms: [
+          ...new Set([
+            ...(data.settings.hidden_platforms || []),
+            ...platforms.filter((platform) => !keepPlatforms.has(platform)),
+          ]),
+        ],
+        hidden_routes: [
+          ...new Set([
+            ...(data.settings.hidden_routes || []),
+            ...data.settings.routes
+              .filter((route) => route.id === "bank")
+              .map((route) => route.id),
+          ]),
+        ],
+      },
+    });
+    setNotice(
+      "Switch / HOME focus is ready. Review the source statuses below, then save changes to apply it.",
+    );
+  };
   const selectedMon = pokemon.find((mon) => mon.id === selectedPokemon);
   const patchGame = (id: string, patch: Partial<SourceGame>) =>
     setData({
@@ -446,6 +522,16 @@ export function Manage() {
             their own encounter information.
           </p>
           <fieldset disabled={!editable || busy}>
+            <div className="catalogue-focus">
+              <button className="secondary" onClick={focusSwitchHome}>
+                Focus on Switch / HOME
+              </button>
+              <p>
+                Hide older platforms and Bank routes, and check current HOME
+                availability. Your individual game choices and hidden groups are
+                kept.
+              </p>
+            </div>
             <label>
               Show
               <select
@@ -468,6 +554,64 @@ export function Manage() {
                 </option>
               </select>
             </label>
+            <p>Hide platforms:</p>
+            <div className="catalogue-chips">
+              {platforms.map((platform) => (
+                <label key={platform}>
+                  <input
+                    checked={
+                      data.settings.hidden_platforms?.includes(platform) ||
+                      false
+                    }
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        settings: {
+                          ...data.settings,
+                          hidden_platforms: e.target.checked
+                            ? [
+                                ...(data.settings.hidden_platforms || []),
+                                platform,
+                              ]
+                            : (data.settings.hidden_platforms || []).filter(
+                                (value) => value !== platform,
+                              ),
+                        },
+                      })
+                    }
+                    type="checkbox"
+                  />
+                  {platform}
+                </label>
+              ))}
+            </div>
+            <p>Hide transfer routes:</p>
+            <div className="catalogue-chips">
+              {data.settings.routes.map((route) => (
+                <label key={route.id}>
+                  <input
+                    checked={
+                      data.settings.hidden_routes?.includes(route.id) || false
+                    }
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        settings: {
+                          ...data.settings,
+                          hidden_routes: e.target.checked
+                            ? [...(data.settings.hidden_routes || []), route.id]
+                            : (data.settings.hidden_routes || []).filter(
+                                (value) => value !== route.id,
+                              ),
+                        },
+                      })
+                    }
+                    type="checkbox"
+                  />
+                  {route.name}
+                </label>
+              ))}
+            </div>
             <p>Hide groups:</p>
             <div className="catalogue-chips">
               {groups.map((group) => (
@@ -495,9 +639,18 @@ export function Manage() {
             </div>
           </fieldset>
           <p className="catalogue-hint">
-            “Include” and hidden groups apply in every HOME view. Current-source
-            views also check the route, its dates, and whether you own the game.
-            Unknown routes are excluded from current sources.
+            “Include” and hidden platforms, routes and groups apply in every
+            HOME view. Current-source views also check the route and its dates.
+            Owned-only views also check ownership. Unknown routes are excluded
+            from current sources.
+          </p>
+          <p className="catalogue-preview" role="status">
+            With these settings, {visibleGames} of {data.settings.games.length}{" "}
+            sources can appear in HOME suggestions. Each Pokémon shows only
+            sources with encounter information.{" "}
+            {dirty
+              ? "This preview includes unsaved changes."
+              : "These settings are saved."}
           </p>
         </section>
 
@@ -528,6 +681,7 @@ export function Manage() {
                     <th>Transfer route</th>
                     <th>Include</th>
                     <th>I own it</th>
+                    <th>HOME suggestions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -606,6 +760,9 @@ export function Manage() {
                             }
                             type="checkbox"
                           />
+                        </td>
+                        <td className="catalogue-source-status">
+                          {sourceStatus(game, data.settings)}
                         </td>
                       </tr>
                     ))}

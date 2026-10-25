@@ -93,6 +93,24 @@ Z-A regional has 237 entries, Full Lumiose 380, and Hyperspace 148 (forms includ
 Existing personal progress is verified against the pre-upgrade backup.
 New templates do not create collections automatically; use Create a New Dex.
 
+## Choosing HOME encounter sources
+
+Open `/manage` and use **Focus on Switch / HOME** to select current HOME
+routes, hide older platforms and hide the Bank transfer route. Review the
+per-game **HOME suggestions** statuses, then save. The shortcut preserves
+individual Include/ownership choices, encounter edits and existing hidden
+groups. Switch sources with an unknown or disabled route remain unavailable
+until their route is configured. A source must also have encounter data for
+the selected Pokémon before it appears in the tracker.
+
+You can separately hide platforms, transfer routes or groups, including any
+custom routes you add later. Hidden platforms/routes apply in historical mode
+too; untick their checkboxes to restore them. Current/owned modes also check
+route availability dates. These rules affect HOME suggestions only, preserving
+other game dexes and all caught status. Configuration exports retain the new
+filters; older exports without them still work. Reference imports preserve the
+saved rules.
+
 ## FireRed and LeafGreen (Generation III)
 
 The personal seed importer applies `cmd/personal-seed-import/fire_red_leaf_green.sql`

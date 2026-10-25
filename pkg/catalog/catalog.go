@@ -32,11 +32,13 @@ type Game struct {
 	Owned      bool     `json:"owned"`
 }
 type Settings struct {
-	Version      int      `json:"version"`
-	HomeMode     string   `json:"home_mode"`
-	HiddenGroups []string `json:"hidden_groups"`
-	Routes       []Route  `json:"routes"`
-	Games        []Game   `json:"games"`
+	Version         int      `json:"version"`
+	HomeMode        string   `json:"home_mode"`
+	HiddenGroups    []string `json:"hidden_groups"`
+	HiddenPlatforms []string `json:"hidden_platforms"`
+	HiddenRoutes    []string `json:"hidden_routes"`
+	Routes          []Route  `json:"routes"`
+	Games           []Game   `json:"games"`
 }
 type Override struct {
 	PokemonID int      `json:"pokemon_id"`
@@ -154,6 +156,19 @@ func Validate(s Settings, overrides []Override) error {
 			return fmt.Errorf("%w: group name too long", errInvalidCatalogue)
 		}
 	}
+	if len(s.HiddenPlatforms) > 100 || len(s.HiddenRoutes) > 100 {
+		return fmt.Errorf("%w: too many hidden platforms or routes", errInvalidCatalogue)
+	}
+	for _, platform := range s.HiddenPlatforms {
+		if len(platform) == 0 || len(platform) > 100 {
+			return fmt.Errorf("%w: invalid hidden platform", errInvalidCatalogue)
+		}
+	}
+	for _, route := range s.HiddenRoutes {
+		if !routes[route] {
+			return fmt.Errorf("%w: unknown hidden transfer route", errInvalidCatalogue)
+		}
+	}
 	seen := map[string]bool{}
 	for _, o := range overrides {
 		key := fmt.Sprintf("%d:%s", o.PokemonID, o.GameID)
@@ -178,6 +193,16 @@ func Allowed(s Settings, gameID string, now time.Time) bool {
 		}
 		if !g.Included {
 			return false
+		}
+		for _, platform := range s.HiddenPlatforms {
+			if g.Platform == platform {
+				return false
+			}
+		}
+		for _, route := range s.HiddenRoutes {
+			if g.RouteID == route {
+				return false
+			}
 		}
 		for _, group := range g.Groups {
 			for _, hidden := range s.HiddenGroups {

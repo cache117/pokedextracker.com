@@ -1,4 +1,7 @@
 .catalogue {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
   max-width: 1320px;
   margin: 0 auto;
   padding: 90px 28px 70px;
@@ -138,6 +141,24 @@
     background: #f1f5f8;
     border-radius: 25px;
   }
+  .catalogue-focus {
+    padding: 16px;
+    margin-bottom: 20px;
+    background: #f1f5f8;
+    border-radius: 8px;
+    p {
+      margin: 10px 0 0;
+      font-size: 16px;
+    }
+  }
+  .catalogue-preview {
+    padding-top: 16px;
+    border-top: 1px solid #dce5ed;
+  }
+  .catalogue-source-status {
+    min-width: 180px;
+    font-size: 15px;
+  }
   .catalogue-table {
     overflow: auto;
     margin-top: 20px;
@@ -257,6 +278,7 @@
       color: #e7f0f7;
     }
     .catalogue-chips label,
+    .catalogue-focus,
     .catalogue-routes article,
     pre {
       background: #112e48;

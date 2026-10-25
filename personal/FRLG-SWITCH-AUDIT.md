@@ -1,0 +1,208 @@
+# FireRed / LeafGreen Switch compatibility audit — 2026-10-25
+
+Reviewed all 386 species / 772 existing game-location entries for Switch compatibility. This is a platform/availability audit of the previously sourced routes, not a new survey of every wild encounter slot or rate.
+
+## Findings
+
+- Across both Switch versions, supported in-game play, breeding/evolution and local FR/LG trading provide routes for 215 species. This does not mean one save can catch all 215 without other players or multiple playthroughs.
+- 171 species currently have no supported route into Switch FR/LG. Their entries now state that explicitly; historical GBA/GameCube methods are separately labelled. The 386-entry National checklist remains intact.
+- The unavailable set is inferred from Serebii's 163-species external-game list plus its eight unreleased Altering Cave species. The latter have no released Switch encounter distribution. Ticket species Lugia, Ho-Oh and Deoxys remain obtainable via Switch post-game tickets.
+- GBA trades from Ruby/Sapphire/Emerald, Colosseum/XD, Bonus Disc and Channel are not Switch methods. No speculative future releases or connectivity are treated as available.
+- HOME transfers from Switch FR/LG are outward only; HOME cannot fill missing FR/LG species. The Celebi completion reward lives in HOME, not in an FR/LG save.
+- Local Switch trades between FireRed and LeafGreen remain valid, including trade evolutions and version exclusives. These are local wireless trades, not online/HOME trades.
+- Espeon/Umbreon cannot evolve in FR/LG because the games lack an evolution clock; the Switch system clock does not add that mechanic.
+- Hitmontop's old Colosseum-only instruction was incomplete. Breed a Fighting Dojo Hitmonlee/Hitmonchan with Ditto for Tyrogue, then evolve with equal Attack/Defense at level 20 or higher. National Dex/Four Island access is required.
+- Clarified the roaming beasts' Sevii Islands Team Rocket prerequisite. The Switch releases fix the Raikou/Entei Roar disappearance bug; their starter-dependent encounter remains unchanged.
+- Wynaut/Azurill breeding, National Dex evolution restrictions, NPC trades and normal in-game locations retain their existing methods. No additional Switch-only wild encounter additions were identified in the published Switch changes.
+
+## Sources and inference
+
+- https://en-americas-support.nintendo.com/app/answers/detail/a_id/71365/~/pok%C3%A9mon-firered-version%2Fpok%C3%A9mon-leafgreen-version-faq
+- https://en-americas-support.nintendo.com/app/answers/detail/a_id/48802/p/856/c/120
+- https://www.pokemon.com/us/news/pokemon-firered-version-and-pokemon-leafgreen-version-now-link-with-pokemon-home
+- https://www.serebii.net/fireredleafgreen/unobtainable.shtml
+- https://www.serebii.net/fireredleafgreen/nintendoswitch.shtml
+- https://www.serebii.net/fireredleafgreen/alteringcave.shtml
+- https://www.serebii.net/fireredleafgreen/timebased.shtml
+- https://www.serebii.net/fireredleafgreen/evolution.shtml
+- https://www.serebii.net/pokedex-rs/237.shtml
+- https://www.serebii.net/pokedex-rs/236.shtml
+- https://www.serebii.net/fireredleafgreen/legendary.shtml
+
+The 215/171 split is an audit inference from the referenced tables and current supported connectivity, not an official Nintendo completion total. It excludes glitches, save editing and unsupported hardware/software bridges. Future officially supported games/distributions would require another review. Original per-species page hashes/timestamps were preserved; supplementary sources identify this review.
+
+Cached unavailable-list page SHA-256: `1a9923f5154e46a8dda1b3070da79257352871f0bf8fa4ab2d8a10b660d41504`.
+
+## Currently unavailable species
+
+- #151 Mew
+- #152 Chikorita
+- #153 Bayleef
+- #154 Meganium
+- #155 Cyndaquil
+- #156 Quilava
+- #157 Typhlosion
+- #158 Totodile
+- #159 Croconaw
+- #160 Feraligatr
+- #163 Hoothoot
+- #164 Noctowl
+- #170 Chinchou
+- #171 Lanturn
+- #179 Mareep
+- #180 Flaaffy
+- #181 Ampharos
+- #185 Sudowoodo
+- #190 Aipom
+- #191 Sunkern
+- #192 Sunflora
+- #196 Espeon
+- #197 Umbreon
+- #203 Girafarig
+- #204 Pineco
+- #205 Forretress
+- #207 Gligar
+- #209 Snubbull
+- #210 Granbull
+- #213 Shuckle
+- #216 Teddiursa
+- #217 Ursaring
+- #222 Corsola
+- #228 Houndour
+- #229 Houndoom
+- #234 Stantler
+- #235 Smeargle
+- #241 Miltank
+- #251 Celebi
+- #252 Treecko
+- #253 Grovyle
+- #254 Sceptile
+- #255 Torchic
+- #256 Combusken
+- #257 Blaziken
+- #258 Mudkip
+- #259 Marshtomp
+- #260 Swampert
+- #261 Poochyena
+- #262 Mightyena
+- #263 Zigzagoon
+- #264 Linoone
+- #265 Wurmple
+- #266 Silcoon
+- #267 Beautifly
+- #268 Cascoon
+- #269 Dustox
+- #270 Lotad
+- #271 Lombre
+- #272 Ludicolo
+- #273 Seedot
+- #274 Nuzleaf
+- #275 Shiftry
+- #276 Taillow
+- #277 Swellow
+- #278 Wingull
+- #279 Pelipper
+- #280 Ralts
+- #281 Kirlia
+- #282 Gardevoir
+- #283 Surskit
+- #284 Masquerain
+- #285 Shroomish
+- #286 Breloom
+- #287 Slakoth
+- #288 Vigoroth
+- #289 Slaking
+- #290 Nincada
+- #291 Ninjask
+- #292 Shedinja
+- #293 Whismur
+- #294 Loudred
+- #295 Exploud
+- #296 Makuhita
+- #297 Hariyama
+- #299 Nosepass
+- #300 Skitty
+- #301 Delcatty
+- #302 Sableye
+- #303 Mawile
+- #304 Aron
+- #305 Lairon
+- #306 Aggron
+- #307 Meditite
+- #308 Medicham
+- #309 Electrike
+- #310 Manectric
+- #311 Plusle
+- #312 Minun
+- #313 Volbeat
+- #314 Illumise
+- #315 Roselia
+- #316 Gulpin
+- #317 Swalot
+- #318 Carvanha
+- #319 Sharpedo
+- #320 Wailmer
+- #321 Wailord
+- #322 Numel
+- #323 Camerupt
+- #324 Torkoal
+- #325 Spoink
+- #326 Grumpig
+- #327 Spinda
+- #328 Trapinch
+- #329 Vibrava
+- #330 Flygon
+- #331 Cacnea
+- #332 Cacturne
+- #333 Swablu
+- #334 Altaria
+- #335 Zangoose
+- #336 Seviper
+- #337 Lunatone
+- #338 Solrock
+- #339 Barboach
+- #340 Whiscash
+- #341 Corphish
+- #342 Crawdaunt
+- #343 Baltoy
+- #344 Claydol
+- #345 Lileep
+- #346 Cradily
+- #347 Anorith
+- #348 Armaldo
+- #349 Feebas
+- #350 Milotic
+- #351 Castform
+- #352 Kecleon
+- #353 Shuppet
+- #354 Banette
+- #355 Duskull
+- #356 Dusclops
+- #357 Tropius
+- #358 Chimecho
+- #359 Absol
+- #361 Snorunt
+- #362 Glalie
+- #363 Spheal
+- #364 Sealeo
+- #365 Walrein
+- #366 Clamperl
+- #367 Huntail
+- #368 Gorebyss
+- #369 Relicanth
+- #370 Luvdisc
+- #371 Bagon
+- #372 Shelgon
+- #373 Salamence
+- #374 Beldum
+- #375 Metang
+- #376 Metagross
+- #377 Regirock
+- #378 Regice
+- #379 Registeel
+- #380 Latias
+- #381 Latios
+- #382 Kyogre
+- #383 Groudon
+- #384 Rayquaza
+- #385 Jirachi

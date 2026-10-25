@@ -145,3 +145,5 @@ The Windows builder explicitly keeps the plain login token namespace so the norm
 installation retains its existing login. Local Go config clears both Umami settings
 even when inherited from the shell; the frontend honors a blank Rollbar token.
 The management screen uses Router 8 and React 19-compatible derived editor state.
+
+Switch compatibility audit (2026-10-25): all 772 entries were reviewed. Unsupported external-game/event routes now have explicit Switch-unavailable notices; original GBA methods are labelled separately. Local Switch FR/LG trades, in-game breeding/evolutions and post-game ticket rewards remain available. See `personal/FRLG-SWITCH-AUDIT.md` for findings, sources, the current unavailable set, and the limitations of this review.

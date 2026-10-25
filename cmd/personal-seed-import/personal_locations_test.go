@@ -58,3 +58,31 @@ func TestRejectIncompletePersonalLocations(t *testing.T) {
 		require.Error(t, parseErr)
 	}
 }
+
+func TestSwitchAcquisitionRoutes(t *testing.T) {
+	rows, err := parsePersonalLocations(fireRedLeafGreenLocations)
+	require.NoError(t, err)
+	byID := map[int]personalLocation{}
+	for _, row := range rows {
+		byID[row.NationalID] = row
+	}
+	// External-game methods, unreleased Altering Cave species, and evolutions
+	// of unavailable parents must not be presented as current Switch routes.
+	for _, id := range []int{151, 152, 179, 180, 181, 196, 197, 204, 205, 251, 252, 350, 385} {
+		for _, values := range [][]string{byID[id].FireRed, byID[id].LeafGreen} {
+			require.Contains(t, values[0], "Not currently obtainable")
+			require.Contains(t, values[0], "HOME cannot send")
+		}
+	}
+	require.Contains(t, strings.Join(byID[251].FireRed, " "), "mobile Pokemon HOME app")
+	// Preserve legitimate local trades and avoid incorrectly making Hitmontop
+	// unavailable just because the old source listed only Colosseum.
+	require.Contains(t, byID[37].FireRed[0], "trade locally")
+	for _, values := range [][]string{byID[237].FireRed, byID[237].LeafGreen} {
+		require.Contains(t, values[0], "Tyrogue")
+		require.Contains(t, values[0], "Attack equal to Defense")
+	}
+	require.Contains(t, strings.Join(byID[243].FireRed, " "), "Roar disappearance bug is fixed")
+	require.Contains(t, byID[245].FireRed[0], "Sevii Islands Team Rocket")
+	require.Contains(t, byID[360].FireRed[0], "Lax Incense")
+}

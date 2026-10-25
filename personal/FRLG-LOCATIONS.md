@@ -7,7 +7,7 @@ lists. These become 772 ordinary upstream `locations` rows, linked to the same
 canonical Pokémon used by both FR/LG dex templates. The original `seeds/*.csv`
 files are unchanged.
 
-This is a Generation III acquisition baseline with explicit Switch ticket guidance for Lugia, Ho-Oh and Deoxys:
+This is a Generation III acquisition baseline with a Switch compatibility review of all 772 game entries:
 wild locations, starters, gifts, fossils, breeding, evolutions, NPC trades,
 trades from other Generation III games, and historical event prerequisites.
 Some methods require another game, compatible hardware, or a previously
@@ -88,3 +88,5 @@ argument selects a newly built importer for pre-release testing.
 
 Use `personal/Test-FireRedLeafGreen.ps1` and `personal/Test-Local.ps1` on that
 same isolated server for saved dex/catch and existing catalogue regressions.
+
+Switch compatibility audit (2026-10-25): all 772 entries were reviewed. Unsupported external-game/event routes now have explicit Switch-unavailable notices; original GBA methods are labelled separately. Local Switch FR/LG trades, in-game breeding/evolutions and post-game ticket rewards remain available. See `FRLG-SWITCH-AUDIT.md` for findings, sources, the current unavailable set, and the limitations of this review.

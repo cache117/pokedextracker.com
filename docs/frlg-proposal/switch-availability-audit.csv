@@ -1,0 +1,773 @@
+national_id,name,game_id,switch_status,review
+1,Bulbasaur,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+1,Bulbasaur,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+2,Ivysaur,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+2,Ivysaur,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+3,Venusaur,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+3,Venusaur,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+4,Charmander,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+4,Charmander,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+5,Charmeleon,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+5,Charmeleon,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+6,Charizard,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+6,Charizard,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+7,Squirtle,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+7,Squirtle,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+8,Wartortle,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+8,Wartortle,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+9,Blastoise,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+9,Blastoise,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+10,Caterpie,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+10,Caterpie,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+11,Metapod,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+11,Metapod,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+12,Butterfree,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+12,Butterfree,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+13,Weedle,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+13,Weedle,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+14,Kakuna,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+14,Kakuna,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+15,Beedrill,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+15,Beedrill,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+16,Pidgey,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+16,Pidgey,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+17,Pidgeotto,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+17,Pidgeotto,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+18,Pidgeot,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+18,Pidgeot,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+19,Rattata,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+19,Rattata,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+20,Raticate,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+20,Raticate,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+21,Spearow,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+21,Spearow,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+22,Fearow,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+22,Fearow,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+23,Ekans,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+23,Ekans,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+24,Arbok,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+24,Arbok,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+25,Pikachu,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+25,Pikachu,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+26,Raichu,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+26,Raichu,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+27,Sandshrew,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+27,Sandshrew,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+28,Sandslash,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+28,Sandslash,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+29,Nidoran♀,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+29,Nidoran♀,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+30,Nidorina,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+30,Nidorina,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+31,Nidoqueen,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+31,Nidoqueen,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+32,Nidoran♂,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+32,Nidoran♂,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+33,Nidorino,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+33,Nidorino,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+34,Nidoking,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+34,Nidoking,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+35,Clefairy,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+35,Clefairy,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+36,Clefable,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+36,Clefable,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+37,Vulpix,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+37,Vulpix,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+38,Ninetales,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+38,Ninetales,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+39,Jigglypuff,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+39,Jigglypuff,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+40,Wigglytuff,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+40,Wigglytuff,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+41,Zubat,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+41,Zubat,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+42,Golbat,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+42,Golbat,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+43,Oddish,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+43,Oddish,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+44,Gloom,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+44,Gloom,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+45,Vileplume,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+45,Vileplume,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+46,Paras,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+46,Paras,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+47,Parasect,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+47,Parasect,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+48,Venonat,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+48,Venonat,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+49,Venomoth,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+49,Venomoth,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+50,Diglett,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+50,Diglett,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+51,Dugtrio,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+51,Dugtrio,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+52,Meowth,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+52,Meowth,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+53,Persian,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+53,Persian,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+54,Psyduck,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+54,Psyduck,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+55,Golduck,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+55,Golduck,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+56,Mankey,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+56,Mankey,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+57,Primeape,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+57,Primeape,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+58,Growlithe,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+58,Growlithe,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+59,Arcanine,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+59,Arcanine,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+60,Poliwag,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+60,Poliwag,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+61,Poliwhirl,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+61,Poliwhirl,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+62,Poliwrath,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+62,Poliwrath,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+63,Abra,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+63,Abra,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+64,Kadabra,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+64,Kadabra,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+65,Alakazam,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+65,Alakazam,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+66,Machop,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+66,Machop,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+67,Machoke,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+67,Machoke,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+68,Machamp,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+68,Machamp,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+69,Bellsprout,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+69,Bellsprout,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+70,Weepinbell,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+70,Weepinbell,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+71,Victreebel,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+71,Victreebel,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+72,Tentacool,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+72,Tentacool,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+73,Tentacruel,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+73,Tentacruel,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+74,Geodude,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+74,Geodude,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+75,Graveler,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+75,Graveler,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+76,Golem,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+76,Golem,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+77,Ponyta,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+77,Ponyta,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+78,Rapidash,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+78,Rapidash,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+79,Slowpoke,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+79,Slowpoke,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+80,Slowbro,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+80,Slowbro,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+81,Magnemite,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+81,Magnemite,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+82,Magneton,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+82,Magneton,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+83,Farfetch'd,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+83,Farfetch'd,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+84,Doduo,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+84,Doduo,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+85,Dodrio,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+85,Dodrio,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+86,Seel,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+86,Seel,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+87,Dewgong,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+87,Dewgong,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+88,Grimer,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+88,Grimer,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+89,Muk,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+89,Muk,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+90,Shellder,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+90,Shellder,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+91,Cloyster,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+91,Cloyster,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+92,Gastly,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+92,Gastly,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+93,Haunter,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+93,Haunter,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+94,Gengar,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+94,Gengar,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+95,Onix,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+95,Onix,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+96,Drowzee,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+96,Drowzee,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+97,Hypno,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+97,Hypno,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+98,Krabby,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+98,Krabby,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+99,Kingler,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+99,Kingler,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+100,Voltorb,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+100,Voltorb,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+101,Electrode,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+101,Electrode,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+102,Exeggcute,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+102,Exeggcute,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+103,Exeggutor,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+103,Exeggutor,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+104,Cubone,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+104,Cubone,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+105,Marowak,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+105,Marowak,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+106,Hitmonlee,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+106,Hitmonlee,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+107,Hitmonchan,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+107,Hitmonchan,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+108,Lickitung,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+108,Lickitung,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+109,Koffing,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+109,Koffing,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+110,Weezing,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+110,Weezing,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+111,Rhyhorn,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+111,Rhyhorn,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+112,Rhydon,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+112,Rhydon,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+113,Chansey,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+113,Chansey,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+114,Tangela,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+114,Tangela,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+115,Kangaskhan,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+115,Kangaskhan,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+116,Horsea,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+116,Horsea,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+117,Seadra,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+117,Seadra,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+118,Goldeen,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+118,Goldeen,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+119,Seaking,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+119,Seaking,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+120,Staryu,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+120,Staryu,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+121,Starmie,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+121,Starmie,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+122,Mr. Mime,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+122,Mr. Mime,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+123,Scyther,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+123,Scyther,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+124,Jynx,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+124,Jynx,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+125,Electabuzz,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+125,Electabuzz,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+126,Magmar,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+126,Magmar,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+127,Pinsir,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+127,Pinsir,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+128,Tauros,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+128,Tauros,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+129,Magikarp,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+129,Magikarp,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+130,Gyarados,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+130,Gyarados,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+131,Lapras,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+131,Lapras,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+132,Ditto,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+132,Ditto,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+133,Eevee,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+133,Eevee,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+134,Vaporeon,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+134,Vaporeon,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+135,Jolteon,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+135,Jolteon,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+136,Flareon,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+136,Flareon,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+137,Porygon,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+137,Porygon,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+138,Omanyte,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+138,Omanyte,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+139,Omastar,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+139,Omastar,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+140,Kabuto,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+140,Kabuto,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+141,Kabutops,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+141,Kabutops,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+142,Aerodactyl,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+142,Aerodactyl,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+143,Snorlax,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+143,Snorlax,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+144,Articuno,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+144,Articuno,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+145,Zapdos,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+145,Zapdos,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+146,Moltres,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+146,Moltres,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+147,Dratini,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+147,Dratini,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+148,Dragonair,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+148,Dragonair,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+149,Dragonite,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+149,Dragonite,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+150,Mewtwo,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+150,Mewtwo,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+151,Mew,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+151,Mew,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+152,Chikorita,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+152,Chikorita,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+153,Bayleef,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+153,Bayleef,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+154,Meganium,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+154,Meganium,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+155,Cyndaquil,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+155,Cyndaquil,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+156,Quilava,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+156,Quilava,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+157,Typhlosion,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+157,Typhlosion,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+158,Totodile,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+158,Totodile,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+159,Croconaw,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+159,Croconaw,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+160,Feraligatr,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+160,Feraligatr,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+161,Sentret,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+161,Sentret,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+162,Furret,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+162,Furret,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+163,Hoothoot,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+163,Hoothoot,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+164,Noctowl,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+164,Noctowl,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+165,Ledyba,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+165,Ledyba,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+166,Ledian,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+166,Ledian,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+167,Spinarak,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+167,Spinarak,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+168,Ariados,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+168,Ariados,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+169,Crobat,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+169,Crobat,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+170,Chinchou,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+170,Chinchou,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+171,Lanturn,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+171,Lanturn,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+172,Pichu,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+172,Pichu,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+173,Cleffa,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+173,Cleffa,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+174,Igglybuff,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+174,Igglybuff,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+175,Togepi,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+175,Togepi,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+176,Togetic,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+176,Togetic,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+177,Natu,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+177,Natu,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+178,Xatu,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+178,Xatu,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+179,Mareep,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+179,Mareep,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+180,Flaaffy,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+180,Flaaffy,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+181,Ampharos,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+181,Ampharos,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+182,Bellossom,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+182,Bellossom,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+183,Marill,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+183,Marill,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+184,Azumarill,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+184,Azumarill,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+185,Sudowoodo,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+185,Sudowoodo,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+186,Politoed,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+186,Politoed,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+187,Hoppip,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+187,Hoppip,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+188,Skiploom,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+188,Skiploom,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+189,Jumpluff,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+189,Jumpluff,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+190,Aipom,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+190,Aipom,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+191,Sunkern,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+191,Sunkern,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+192,Sunflora,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+192,Sunflora,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+193,Yanma,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+193,Yanma,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+194,Wooper,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+194,Wooper,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+195,Quagsire,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+195,Quagsire,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+196,Espeon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+196,Espeon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+197,Umbreon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+197,Umbreon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+198,Murkrow,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+198,Murkrow,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+199,Slowking,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+199,Slowking,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+200,Misdreavus,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+200,Misdreavus,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+201,Unown,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+201,Unown,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+202,Wobbuffet,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+202,Wobbuffet,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+203,Girafarig,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+203,Girafarig,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+204,Pineco,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+204,Pineco,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+205,Forretress,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+205,Forretress,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+206,Dunsparce,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+206,Dunsparce,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+207,Gligar,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+207,Gligar,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+208,Steelix,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+208,Steelix,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+209,Snubbull,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+209,Snubbull,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+210,Granbull,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+210,Granbull,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+211,Qwilfish,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+211,Qwilfish,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+212,Scizor,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+212,Scizor,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+213,Shuckle,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+213,Shuckle,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+214,Heracross,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+214,Heracross,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+215,Sneasel,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+215,Sneasel,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+216,Teddiursa,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+216,Teddiursa,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+217,Ursaring,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+217,Ursaring,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+218,Slugma,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+218,Slugma,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+219,Magcargo,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+219,Magcargo,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+220,Swinub,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+220,Swinub,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+221,Piloswine,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+221,Piloswine,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+222,Corsola,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+222,Corsola,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+223,Remoraid,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+223,Remoraid,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+224,Octillery,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+224,Octillery,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+225,Delibird,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+225,Delibird,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+226,Mantine,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+226,Mantine,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+227,Skarmory,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+227,Skarmory,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+228,Houndour,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+228,Houndour,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+229,Houndoom,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+229,Houndoom,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+230,Kingdra,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+230,Kingdra,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+231,Phanpy,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+231,Phanpy,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+232,Donphan,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+232,Donphan,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+233,Porygon2,fire_red,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+233,Porygon2,leaf_green,obtainable_across_FRLG_with_local_trading,Trade evolution retained; local wireless requirement clarified
+234,Stantler,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+234,Stantler,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+235,Smeargle,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+235,Smeargle,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+236,Tyrogue,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+236,Tyrogue,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+237,Hitmontop,fire_red,obtainable_across_FRLG_with_local_trading,Corrected missing in-game breeding/evolution alternative
+237,Hitmontop,leaf_green,obtainable_across_FRLG_with_local_trading,Corrected missing in-game breeding/evolution alternative
+238,Smoochum,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+238,Smoochum,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+239,Elekid,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+239,Elekid,leaf_green,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+240,Magby,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+240,Magby,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+241,Miltank,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+241,Miltank,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+242,Blissey,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+242,Blissey,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+243,Raikou,fire_red,obtainable_across_FRLG_with_local_trading,Roamer prerequisites clarified; Switch Roar fix identified
+243,Raikou,leaf_green,obtainable_across_FRLG_with_local_trading,Roamer prerequisites clarified; Switch Roar fix identified
+244,Entei,fire_red,obtainable_across_FRLG_with_local_trading,Roamer prerequisites clarified; Switch Roar fix identified
+244,Entei,leaf_green,obtainable_across_FRLG_with_local_trading,Roamer prerequisites clarified; Switch Roar fix identified
+245,Suicune,fire_red,obtainable_across_FRLG_with_local_trading,Roamer prerequisites clarified; Switch Roar fix identified
+245,Suicune,leaf_green,obtainable_across_FRLG_with_local_trading,Roamer prerequisites clarified; Switch Roar fix identified
+246,Larvitar,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+246,Larvitar,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+247,Pupitar,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+247,Pupitar,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+248,Tyranitar,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+248,Tyranitar,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+249,Lugia,fire_red,obtainable_across_FRLG_with_local_trading,Switch post-game ticket reward already corrected
+249,Lugia,leaf_green,obtainable_across_FRLG_with_local_trading,Switch post-game ticket reward already corrected
+250,Ho-Oh,fire_red,obtainable_across_FRLG_with_local_trading,Switch post-game ticket reward already corrected
+250,Ho-Oh,leaf_green,obtainable_across_FRLG_with_local_trading,Switch post-game ticket reward already corrected
+251,Celebi,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+251,Celebi,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+252,Treecko,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+252,Treecko,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+253,Grovyle,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+253,Grovyle,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+254,Sceptile,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+254,Sceptile,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+255,Torchic,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+255,Torchic,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+256,Combusken,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+256,Combusken,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+257,Blaziken,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+257,Blaziken,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+258,Mudkip,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+258,Mudkip,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+259,Marshtomp,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+259,Marshtomp,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+260,Swampert,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+260,Swampert,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+261,Poochyena,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+261,Poochyena,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+262,Mightyena,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+262,Mightyena,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+263,Zigzagoon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+263,Zigzagoon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+264,Linoone,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+264,Linoone,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+265,Wurmple,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+265,Wurmple,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+266,Silcoon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+266,Silcoon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+267,Beautifly,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+267,Beautifly,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+268,Cascoon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+268,Cascoon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+269,Dustox,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+269,Dustox,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+270,Lotad,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+270,Lotad,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+271,Lombre,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+271,Lombre,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+272,Ludicolo,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+272,Ludicolo,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+273,Seedot,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+273,Seedot,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+274,Nuzleaf,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+274,Nuzleaf,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+275,Shiftry,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+275,Shiftry,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+276,Taillow,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+276,Taillow,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+277,Swellow,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+277,Swellow,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+278,Wingull,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+278,Wingull,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+279,Pelipper,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+279,Pelipper,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+280,Ralts,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+280,Ralts,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+281,Kirlia,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+281,Kirlia,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+282,Gardevoir,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+282,Gardevoir,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+283,Surskit,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+283,Surskit,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+284,Masquerain,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+284,Masquerain,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+285,Shroomish,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+285,Shroomish,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+286,Breloom,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+286,Breloom,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+287,Slakoth,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+287,Slakoth,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+288,Vigoroth,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+288,Vigoroth,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+289,Slaking,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+289,Slaking,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+290,Nincada,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+290,Nincada,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+291,Ninjask,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+291,Ninjask,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+292,Shedinja,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+292,Shedinja,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+293,Whismur,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+293,Whismur,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+294,Loudred,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+294,Loudred,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+295,Exploud,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+295,Exploud,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+296,Makuhita,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+296,Makuhita,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+297,Hariyama,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+297,Hariyama,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+298,Azurill,fire_red,obtainable_across_FRLG_with_local_trading,Local Switch FR/LG trade retained; external GBA alternatives labelled
+298,Azurill,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+299,Nosepass,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+299,Nosepass,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+300,Skitty,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+300,Skitty,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+301,Delcatty,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+301,Delcatty,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+302,Sableye,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+302,Sableye,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+303,Mawile,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+303,Mawile,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+304,Aron,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+304,Aron,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+305,Lairon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+305,Lairon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+306,Aggron,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+306,Aggron,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+307,Meditite,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+307,Meditite,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+308,Medicham,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+308,Medicham,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+309,Electrike,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+309,Electrike,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+310,Manectric,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+310,Manectric,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+311,Plusle,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+311,Plusle,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+312,Minun,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+312,Minun,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+313,Volbeat,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+313,Volbeat,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+314,Illumise,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+314,Illumise,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+315,Roselia,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+315,Roselia,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+316,Gulpin,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+316,Gulpin,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+317,Swalot,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+317,Swalot,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+318,Carvanha,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+318,Carvanha,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+319,Sharpedo,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+319,Sharpedo,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+320,Wailmer,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+320,Wailmer,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+321,Wailord,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+321,Wailord,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+322,Numel,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+322,Numel,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+323,Camerupt,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+323,Camerupt,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+324,Torkoal,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+324,Torkoal,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+325,Spoink,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+325,Spoink,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+326,Grumpig,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+326,Grumpig,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+327,Spinda,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+327,Spinda,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+328,Trapinch,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+328,Trapinch,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+329,Vibrava,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+329,Vibrava,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+330,Flygon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+330,Flygon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+331,Cacnea,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+331,Cacnea,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+332,Cacturne,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+332,Cacturne,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+333,Swablu,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+333,Swablu,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+334,Altaria,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+334,Altaria,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+335,Zangoose,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+335,Zangoose,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+336,Seviper,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+336,Seviper,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+337,Lunatone,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+337,Lunatone,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+338,Solrock,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+338,Solrock,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+339,Barboach,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+339,Barboach,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+340,Whiscash,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+340,Whiscash,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+341,Corphish,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+341,Corphish,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+342,Crawdaunt,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+342,Crawdaunt,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+343,Baltoy,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+343,Baltoy,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+344,Claydol,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+344,Claydol,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+345,Lileep,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+345,Lileep,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+346,Cradily,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+346,Cradily,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+347,Anorith,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+347,Anorith,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+348,Armaldo,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+348,Armaldo,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+349,Feebas,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+349,Feebas,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+350,Milotic,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+350,Milotic,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+351,Castform,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+351,Castform,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+352,Kecleon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+352,Kecleon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+353,Shuppet,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+353,Shuppet,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+354,Banette,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+354,Banette,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+355,Duskull,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+355,Duskull,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+356,Dusclops,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+356,Dusclops,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+357,Tropius,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+357,Tropius,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+358,Chimecho,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+358,Chimecho,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+359,Absol,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+359,Absol,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+360,Wynaut,fire_red,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+360,Wynaut,leaf_green,obtainable_across_FRLG_with_local_trading,In-game method; no Switch compatibility change identified
+361,Snorunt,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+361,Snorunt,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+362,Glalie,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+362,Glalie,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+363,Spheal,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+363,Spheal,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+364,Sealeo,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+364,Sealeo,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+365,Walrein,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+365,Walrein,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+366,Clamperl,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+366,Clamperl,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+367,Huntail,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+367,Huntail,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+368,Gorebyss,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+368,Gorebyss,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+369,Relicanth,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+369,Relicanth,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+370,Luvdisc,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+370,Luvdisc,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+371,Bagon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+371,Bagon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+372,Shelgon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+372,Shelgon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+373,Salamence,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+373,Salamence,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+374,Beldum,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+374,Beldum,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+375,Metang,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+375,Metang,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+376,Metagross,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+376,Metagross,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+377,Regirock,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+377,Regirock,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+378,Regice,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+378,Regice,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+379,Registeel,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+379,Registeel,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+380,Latias,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+380,Latias,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+381,Latios,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+381,Latios,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+382,Kyogre,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+382,Kyogre,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+383,Groudon,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+383,Groudon,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+384,Rayquaza,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+384,Rayquaza,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+385,Jirachi,fire_red,unavailable,Not currently obtainable in supported Switch FR/LG play
+385,Jirachi,leaf_green,unavailable,Not currently obtainable in supported Switch FR/LG play
+386,Deoxys,fire_red,obtainable_across_FRLG_with_local_trading,Switch post-game ticket reward already corrected
+386,Deoxys,leaf_green,obtainable_across_FRLG_with_local_trading,Switch post-game ticket reward already corrected

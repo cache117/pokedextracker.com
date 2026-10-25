@@ -23,6 +23,7 @@ import { EvolutionFamily } from "./EvolutionFamily";
 import { InfoLocations } from "./InfoLocations";
 
 const SEREBII_LINKS: Record<string, string> = {
+  fire_red_leaf_green: "pokedex-rs",
   x_y: "pokedex-xy",
   omega_ruby_alpha_sapphire: "pokedex-xy",
   sun_moon: "pokedex-sm",

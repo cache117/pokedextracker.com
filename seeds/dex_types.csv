@@ -24,3 +24,5 @@ id,name,game_family_id,order,tags,description,base_dex_type_id
 23,Regional,legends_za,1,{regional},,
 24,Full Lumiose,legends_za_expansion_pass,1,{regional},Includes Lumiose and Hyperspace dexes,
 25,Hyperspace,legends_za_expansion_pass,2,{regional},Hyperspace dex only,
+26,Regional,fire_red_leaf_green,1,{regional},"Original Generation III Kanto Pokédex: 151 species, including Mew.",
+27,Full National,fire_red_leaf_green,2,"{""full national""}","Original Generation III National Pokédex: 386 species, including Pokémon requiring trades from other games or historical events.",

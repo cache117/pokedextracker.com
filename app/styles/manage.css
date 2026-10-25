@@ -243,24 +243,26 @@
     }
   }
 }
-.dark .catalogue {
-  color: #dce8f3;
-  .catalogue-card {
-    background: #173b5b;
-    border-color: #35566f;
-  }
-  input:not([type="checkbox"]),
-  select,
-  textarea {
-    background: #112e48;
-    color: #e7f0f7;
-  }
-  .catalogue-chips label,
-  .catalogue-routes article,
-  pre {
-    background: #112e48;
-  }
-  p.catalogue-hint {
-    color: #a9c0d5;
+@media not print {
+  .dark .catalogue {
+    color: #dce8f3;
+    .catalogue-card {
+      background: #173b5b;
+      border-color: #35566f;
+    }
+    input:not([type="checkbox"]),
+    select,
+    textarea {
+      background: #112e48;
+      color: #e7f0f7;
+    }
+    .catalogue-chips label,
+    .catalogue-routes article,
+    pre {
+      background: #112e48;
+    }
+    p.catalogue-hint {
+      color: #a9c0d5;
+    }
   }
 }

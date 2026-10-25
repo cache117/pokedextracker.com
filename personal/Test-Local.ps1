@@ -62,7 +62,7 @@ try{
   $env:ENVIRONMENT='local';$env:DATABASE_NAME=$DatabaseName;$env:DATABASE_PORT='9876'
   $env:DATABASE_PASSWORD=$taskSecrets.database_password;$env:JWT_SECRET=$taskSecrets.jwt_secret
   $taskSource=Split-Path $PSScriptRoot -Parent
-  $taskSeedRevision=git -C $taskSource rev-parse MERGE_HEAD 2>$null
+  $taskSeedRevision=git -C $taskSource rev-parse --verify --quiet MERGE_HEAD
   if($LASTEXITCODE -ne 0){$taskSeedRevision=git -C $taskSource merge-base HEAD upstream/master}
   & "$taskRoot/runtime/personal-seed-import.exe" "$taskSource/seeds" $taskSeedRevision
   if($LASTEXITCODE -ne 0){throw 'Repeat seed import failed'}

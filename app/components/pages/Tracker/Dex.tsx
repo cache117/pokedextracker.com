@@ -70,15 +70,18 @@ export function Dex({
   }, [groupedCaptures, dex.total, setSelectedPokemon]);
 
   return (
-    <div className="flex-[1_0_auto] px-0 py-100 max-750:p-15 max-400:pr-35">
-      <div className={wrapper}>
+    // A printed dex is scaled to 70%, so two boxes fit on a Letter or A4 page.
+    // Its column gets 2px more there: at 70%, six tiles' rounded widths can
+    // come to more than the column's, which would wrap each row at five.
+    <div className="flex-[1_0_auto] px-0 py-100 print:[zoom:0.7] max-750:p-15 max-400:pr-35">
+      <div className={`${wrapper} print:w-664`}>
         <Scroll onClick={onScrollButtonClick} showScroll={showScrollButton} />
         <Notification />
         <header>
           <Header />
           <h3 className="mx-0 mt-0 mb-8">
             <Link
-              className="text-16 text-black-lighten-35 hover:cursor-pointer hover:text-black-lighten-25 dark:text-night-mode-link-gray dark:hover:text-night-mode-link-gray-dark"
+              className="text-16 text-gray-600 hover:cursor-pointer hover:text-gray-800 dark:hover:text-gray-700"
               onClick={() => trackEvent("User", "click view profile")}
               to={`/u/${username}`}
             >

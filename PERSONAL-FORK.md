@@ -125,8 +125,11 @@ Serebii's Generation III location tables, with reviewed corrections for event
 tickets, trade evolutions and unreleased Altering Cave encounters. See
 `personal/FRLG-LOCATIONS.md` for scope, sources, editing and verification.
 
-This data covers the original GBA releases. The separate personal Switch
-rerelease sources are unchanged. Evolution panels still use upstream's shared
+This data uses a Generation III baseline, with explicit Nintendo Switch
+post-game ticket guidance for Lugia, Ho-Oh and Deoxys and separately labelled
+original GBA event requirements. Other cross-game trade routes describe the GBA
+ecosystem. The separate personal Switch source records are unchanged.
+Evolution panels still use upstream's shared
 data, filtered to the selected dex; acquisition entries explicitly identify
 trade-evolution items and National Dex restrictions where applicable.
 

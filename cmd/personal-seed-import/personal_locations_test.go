@@ -22,6 +22,18 @@ func TestPersonalLocationData(t *testing.T) {
 		require.Contains(t, strings.Join(byID[id].FireRed, " "), "MysticTicket")
 		require.Contains(t, strings.Join(byID[id].LeafGreen, " "), "MysticTicket")
 	}
+	// The Switch releases award both tickets in-game; GBA event requirements
+	// must not imply those encounters are unavailable on Switch.
+	for _, id := range []int{249, 250, 386} {
+		for _, values := range [][]string{byID[id].FireRed, byID[id].LeafGreen} {
+			require.Contains(t, values[0], "Switch")
+			require.Contains(t, values[0], "automatically")
+			require.Contains(t, values[0], "Elite Four")
+			require.Contains(t, values[0], "Hall of Fame")
+			require.Contains(t, strings.Join(values, " "), "Original GBA")
+		}
+		require.Contains(t, byID[id].AdditionalSources, "https://www.serebii.net/fireredleafgreen/nintendoswitch.shtml")
+	}
 	require.Contains(t, strings.Join(byID[386].FireRed, " "), "AuroraTicket")
 	require.Contains(t, strings.Join(byID[386].LeafGreen, " "), "AuroraTicket")
 	require.Contains(t, strings.Join(byID[151].FireRed, " "), "Old Sea Map")

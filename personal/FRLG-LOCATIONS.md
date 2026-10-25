@@ -7,15 +7,20 @@ lists. These become 772 ordinary upstream `locations` rows, linked to the same
 canonical Pokémon used by both FR/LG dex templates. The original `seeds/*.csv`
 files are unchanged.
 
-This is acquisition guidance for the original Generation III GBA games:
+This is a Generation III acquisition baseline with explicit Switch ticket guidance for Lugia, Ho-Oh and Deoxys:
 wild locations, starters, gifts, fossils, breeding, evolutions, NPC trades,
 trades from other Generation III games, and historical event prerequisites.
 Some methods require another game, compatible hardware, or a previously
 distributed event item/Pokémon. Listing all 386 species does not imply all of
 them can be caught on a fresh FR/LG save. Percentages and encounter levels are
 not included. Lists are sourced routes, not every possible indirect
-breeding/evolution/trading combination. They do not apply Switch rerelease
-changes to the GBA games or populate the separate Switch source IDs.
+breeding/evolution/trading combination. The three ticket encounters distinguish Nintendo Switch post-game rewards from original GBA event distributions. Other cross-game trade/event routes describe the GBA ecosystem and do not imply those external games can connect to the Switch releases. This dataset does not populate the separate personal Switch source IDs.
+
+## Switch ticket correction (2026-10-25)
+
+On Nintendo Switch, the MysticTicket and AuroraTicket are automatically added to the bag after defeating the Elite Four and entering the Hall of Fame. MysticTicket provides access to Lugia and Ho-Oh at Navel Rock; AuroraTicket provides access to Deoxys at Birth Island. The original GBA historical-event requirement remains separately labelled. Deoxys retains Attack Forme in FireRed and Defense Forme in LeafGreen.
+
+Sources: https://www.serebii.net/fireredleafgreen/nintendoswitch.shtml and https://www.pokemon.com/uk/news/pokemon-firered-version-and-pokemon-leafgreen-version-link-with-pokemon-home-this-october. These URLs supplement the original per-species retrieval metadata; original page hashes are unchanged.
 
 ## Sources and review
 

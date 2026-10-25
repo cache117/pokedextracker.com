@@ -3160,12 +3160,18 @@
     "source_sha256": "6613c0a5e2b277a64e0bfedc9a495d2426190b65cdd0d2ba2d0b6a41e78540e7",
     "name": "Lugia",
     "fire_red": [
-      "Navel Rock: requires the MysticTicket from a historical GBA event, or trade an existing Generation III specimen."
+      "Navel Rock (Nintendo Switch): the MysticTicket is automatically added to your bag after defeating the Elite Four and entering the Hall of Fame. Use the ticket at the Vermilion City dock.",
+      "Original GBA: Navel Rock requires the MysticTicket from a historical event, or trade an existing Generation III specimen."
     ],
     "leaf_green": [
-      "Navel Rock: requires the MysticTicket from a historical GBA event, or trade an existing Generation III specimen."
+      "Navel Rock (Nintendo Switch): the MysticTicket is automatically added to your bag after defeating the Elite Four and entering the Hall of Fame. Use the ticket at the Vermilion City dock.",
+      "Original GBA: Navel Rock requires the MysticTicket from a historical event, or trade an existing Generation III specimen."
     ],
-    "additional_sources": ["https://www.serebii.net/red_green/tickets.shtml"]
+    "additional_sources": [
+      "https://www.serebii.net/red_green/tickets.shtml",
+      "https://www.serebii.net/fireredleafgreen/nintendoswitch.shtml",
+      "https://www.pokemon.com/uk/news/pokemon-firered-version-and-pokemon-leafgreen-version-link-with-pokemon-home-this-october"
+    ]
   },
   {
     "national_id": 250,
@@ -3174,12 +3180,18 @@
     "source_sha256": "65d68cd328ff6946a316e70556dccf3f8f28fcfcdb5e08808361eb3c954d184d",
     "name": "Ho-Oh",
     "fire_red": [
-      "Navel Rock: requires the MysticTicket from a historical GBA event, or trade an existing Generation III specimen."
+      "Navel Rock (Nintendo Switch): the MysticTicket is automatically added to your bag after defeating the Elite Four and entering the Hall of Fame. Use the ticket at the Vermilion City dock.",
+      "Original GBA: Navel Rock requires the MysticTicket from a historical event, or trade an existing Generation III specimen."
     ],
     "leaf_green": [
-      "Navel Rock: requires the MysticTicket from a historical GBA event, or trade an existing Generation III specimen."
+      "Navel Rock (Nintendo Switch): the MysticTicket is automatically added to your bag after defeating the Elite Four and entering the Hall of Fame. Use the ticket at the Vermilion City dock.",
+      "Original GBA: Navel Rock requires the MysticTicket from a historical event, or trade an existing Generation III specimen."
     ],
-    "additional_sources": ["https://www.serebii.net/red_green/tickets.shtml"]
+    "additional_sources": [
+      "https://www.serebii.net/red_green/tickets.shtml",
+      "https://www.serebii.net/fireredleafgreen/nintendoswitch.shtml",
+      "https://www.pokemon.com/uk/news/pokemon-firered-version-and-pokemon-leafgreen-version-link-with-pokemon-home-this-october"
+    ]
   },
   {
     "national_id": 251,
@@ -5616,14 +5628,18 @@
     "source_sha256": "28b92786f8e4814af399d224c9859d2051438f361bc3344b6d59d4639f473ece",
     "name": "Deoxys",
     "fire_red": [
-      "Birth Island: requires the AuroraTicket from a historical GBA event, or trade an existing Generation III specimen. Deoxys uses Attack Forme in this version."
+      "Birth Island (Nintendo Switch): the AuroraTicket is automatically added to your bag after defeating the Elite Four and entering the Hall of Fame. Use the ticket at the Vermilion City dock. Deoxys uses Attack Forme in this version.",
+      "Original GBA: Birth Island requires the AuroraTicket from a historical event, or trade an existing Generation III specimen."
     ],
     "leaf_green": [
-      "Birth Island: requires the AuroraTicket from a historical GBA event, or trade an existing Generation III specimen. Deoxys uses Defense Forme in this version."
+      "Birth Island (Nintendo Switch): the AuroraTicket is automatically added to your bag after defeating the Elite Four and entering the Hall of Fame. Use the ticket at the Vermilion City dock. Deoxys uses Defense Forme in this version.",
+      "Original GBA: Birth Island requires the AuroraTicket from a historical event, or trade an existing Generation III specimen."
     ],
     "additional_sources": [
       "https://www.serebii.net/fireredleafgreen/compatibility.shtml",
-      "https://www.serebii.net/red_green/tickets.shtml"
+      "https://www.serebii.net/red_green/tickets.shtml",
+      "https://www.serebii.net/fireredleafgreen/nintendoswitch.shtml",
+      "https://www.pokemon.com/uk/news/pokemon-firered-version-and-pokemon-leafgreen-version-link-with-pokemon-home-this-october"
     ]
   }
 ]

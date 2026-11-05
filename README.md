@@ -8,7 +8,7 @@ the React frontend (`app/`) and the Go API (`cmd/` and `pkg/`).
 ## Setup
 
 This repo uses [mise](https://mise.jdx.dev/) to manage tools (Go, Node.js,
-pnpm, Air, golangci-lint) and tasks, and Docker to run PostgreSQL.
+pnpm, Air, golangci-lint, tygo) and tasks, and Docker to run PostgreSQL.
 
 ```sh
 mise setup
@@ -26,6 +26,7 @@ mise start:web:staging  # Just the frontend, using the staging API
 mise start:preview      # The production build: one binary serving the API and frontend
 mise lint               # golangci-lint, ESLint, Prettier, and TypeScript checks
 mise format             # Format the code, config, and docs with Prettier
+mise tygo               # Generate the frontend's API types from the Go models
 mise test:go            # Go tests
 mise test:e2e           # End-to-end tests in Chromium (test:e2e:all for every browser)
 mise test:visual        # Compare how the site looks with master (needs Docker)
@@ -37,6 +38,11 @@ mise db:stop            # Stop the shared PostgreSQL container (its data is kept
 ```
 
 Run `mise tasks` to see everything else.
+
+The frontend's API types in `app/types/generated` come from the Go models
+(`pkg/*/models.go`) through `tygo.yaml`, so they aren't checked in. `mise
+setup`, `mise start`, and `mise lint` generate them first; after changing a
+model, run `mise tygo` to update them for your editor.
 
 The tasks go through a small dev launcher (`cmd/dev`), so several worktrees
 can run at once without stepping on each other:
@@ -117,13 +123,22 @@ in Playwright's Linux Docker image, because Chromium on macOS doesn't render
 text identically from run to run. The WebKit phone is a high-resolution touch
 screen; the other phones are narrow windows with a mouse.
 
-The reference screenshots are taken twice, and any that don't come out the
-same are retaken, up to three times. On this branch's side, a screenshot fails
+The reference screenshots are taken, then taken again to check they come out
+the same. Any that only timed out, or that don't come out the same, are
+retaken, up to three times each. On this branch's side, a screenshot fails
 when more than 5 pixels change color at all, and a failure is retried twice. A
-test that passes only on a retry doesn't pass either, unless what it retried
-was a timeout or a dropped connection: it's listed separately, since it's
-either noise or a change that only happens some of the time, and running the
-comparison again tells you which.
+test that passes only on a retry doesn't pass either: it's listed separately,
+since it's either noise or a change that only happens some of the time, and
+running the comparison again tells you which.
+
+The exception is a retry after the machine was only slow or lost its
+connection to the server: a test that ran out of time, or that was still
+waiting for its element or still taking its screenshot when its time ran out.
+That passes, and is listed with what it hit. A test that only timed out or lost
+its connection on every attempt has no screenshot, so it doesn't pass, but it's
+listed apart from real failures: run the comparison again when the machine is
+quieter. One that only waited for an element is a failure, since the element
+might be gone.
 
 The review page, `tmp/visual/review/index.html`, shows every screenshot: each
 one that changed before and after, with the difference highlighted, and the
@@ -193,3 +208,11 @@ your `gh` login, which needs the `write:packages` scope once:
 gh auth refresh -s write:packages
 mise deploy
 ```
+
+Most settings come from environment variables, which override the defaults in
+every environment. Staging and production won't start without `JWT_SECRET`,
+`DATABASE_HOST`, `DATABASE_NAME`, `DATABASE_USER`, `DATABASE_PASSWORD`, and
+`DATABASE_SSL_MODE`, which are Fly secrets. A missing one, or a bad value for any
+setting, fails the deploy at its release step, and the running version keeps
+serving. `fly secrets set` and `unset` restart machines without that step, so
+change a secret with `--stage` and then deploy, to have it checked first.

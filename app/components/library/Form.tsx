@@ -6,7 +6,7 @@ import { tw } from "../../utils/tw";
 export const formPage = tw`flex flex-[1_0_auto] flex-col items-center overflow-y-auto px-0 pt-50 pb-100`;
 
 // The form page's title.
-export const formTitle = tw`mb-17 text-heading`;
+export const formTitle = tw`mb-15 text-32 text-heading`;
 
 // A form slides up into place.
 export const form = tw`relative top-60 animate-slide-fast`;
@@ -15,16 +15,18 @@ export const form = tw`relative top-60 animate-slide-fast`;
 export const formColumn = tw`mx-auto my-0 w-280`;
 
 // A heading between fields, and text under them.
-export const formHeading = tw`mx-0 mt-30 mb-15 text-center first:mt-0`;
+export const formHeading = tw`mx-0 mt-30 mb-15 text-center text-25 first:mt-0`;
 export const formText = tw`mx-0 mt-20 mb-0 text-center text-14`;
 
 // A field: its label, its input, and the icon in the input.
 export const formGroup = tw`relative mb-25`;
-export const formLabel = tw`mb-7 block font-secondary text-11 font-bold tracking-1 uppercase`;
+export const formLabel = tw`mb-8 block font-secondary text-11 font-bold tracking-1 uppercase`;
 
 // A text input or select's size in a field, which leaves room on the right
-// for an icon. Its text starts 10px in, unless something sits on its left.
-export const fieldSize = tw`h-43 py-0 pr-32 text-15`;
+// for an icon. Its text starts 10px in, unless something sits on its left. On
+// phones it's 16px, since a phone that can zoom zooms in on a field with any
+// smaller text when it's tapped.
+export const fieldSize = tw`h-43 py-0 pr-32 text-15 max-750:text-16`;
 
 // formControlClassName styles a text input or select, by default at its size
 // in a field.
@@ -37,7 +39,7 @@ export const inputIcon = tw`absolute right-15 bottom-16 text-10 text-yellow-400`
 export const selectIcon = tw`absolute right-15 bottom-17 text-9 text-blue-600`;
 
 // A note across from a field's label, like the URL a title makes.
-export const formNote = tw`relative bottom-2 float-right w-240 truncate text-right text-13 text-gray-400`;
+export const formNote = tw`relative bottom-2 float-right w-240 truncate text-right text-12 text-gray-400`;
 
 // One option in a list of radios or checkboxes.
 export const formOption = tw`mb-5 flex`;
@@ -66,7 +68,7 @@ function ChoiceInput({
   ...props
 }: ChoiceInputProps) {
   return (
-    <div className="mx-13 my-0 inline-block">
+    <div className="mx-15 my-0 inline-block">
       <label className="mb-0 block cursor-pointer font-primary text-15 font-normal tracking-0 normal-case">
         <input {...props} className="hidden" type={type} />
         <span

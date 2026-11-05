@@ -58,8 +58,8 @@ type ProcessManager interface {
 	// Visual serves the production build of site on port against target, and
 	// runs the visual comparison specs from tests against it with args, as
 	// side (visualReference or visualBranch). Specs that don't pass come back
-	// as a *VisualFailure. Either way, it returns the tests that passed only
-	// after retrying a hiccup, like a dropped connection.
+	// as a *VisualFailureError. Either way, it returns the tests that passed
+	// only after retrying a hiccup, like a dropped connection.
 	Visual(ctx context.Context, site, tests Environment, target DatabaseTarget, port int, side string, args ...string) (retried []string, err error)
 }
 
@@ -207,8 +207,9 @@ func (p *OSProcesses) Visual(ctx context.Context, site, tests Environment, targe
 		if err == nil {
 			return nil
 		}
-		// Removing it doesn't use ctx, so it still happens after Ctrl+C.
-		_ = runDocker(context.Background(), "rm", "--force", container)
+		// Removing it ignores ctx's cancellation, so it still happens after
+		// Ctrl+C.
+		_ = runDocker(context.WithoutCancel(ctx), "rm", "--force", container)
 		if ctx.Err() != nil {
 			return err
 		}
@@ -231,26 +232,41 @@ func (p *OSProcesses) Visual(ctx context.Context, site, tests Environment, targe
 	return retried, err
 }
 
-// referenceAttempts is how many times a reference screenshot that doesn't
-// reproduce is taken again before the comparison gives up.
+// take runs Playwright to take reference screenshots with args, then takes
+// again what only timed out or lost its connection, like on a machine too busy
+// to take it in time. Any other failure ends it.
+func take(ctx context.Context, playwright func(context.Context, ...string) error, args ...string) error {
+	err := playwright(ctx, args...)
+	for attempt := 1; attempt < referenceAttempts; attempt++ {
+		var failure *VisualFailureError
+		if err == nil || !errors.As(err, &failure) || !failure.onlyInterrupted() {
+			return err
+		}
+		err = playwright(ctx, "--last-failed", "--update-snapshots=all")
+	}
+	return err
+}
+
+// referenceAttempts is how many runs taking the reference screenshots gets,
+// and how many checking them gets, before the comparison gives up.
 const referenceAttempts = 3
 
 // captureReference takes the reference screenshots, then checks that taking
 // them again gives the same result. A page caught mid-change (an icon a pixel
 // off while the layout settles) would otherwise become the reference and make
 // every comparison against it fail. Anything that doesn't reproduce is taken
-// again.
+// again, and so is anything a busy machine cut off (see take).
 //
 // lastRun is the file where Playwright records which tests failed, which
 // --last-failed reads.
 func captureReference(ctx context.Context, lastRun string, playwright func(context.Context, ...string) error) error {
-	if err := playwright(ctx, "--update-snapshots=all"); err != nil {
+	if err := take(ctx, playwright, "--update-snapshots=all"); err != nil {
 		return err
 	}
 	verify := []string{"--retries=0"}
 	for attempt := 1; ; attempt++ {
 		err := playwright(ctx, verify...)
-		var failure *VisualFailure
+		var failure *VisualFailureError
 		if err == nil || !errors.As(err, &failure) || attempt == referenceAttempts {
 			return err
 		}
@@ -262,10 +278,10 @@ func captureReference(ctx context.Context, lastRun string, playwright func(conte
 		if err != nil {
 			return fmt.Errorf("read the failed reference screenshots: %w", err)
 		}
-		if err := playwright(ctx, "--last-failed", "--update-snapshots=all"); err != nil {
+		if err := take(ctx, playwright, "--last-failed", "--update-snapshots=all"); err != nil {
 			return err
 		}
-		if err := os.WriteFile(lastRun, failedTests, 0o600); err != nil {
+		if err := os.WriteFile(lastRun, failedTests, 0o600); err != nil { //nolint:gosec // G703: a path under this checkout's tmp/visual, not from input.
 			return fmt.Errorf("restore the failed reference screenshots: %w", err)
 		}
 		verify = []string{"--retries=0", "--last-failed"}
@@ -309,10 +325,11 @@ func (p *OSProcesses) CheckoutReference(ctx context.Context, env Environment, re
 		return nil, fmt.Errorf("find %s: %w", ref, err)
 	}
 	reference.Commit = commit
-	// Removing it doesn't use ctx, so it still happens after Ctrl+C.
+	// Removing it ignores ctx's cancellation, so it still happens after Ctrl+C.
+	cleanup := context.WithoutCancel(ctx)
 	reference.Remove = func() {
-		_, _ = gitOutput(context.Background(), "-C", env.CurrentRoot, "worktree", "remove", "--force", reference.Root)
-		_, _ = gitOutput(context.Background(), "-C", env.CurrentRoot, "worktree", "prune")
+		_, _ = gitOutput(cleanup, "-C", env.CurrentRoot, "worktree", "remove", "--force", reference.Root)
+		_, _ = gitOutput(cleanup, "-C", env.CurrentRoot, "worktree", "prune")
 	}
 	// A run that was interrupted can leave the last reference behind.
 	reference.Remove()
@@ -416,6 +433,14 @@ func apiEnvironment(target DatabaseTarget) []string {
 		"DATABASE_HOST=127.0.0.1",
 		"DATABASE_PORT="+strconv.Itoa(target.Port),
 		"DATABASE_NAME="+target.Name,
+		// Blank counts as unset, so these stay the environment's defaults, whatever
+		// the shell has set: they'd only break a connection to the local database.
+		"DATABASE_PASSWORD=",
+		"DATABASE_SSL_HOST=",
+		"DATABASE_SSL_MODE=",
+		"DATABASE_USER=",
+		"JWT_SECRET=",
+		"PORT=",
 		"TZ=UTC",
 	)
 }
@@ -537,7 +562,7 @@ func runSingleProcess(ctx context.Context, root string, environment []string, na
 // newProcess starts the command in its own process group so stopping it also
 // stops anything it spawned, like the binary Air rebuilds.
 func newProcess(root string, environment []string, name string, args ...string) *exec.Cmd {
-	command := exec.Command(name, args...)
+	command := exec.Command(name, args...) //nolint:noctx // Stopping signals the process group to shut down cleanly; a canceled context would kill only this.
 	command.Dir = root
 	command.Env = environment
 	command.Stdin = os.Stdin

@@ -11,15 +11,17 @@ import (
 	"time"
 
 	"github.com/go-pg/pg/v10"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pokedextracker/pokedextracker.com/pkg/config"
 	"github.com/pokedextracker/pokedextracker.com/pkg/database"
-	"github.com/robinjoseph08/golib/echo/v4/middleware/recovery"
+	"github.com/robinjoseph08/golib/echo/v5/middleware/recovery"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 // fakeFrontend stands in for the embedded build.
+const testOrigin = "http://localhost:9898"
+
 var fakeFrontend = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	_, _ = io.WriteString(w, "frontend "+r.URL.Path+" "+strings.Repeat("x", 2048))
@@ -40,14 +42,24 @@ func serve(t *testing.T, h http.Handler, method, target string, headers map[stri
 // database, so it uses a lazy connection that never dials.
 func testServer(t *testing.T, cfg *config.Config) http.Handler {
 	t.Helper()
+	return testServerWithFrontend(t, cfg, fakeFrontend)
+}
+
+// testServerWithFrontend makes a server with a database it can't reach, and the
+// CORS origin every real environment has some of.
+func testServerWithFrontend(t *testing.T, cfg *config.Config, frontend http.Handler) http.Handler {
+	t.Helper()
 	db := pg.Connect(&pg.Options{Addr: "127.0.0.1:1"})
 	t.Cleanup(func() { _ = db.Close() })
-	srv, err := newServer(cfg, db, fakeFrontend)
+	cfg.CORSAllowedOrigins = append(cfg.CORSAllowedOrigins, testOrigin)
+	srv, err := newServer(cfg, db, frontend)
 	require.NoError(t, err)
 	return srv.Handler
 }
 
 func TestNew(t *testing.T) {
+	t.Parallel()
+
 	cfg, err := config.New()
 	require.NoError(t, err)
 	db, err := database.New("server test", cfg)
@@ -66,6 +78,8 @@ func TestNew(t *testing.T) {
 }
 
 func TestAPIHealthAndNotFound(t *testing.T) {
+	t.Parallel()
+
 	h := testServer(t, &config.Config{})
 
 	assert.Equal(t, `{"healthy":true}`, serve(t, h, http.MethodGet, "/api/health", nil).Body.String())
@@ -78,6 +92,8 @@ func TestAPIHealthAndNotFound(t *testing.T) {
 }
 
 func TestFrontendServesEverythingElse(t *testing.T) {
+	t.Parallel()
+
 	h := testServer(t, &config.Config{})
 
 	// The API only answers under /api, so its paths at the root are frontend
@@ -91,18 +107,17 @@ func TestFrontendServesEverythingElse(t *testing.T) {
 }
 
 func TestWithoutAFrontendUnknownPathsAreNotFound(t *testing.T) {
-	db := pg.Connect(&pg.Options{Addr: "127.0.0.1:1"})
-	defer func() { _ = db.Close() }()
-	srv, err := newServer(&config.Config{}, db, nil)
-	require.NoError(t, err)
+	t.Parallel()
 
-	w := serve(t, srv.Handler, http.MethodGet, "/foo", nil)
+	w := serve(t, testServerWithFrontend(t, &config.Config{}, nil), http.MethodGet, "/foo", nil)
 
 	assert.Equal(t, http.StatusNotFound, w.Code)
 	assert.Contains(t, w.Body.String(), "page not found")
 }
 
 func TestGzipIsOnlyForTheAPI(t *testing.T) {
+	t.Parallel()
+
 	h := testServer(t, &config.Config{})
 
 	w := serve(t, h, http.MethodGet, "/api/health", map[string]string{"Accept-Encoding": "gzip"})
@@ -113,6 +128,8 @@ func TestGzipIsOnlyForTheAPI(t *testing.T) {
 }
 
 func TestHeadHealth(t *testing.T) {
+	t.Parallel()
+
 	h := testServer(t, &config.Config{})
 
 	for _, target := range []string{"/health", "/api/health"} {
@@ -123,6 +140,8 @@ func TestHeadHealth(t *testing.T) {
 }
 
 func TestWWWRedirect(t *testing.T) {
+	t.Parallel()
+
 	h := testServer(t, &config.Config{})
 
 	for host, want := range map[string]string{
@@ -153,13 +172,15 @@ func TestWWWRedirect(t *testing.T) {
 }
 
 func TestBlogProxy(t *testing.T) {
+	t.Parallel()
+
 	var seenHost, seenPath string
 	upstream := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		seenHost, seenPath = r.Host, r.URL.RequestURI()
 		w.Header().Set("Cache-Control", "public, max-age=0")
 		_, _ = io.WriteString(w, "ghost")
 	}))
-	defer upstream.Close()
+	t.Cleanup(upstream.Close)
 
 	h := testServer(t, &config.Config{BlogURL: upstream.URL})
 
@@ -175,6 +196,8 @@ func TestBlogProxy(t *testing.T) {
 }
 
 func TestUnreachableBlogIsABadGateway(t *testing.T) {
+	t.Parallel()
+
 	upstream := httptest.NewServer(http.NotFoundHandler())
 	address := upstream.URL
 	upstream.Close()
@@ -194,7 +217,7 @@ func blogServer(t *testing.T, upstream string) (*httptest.Server, func() []error
 	e.Use(recovery.Middleware())
 	var mutex sync.Mutex
 	var reported []error
-	e.HTTPErrorHandler = func(err error, c echo.Context) {
+	e.HTTPErrorHandler = func(_ *echo.Context, err error) {
 		mutex.Lock()
 		defer mutex.Unlock()
 		reported = append(reported, err)
@@ -210,6 +233,8 @@ func blogServer(t *testing.T, upstream string) (*httptest.Server, func() []error
 }
 
 func TestBlogVisitorsLeavingMidResponseAreNotErrors(t *testing.T) {
+	t.Parallel()
+
 	// The upstream streams slowly until the visitor goes away.
 	upstream := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
@@ -219,7 +244,7 @@ func TestBlogVisitorsLeavingMidResponseAreNotErrors(t *testing.T) {
 			time.Sleep(10 * time.Millisecond)
 		}
 	}))
-	defer upstream.Close()
+	t.Cleanup(upstream.Close)
 	srv, reported := blogServer(t, upstream.URL)
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -235,15 +260,109 @@ func TestBlogVisitorsLeavingMidResponseAreNotErrors(t *testing.T) {
 	assert.Empty(t, reported(), "a visitor leaving a blog page isn't reported as an error")
 }
 
-func TestBlogUpstreamBreakingMidResponseIsReported(t *testing.T) {
+func TestBlogSeesItsOwnHostAndTheForwardingHeaders(t *testing.T) {
+	t.Parallel()
+
+	var seen *http.Request
 	upstream := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		seen = r.Clone(r.Context())
+		w.WriteHeader(http.StatusOK)
+	}))
+	t.Cleanup(upstream.Close)
+	srv, _ := blogServer(t, upstream.URL)
+
+	request, err := http.NewRequestWithContext(t.Context(), http.MethodGet, srv.URL+"/blog/post/?page=2", nil)
+	require.NoError(t, err)
+	request.Header.Set("X-Forwarded-For", "203.0.113.7")
+	request.Header.Set("X-Forwarded-Proto", "https")
+	request.Header.Set("X-Forwarded-Host", "pokedextracker.com")
+	response, err := http.DefaultClient.Do(request)
+	require.NoError(t, err)
+	_ = response.Body.Close()
+
+	require.NotNil(t, seen)
+	assert.Equal(t, strings.TrimPrefix(upstream.URL, "http://"), seen.Host)
+	assert.Equal(t, "/blog/post/?page=2", seen.URL.RequestURI())
+	assert.Equal(t, "203.0.113.7, 127.0.0.1", seen.Header.Get("X-Forwarded-For"))
+	assert.Equal(t, "https", seen.Header.Get("X-Forwarded-Proto"))
+	assert.Equal(t, "pokedextracker.com", seen.Header.Get("X-Forwarded-Host"))
+}
+
+func TestClientIPIsTheOneFlySees(t *testing.T) {
+	t.Parallel()
+
+	extract := clientIP()
+	request := httptest.NewRequest(http.MethodGet, "/", nil)
+	request.RemoteAddr = "172.16.45.18:51234"
+	// What Fly sends: the visitor's address, and X-Forwarded-For ending in the
+	// app's own address.
+	request.Header.Set("Fly-Client-IP", "107.131.100.242")
+	request.Header.Set("X-Forwarded-For", "107.131.100.242, 66.241.124.130")
+
+	assert.Equal(t, "107.131.100.242", extract(request))
+
+	request.Header.Set("Fly-Client-IP", "2001:db8::1")
+	assert.Equal(t, "2001:db8::1", extract(request), "an IPv6 visitor's address")
+
+	request.Header.Set("Fly-Client-IP", "not an address")
+	assert.Equal(t, "172.16.45.18", extract(request), "a header that isn't an address is ignored")
+
+	request.Header.Del("Fly-Client-IP")
+	assert.Equal(t, "172.16.45.18", extract(request), "without the header, like in development, it's the connection's")
+}
+
+func TestBlogURLPathIsNotJoinedOn(t *testing.T) {
+	t.Parallel()
+
+	var seen string
+	upstream := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		seen = r.URL.RequestURI()
+		w.WriteHeader(http.StatusOK)
+	}))
+	t.Cleanup(upstream.Close)
+	srv, _ := blogServer(t, upstream.URL+"/ghost")
+
+	response, err := http.Get(srv.URL + "/blog/post/")
+	require.NoError(t, err)
+	_ = response.Body.Close()
+
+	assert.Equal(t, "/blog/post/", seen)
+}
+
+// A chunked response that ended normally would pass for a complete one, to a
+// browser or anything caching it.
+func TestBlogUpstreamBreakingMidResponseDropsTheConnection(t *testing.T) {
+	t.Parallel()
+
+	upstream := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		_, _ = io.WriteString(w, "partial")
+		w.(http.Flusher).Flush()
+		panic(http.ErrAbortHandler)
+	}))
+	t.Cleanup(upstream.Close)
+	srv := httptest.NewServer(testServer(t, &config.Config{BlogURL: upstream.URL}))
+	t.Cleanup(srv.Close)
+
+	response, err := http.Get(srv.URL + "/blog/post/")
+	require.NoError(t, err)
+	t.Cleanup(func() { _ = response.Body.Close() })
+	body, err := io.ReadAll(response.Body)
+
+	require.Error(t, err, "the visitor can tell the page is incomplete")
+	assert.Equal(t, "partial", string(body), "with nothing added to it")
+}
+
+func TestBlogUpstreamBreakingMidResponseIsReported(t *testing.T) {
+	t.Parallel()
+
+	upstream := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Length", "100000")
 		w.WriteHeader(http.StatusOK)
 		_, _ = io.WriteString(w, "partial")
 		w.(http.Flusher).Flush()
 		panic(http.ErrAbortHandler)
 	}))
-	defer upstream.Close()
+	t.Cleanup(upstream.Close)
 	srv, reported := blogServer(t, upstream.URL)
 
 	response, err := http.Get(srv.URL + "/blog/post/")
@@ -257,6 +376,8 @@ func TestBlogUpstreamBreakingMidResponseIsReported(t *testing.T) {
 }
 
 func TestNoBlogFallsThroughToTheFrontend(t *testing.T) {
+	t.Parallel()
+
 	h := testServer(t, &config.Config{})
 
 	w := serve(t, h, http.MethodGet, "/blog/", nil)
@@ -264,7 +385,50 @@ func TestNoBlogFallsThroughToTheFrontend(t *testing.T) {
 	assert.Contains(t, w.Body.String(), "frontend /blog/", "staging has no blog, like today")
 }
 
+func TestAServerNeedsCORSOrigins(t *testing.T) {
+	t.Parallel()
+
+	_, err := newServer(&config.Config{}, nil, nil)
+
+	require.Error(t, err)
+}
+
+func TestCORSOnlyAllowsItsOrigins(t *testing.T) {
+	t.Parallel()
+
+	h := testServer(t, &config.Config{})
+	preflight := func(origin string) *httptest.ResponseRecorder {
+		return serve(t, h, http.MethodOptions, "/api/captures", map[string]string{
+			"Access-Control-Request-Method": http.MethodPost,
+			"Origin":                        origin,
+		})
+	}
+
+	w := preflight(testOrigin)
+	assert.Equal(t, http.StatusNoContent, w.Code)
+	assert.Equal(t, testOrigin, w.Header().Get("Access-Control-Allow-Origin"))
+
+	w = preflight("https://evil.example")
+	assert.Empty(t, w.Header().Get("Access-Control-Allow-Origin"))
+}
+
+func TestAPanicIsAnInternalServerError(t *testing.T) {
+	t.Parallel()
+
+	h := testServerWithFrontend(t, &config.Config{}, http.HandlerFunc(func(http.ResponseWriter, *http.Request) {
+		panic("something went wrong")
+	}))
+
+	w := serve(t, h, http.MethodGet, "/login", nil)
+
+	assert.Equal(t, http.StatusInternalServerError, w.Code)
+	assert.Contains(t, w.Body.String(), `"code":"internal_server_error"`)
+	assert.NotContains(t, w.Body.String(), "something went wrong", "a panic's message stays private")
+}
+
 func TestFrontendConfigScript(t *testing.T) {
+	t.Parallel()
+
 	script, err := frontendConfigScript(&config.Config{
 		Environment:        "production",
 		RollbarClientToken: "token</script><script>alert(1)",
@@ -282,7 +446,13 @@ func TestFrontendConfigScript(t *testing.T) {
 	assert.Contains(t, script, `"version":"unknown"`)
 }
 
+// Not parallel: it sets environment variables.
 func TestEnvironmentsGetTheirOwnFrontendConfig(t *testing.T) {
+	// What staging and production can't start without.
+	for _, name := range []string{"DATABASE_HOST", "DATABASE_NAME", "DATABASE_PASSWORD", "DATABASE_USER", "JWT_SECRET"} {
+		t.Setenv(name, "set")
+	}
+	t.Setenv("DATABASE_SSL_MODE", "require")
 	for _, env := range []string{"development", "staging", "production"} {
 		t.Setenv("ENVIRONMENT", env)
 		cfg, err := config.New()

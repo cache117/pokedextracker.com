@@ -5,9 +5,9 @@ import (
 	"net/http"
 
 	"github.com/iancoleman/strcase"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pkg/errors"
-	"github.com/robinjoseph08/golib/echo/v4/middleware/logger"
+	"github.com/robinjoseph08/golib/echo/v5/middleware/logger"
 	"github.com/robinjoseph08/golib/errutils"
 	"github.com/rollbar/rollbar-go"
 )
@@ -20,7 +20,7 @@ func NewHandler() *Handler {
 
 // Handle is an Echo error handler that uses HTTP errors accordingly, and any
 // generic error will be interpreted as an internal server error.
-func (h *Handler) Handle(err error, c echo.Context) {
+func (h *Handler) Handle(c *echo.Context, err error) {
 	if errutils.IsIgnorableErr(err) {
 		logger.FromEchoContext(c).Warn("broken pipe")
 		return
@@ -42,7 +42,7 @@ func (h *Handler) Handle(err error, c echo.Context) {
 
 	// Internal server errors
 	if httpCode == http.StatusInternalServerError {
-		extra := map[string]interface{}{
+		extra := map[string]any{
 			"request_id": logger.IDFromEchoContext(c),
 		}
 		// We can't import the auth package since it would create an import cycle.
@@ -53,21 +53,31 @@ func (h *Handler) Handle(err error, c echo.Context) {
 		logger.FromEchoContext(c).Err(err).Error("server error")
 	}
 
+	// A response that's already started, like a proxied one cut short, can't
+	// take the error too.
+	if response, err := echo.UnwrapResponse(c.Response()); err == nil && response.Committed {
+		return
+	}
+
 	if err := c.JSON(httpCode, payload); err != nil {
 		logger.FromEchoContext(c).Err(errors.WithStack(err)).Error("error handler json error")
 	}
 }
 
-func (h *Handler) generatePayload(_ echo.Context, err error) (int, map[string]interface{}) {
+func (h *Handler) generatePayload(_ *echo.Context, err error) (int, map[string]any) {
 	code := ""
 	msg := ""
 	httpCode := http.StatusInternalServerError
 
-	// Echo errors
-	var he *echo.HTTPError
-	if ok := errors.As(err, &he); ok {
-		httpCode = he.Code
-		msg = he.Message.(string)
+	// Echo errors. Its sentinels, like ErrMethodNotAllowed, have no message, so
+	// it comes from the status.
+	if status := echo.StatusCode(err); status != 0 {
+		httpCode = status
+		msg = http.StatusText(status)
+		var he *echo.HTTPError
+		if ok := errors.As(err, &he); ok && he.Message != "" {
+			msg = he.Message
+		}
 		code = strcase.ToSnake(msg)
 	}
 
@@ -85,8 +95,8 @@ func (h *Handler) generatePayload(_ echo.Context, err error) (int, map[string]in
 		msg = "Internal Server Error"
 	}
 
-	return httpCode, map[string]interface{}{
-		"error": map[string]interface{}{
+	return httpCode, map[string]any{
+		"error": map[string]any{
 			"code":        code,
 			"message":     msg,
 			"status_code": httpCode,

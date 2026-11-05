@@ -11,6 +11,7 @@ import { useUser } from "../../../hooks/queries/users";
 import { useUserParams } from "../../../hooks/use-user-params";
 import { trackEvent } from "../../../utils/analytics";
 import { groupBoxes } from "../../../utils/pokemon";
+import { DexIndicator } from "../../library/DexIndicator";
 import { DonatedFlair } from "../../library/DonatedFlair";
 import { FriendCode } from "../../library/FriendCode";
 import { Header } from "../../library/Header";
@@ -79,6 +80,7 @@ export function Dex({
         <Notification />
         <header>
           <Header />
+          <DexIndicator className="mt-5 mb-10" dex={dex} ownLine />
           <h3 className="mx-0 mt-0 mb-8">
             <Link
               className="text-16 text-gray-600 hover:cursor-pointer hover:text-gray-800 dark:hover:text-gray-700"
@@ -87,7 +89,7 @@ export function Dex({
             >
               /u/{username}
             </Link>
-            <DonatedFlair className="ml-4 h-15 align-middle" user={user} />
+            <DonatedFlair className="ml-5 h-15 align-middle" user={user} />
           </h3>
           <FriendCode />
         </header>

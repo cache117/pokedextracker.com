@@ -11,9 +11,8 @@ import (
 	"time"
 
 	"github.com/go-pg/pg/v10"
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
-	"github.com/labstack/gommon/log"
+	"github.com/labstack/echo/v5"
+	"github.com/labstack/echo/v5/middleware"
 	"github.com/pkg/errors"
 	"github.com/pokedextracker/pokedextracker.com/internal/webapp"
 	"github.com/pokedextracker/pokedextracker.com/pkg/auth"
@@ -26,8 +25,8 @@ import (
 	"github.com/pokedextracker/pokedextracker.com/pkg/games"
 	"github.com/pokedextracker/pokedextracker.com/pkg/pokemon"
 	"github.com/pokedextracker/pokedextracker.com/pkg/users"
-	"github.com/robinjoseph08/golib/echo/v4/middleware/logger"
-	"github.com/robinjoseph08/golib/echo/v4/middleware/recovery"
+	"github.com/robinjoseph08/golib/echo/v5/middleware/logger"
+	"github.com/robinjoseph08/golib/echo/v5/middleware/recovery"
 	glogger "github.com/robinjoseph08/golib/logger"
 )
 
@@ -51,25 +50,29 @@ func New(cfg *config.Config, db *pg.DB) (*http.Server, error) {
 }
 
 func newServer(cfg *config.Config, db *pg.DB, frontend http.Handler) (*http.Server, error) {
-	e := echo.New()
-
-	e.Logger.SetLevel(log.OFF)
-
 	b, err := binder.New()
 	if err != nil {
 		return nil, errors.WithStack(err)
 	}
-	e.Binder = b
+	cors, err := middleware.CORSConfig{AllowOrigins: cfg.CORSAllowedOrigins}.ToMiddleware()
+	if err != nil {
+		return nil, errors.WithStack(err)
+	}
+
+	e := echo.NewWithConfig(echo.Config{
+		Binder:           b,
+		HTTPErrorHandler: errcodes.NewHandler().Handle,
+		IPExtractor:      clientIP(),
+		Router:           echo.NewRouter(echo.RouterConfig{NotFoundHandler: notFoundHandler}),
+	})
 
 	e.Pre(redirectWWW)
 	e.Use(logger.Middleware())
 	e.Use(recovery.Middleware())
-	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: cfg.CORSAllowedOrigins,
-	}))
+	e.Use(cors)
 	// The frontend handler compresses its own files once, and the blog's
 	// upstream compresses its own responses, so only the API is gzipped here.
-	e.Use(middleware.GzipWithConfig(middleware.GzipConfig{Skipper: func(c echo.Context) bool {
+	e.Use(middleware.GzipWithConfig(middleware.GzipConfig{Skipper: func(c *echo.Context) bool {
 		return !strings.HasPrefix(c.Request().URL.Path, "/api/")
 	}}))
 
@@ -103,9 +106,6 @@ func newServer(cfg *config.Config, db *pg.DB, frontend http.Handler) (*http.Serv
 		e.GET("/*", echo.WrapHandler(frontend))
 		e.HEAD("/*", echo.WrapHandler(frontend))
 	}
-
-	echo.NotFoundHandler = notFoundHandler
-	e.HTTPErrorHandler = errcodes.NewHandler().Handle
 
 	srv := &http.Server{
 		Addr:              fmt.Sprintf(":%d", cfg.Port),
@@ -154,18 +154,18 @@ func registerAPI(g *echo.Group, cfg *config.Config, db *pg.DB) {
 	users.RegisterRoutes(g, cfg, db, enforcedAuth, nonEnforcedAuth)
 }
 
-func health(c echo.Context) error {
+func health(c *echo.Context) error {
 	return errors.WithStack(c.JSONBlob(http.StatusOK, healthResponse))
 }
 
-func notFoundHandler(c echo.Context) error {
+func notFoundHandler(c *echo.Context) error {
 	c.SetPath("/:path")
 	return errcodes.NotFound("page")
 }
 
 // noStore keeps browsers and proxies from caching API responses.
 func noStore(next echo.HandlerFunc) echo.HandlerFunc {
-	return func(c echo.Context) error {
+	return func(c *echo.Context) error {
 		c.Response().Header().Set("Cache-Control", "no-store")
 		return next(c)
 	}
@@ -174,7 +174,7 @@ func noStore(next echo.HandlerFunc) echo.HandlerFunc {
 // redirectWWW sends www.pokedextracker.com (and www.staging...) to the bare
 // domain, keeping the path and query.
 func redirectWWW(next echo.HandlerFunc) echo.HandlerFunc {
-	return func(c echo.Context) error {
+	return func(c *echo.Context) error {
 		host := c.Request().Host
 		if name, _, err := net.SplitHostPort(host); err == nil {
 			host = name
@@ -188,19 +188,35 @@ func redirectWWW(next echo.HandlerFunc) echo.HandlerFunc {
 	}
 }
 
+// clientIP reads a visitor's address for c.RealIP() (kept as a user's last IP)
+// from Fly-Client-IP, which Fly's proxy sets to the address it took the
+// connection from. X-Forwarded-For won't do: a visitor can put anything at its
+// start, and Fly puts the app's own address at its end. Without the header,
+// like in development, it's the connection's address.
+func clientIP() echo.IPExtractor {
+	direct := echo.ExtractIPDirect()
+	return func(r *http.Request) string {
+		if ip := r.Header.Get("Fly-Client-IP"); net.ParseIP(ip) != nil {
+			return ip
+		}
+		return direct(r)
+	}
+}
+
 // blogProxy forwards /blog to the hosted Ghost blog, which is set up to live
 // at pokedextracker.com/blog, so the path is passed through unchanged. The
 // upstream sees its own host name, which it needs for TLS and routing.
 func blogProxy(rawURL string) (echo.HandlerFunc, error) {
 	target, err := url.Parse(rawURL)
 	if err != nil || target.Scheme == "" || target.Host == "" {
-		return nil, errors.Errorf("invalid blog URL %q", rawURL)
+		return nil, errors.New("invalid blog URL")
 	}
 	proxy := &httputil.ReverseProxy{
-		Director: func(r *http.Request) {
-			r.URL.Scheme = target.Scheme
-			r.URL.Host = target.Host
-			r.Host = target.Host
+		Rewrite: func(r *httputil.ProxyRequest) {
+			r.Out.URL.Scheme = target.Scheme
+			r.Out.URL.Host = target.Host
+			r.Out.Host = target.Host
+			forwardHeaders(r)
 		},
 		// An unreachable blog is the upstream's problem, not a server error,
 		// so it's logged rather than reported.
@@ -212,20 +228,41 @@ func blogProxy(rawURL string) (echo.HandlerFunc, error) {
 	return serveProxy(proxy), nil
 }
 
+// forwardHeaders passes on the forwarding headers a proxied request came in
+// with, which Rewrite drops, adding the visitor's address to X-Forwarded-For.
+func forwardHeaders(r *httputil.ProxyRequest) {
+	for _, name := range []string{"Forwarded", "X-Forwarded-Host", "X-Forwarded-Proto"} {
+		if values, ok := r.In.Header[name]; ok {
+			r.Out.Header[name] = values
+		}
+	}
+	if clientIP, _, err := net.SplitHostPort(r.In.RemoteAddr); err == nil {
+		if prior := r.In.Header["X-Forwarded-For"]; len(prior) > 0 {
+			clientIP = strings.Join(prior, ", ") + ", " + clientIP
+		}
+		r.Out.Header.Set("X-Forwarded-For", clientIP)
+	}
+}
+
 // serveProxy runs a reverse proxy as an Echo handler.
 func serveProxy(proxy *httputil.ReverseProxy) echo.HandlerFunc {
-	return func(c echo.Context) (err error) {
+	return func(c *echo.Context) error {
 		// ReverseProxy panics with http.ErrAbortHandler when copying a response
 		// fails partway through. When that's because the visitor left (the
-		// request is canceled), it's routine and shouldn't reach the recovery
-		// middleware as a 500. A broken upstream still does.
+		// request is canceled), it's routine. A broken upstream gets reported
+		// here, since the recovery middleware passes this panic on without
+		// doing so. It then carries on, so the server drops the connection: a
+		// chunked response that ended normally would pass for a complete one.
 		defer func() {
 			if recovered := recover(); recovered != nil {
 				abort, ok := recovered.(error)
-				if !ok || !errors.Is(abort, http.ErrAbortHandler) || c.Request().Context().Err() == nil {
+				if !ok || !errors.Is(abort, http.ErrAbortHandler) {
 					panic(recovered)
 				}
-				err = nil
+				if c.Request().Context().Err() == nil {
+					c.Echo().HTTPErrorHandler(c, errors.Wrap(abort, "upstream failed partway through a response"))
+					panic(abort)
+				}
 			}
 		}()
 		proxy.ServeHTTP(c.Response(), c.Request())

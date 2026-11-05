@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pkg/errors"
 	"github.com/pokedextracker/pokedextracker.com/pkg/config"
 	glogger "github.com/robinjoseph08/golib/logger"
@@ -25,6 +25,20 @@ const (
 	// proxy to push large uploads at Umami.
 	analyticsMaxBody = 64 << 10
 )
+
+// analyticsResponseHeaders are the only Umami response headers sent on to the
+// visitor. Anything else would apply to this site's whole origin: Cloudflare in
+// front of Umami adds Nel and Report-To (browsers would report this site's
+// network errors to Cloudflare) and Alt-Svc (browsers would try HTTP/3 here), and
+// Location would reveal Umami's address.
+var analyticsResponseHeaders = []string{
+	"Content-Encoding",
+	"Content-Length",
+	"Content-Type",
+	"ETag",
+	"Last-Modified",
+	"Vary",
+}
 
 // analyticsEnabled reports whether Umami is set up. Without it, the page gets
 // no tracker and /stats isn't served.
@@ -58,10 +72,10 @@ func analyticsScript(cfg *config.Config) string {
 func registerAnalytics(e *echo.Echo, rawURL string) error {
 	target, err := url.Parse(rawURL)
 	if err != nil || target.Scheme == "" || target.Host == "" {
-		return errors.Errorf("invalid Umami URL %q", rawURL)
+		return errors.New("invalid Umami URL")
 	}
 
-	transport := http.DefaultTransport.(*http.Transport).Clone()
+	transport := http.DefaultTransport.(*http.Transport).Clone() //nolint:forcetypeassert // The standard library's default always is one.
 	// Umami runs on a home server. If it's slow or down, give up instead of
 	// holding the visitor's request open.
 	transport.ResponseHeaderTimeout = 10 * time.Second
@@ -81,6 +95,14 @@ func registerAnalytics(e *echo.Echo, rawURL string) error {
 		},
 		Transport: transport,
 		ModifyResponse: func(res *http.Response) error {
+			headers := http.Header{}
+			for _, name := range analyticsResponseHeaders {
+				if values := res.Header.Values(name); len(values) > 0 {
+					headers[http.CanonicalHeaderKey(name)] = values
+				}
+			}
+			res.Header = headers
+
 			fresh := res.StatusCode == http.StatusOK || res.StatusCode == http.StatusNotModified
 			if strings.HasSuffix(res.Request.URL.Path, analyticsScriptPath) && fresh {
 				res.Header.Set("Cache-Control", "public, max-age=3600")
@@ -101,7 +123,7 @@ func registerAnalytics(e *echo.Echo, rawURL string) error {
 
 	e.GET(analyticsPrefix+analyticsScriptPath, forward)
 	e.HEAD(analyticsPrefix+analyticsScriptPath, forward)
-	e.POST(analyticsPrefix+analyticsSendPath, func(c echo.Context) error {
+	e.POST(analyticsPrefix+analyticsSendPath, func(c *echo.Context) error {
 		if c.Request().ContentLength > analyticsMaxBody {
 			c.Response().Header().Set("Cache-Control", "no-store")
 			return errors.WithStack(c.NoContent(http.StatusRequestEntityTooLarge))

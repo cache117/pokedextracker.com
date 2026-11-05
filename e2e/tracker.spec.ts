@@ -63,13 +63,14 @@ test("a dex prints as a grid of its boxes", async ({ page, request }) => {
 
   await page.emulateMedia({ media: "print" });
   // Six to a row: the sixth shares the first's row, and the seventh starts
-  // the next.
-  const first = await tile(page, "Chikorita").boundingBox();
-  const sixth = await tile(page, "Emboar").boundingBox();
-  const seventh = await tile(page, "Totodile").boundingBox();
-  expect(sixth?.y).toBe(first?.y);
-  expect(seventh?.y).toBeGreaterThan(first?.y ?? 0);
-  expect(seventh?.x).toBe(first?.x);
+  // the next. A row is about 77px tall at the printout's 70%, where WebKit
+  // can round one tile a pixel off from the next, so "the same" is under 2px.
+  const first = (await tile(page, "Chikorita").boundingBox())!;
+  const sixth = (await tile(page, "Emboar").boundingBox())!;
+  const seventh = (await tile(page, "Totodile").boundingBox())!;
+  expect(Math.abs(sixth.y - first.y)).toBeLessThan(2);
+  expect(seventh.y - first.y).toBeGreaterThan(first.height / 2);
+  expect(Math.abs(seventh.x - first.x)).toBeLessThan(2);
   await expect(tile(page, "Chikorita")).toHaveCSS(
     "print-color-adjust",
     "exact",
@@ -89,6 +90,15 @@ test("the info panel shows the chosen Pokémon", async ({ page, request }) => {
   await expect(page.getByTestId("info-name")).toHaveText("Bayleef");
   await expect(page.getByTestId("info-main")).toContainText("Chikorita");
   await expect(page.getByTestId("info-main")).toContainText("Level Up to 16");
+});
+
+test("the tab's title is the dex's", async ({ page, request }) => {
+  const user = await createUser(request, "Shiny Hunt");
+  await page.goto(`/u/${user.username}/${user.slug}`);
+
+  await expect(page).toHaveTitle(
+    `${user.username}'s Shiny Hunt | Pokédex Tracker`,
+  );
 });
 
 test("someone else's dex is read-only", async ({ page, request }) => {

@@ -41,6 +41,7 @@ func run() error {
 	if len(os.Args) != 2 {
 		return fmt.Errorf("%w: usage: personal-import snapshot.json", errImportRejected)
 	}
+	// #nosec G703 -- This local CLI intentionally reads the operator-supplied snapshot path.
 	raw, err := os.ReadFile(os.Args[1])
 	if err != nil {
 		return err
@@ -118,7 +119,6 @@ func run() error {
 			}
 		}
 		for _, g := range s.Games {
-			g := g
 			g.GameFamilyID = g.GameFamily.ID
 			if _, e := tx.Model(&g).Insert(); e != nil {
 				return e
@@ -137,7 +137,6 @@ func run() error {
 		}
 		// Base types are inserted before references to them.
 		for _, dt := range s.DexTypes {
-			dt := dt
 			if dt.BaseDexTypeID != nil {
 				continue
 			}
@@ -146,7 +145,6 @@ func run() error {
 			}
 		}
 		for _, dt := range s.DexTypes {
-			dt := dt
 			if dt.BaseDexTypeID == nil {
 				continue
 			}

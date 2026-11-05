@@ -45,16 +45,17 @@ interface Props {
   setSelectedPokemon: Dispatch<SetStateAction<number>>;
 }
 
-// The panel beside the dex, which a phone shows over it.
+// The panel beside the dex, which a phone shows over it. The focus ring is
+// white on its blue.
 function infoClassName(showInfo: boolean): string {
   return classNames(
-    "relative z-2 flex print:hidden max-400:absolute max-400:right-0 max-400:left-auto max-400:h-full",
+    "relative z-2 flex [--focus:var(--color-white)] print:hidden max-400:absolute max-400:right-0 max-400:left-auto max-400:h-full",
     showInfo ? "max-400:w-full" : "max-400:w-[inherit]",
   );
 }
 
-// The tab that opens and closes the panel. Below 1100px the panel lies over
-// the dex, so the open tab sits at its edge.
+// The tab that opens and closes the panel. Below the max-1100 breakpoint the
+// panel lies over the dex, so the open tab sits at its edge.
 function collapseClassName(showInfo: boolean): string {
   return classNames(
     "flex items-center bg-info-edge p-8 text-12 text-white hover:-ml-2 hover:cursor-pointer hover:pr-10 max-1100:relative max-400:right-0 max-400:hover:ml-0 max-400:hover:pr-8",
@@ -69,8 +70,9 @@ function mainClassName(showInfo: boolean): string {
   );
 }
 
-// The links to Bulbapedia and Serebii, side by side, and their arrows.
-const footerLink = tw`w-1/2 border-info-edge bg-info-link p-20 text-center font-secondary text-11 font-bold tracking-1 text-white uppercase no-underline transition-all duration-100 ease-out no-touch:hover:bg-info-link-hover no-touch:focus:bg-info-link-hover`;
+// The links to Bulbapedia and Serebii, side by side, and their arrows. They
+// fill the panel's bottom edge, so the focus ring sits just inside them.
+const footerLink = tw`w-1/2 border-info-edge bg-info-link p-20 text-center font-secondary text-11 font-bold tracking-1 text-white uppercase no-underline transition-all duration-100 ease-out focus-visible:-outline-offset-4 no-touch:hover:bg-info-link-hover no-touch:focus-visible:bg-info-link-hover`;
 const footerIcon = tw`ml-3 text-10 transition-all duration-100 ease-out`;
 
 export function Info({ selectedPokemon, setSelectedPokemon }: Props) {
@@ -174,14 +176,14 @@ export function Info({ selectedPokemon, setSelectedPokemon }: Props) {
       </div>
 
       <div className={mainClassName(showInfo)} data-testid="info-main">
-        <div className="flex shrink-0 items-center border-b-2 border-info-edge bg-info pt-17 pr-17 pb-17 pl-8">
+        <div className="flex shrink-0 items-center border-b-2 border-info-edge bg-info pt-15 pr-15 pb-15 pl-8">
           <i
-            className={`${iconClass(pokemon, dex, infoIconCircle)} mx-12 my-0`}
+            className={`${iconClass(pokemon, dex, infoIconCircle)} mx-10 my-0`}
           />
           <h1 className="m-0 grow text-32 font-medium" data-testid="info-name">
             <PokemonName name={pokemon.name} />
           </h1>
-          <h2 className="m-0 font-secondary text-17 font-normal">
+          <h2 className="m-0 font-secondary text-16 font-normal">
             #
             {padding(
               dex.dex_type.tags.includes("regional")

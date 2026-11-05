@@ -7,9 +7,12 @@ import (
 )
 
 func TestLocalKeepsCredentialsAndTelemetrySeparate(t *testing.T) {
-	t.Setenv("ENVIRONMENT", "local")
+	setEnvironment(t, "local")
 	t.Setenv("UMAMI_URL", "https://analytics.example.test")
 	t.Setenv("UMAMI_WEBSITE_ID", "external-website")
+	t.Setenv("ROLLBAR_TOKEN", "external-error-reporting")
+	t.Setenv("BLOG_URL", "https://blog.example.test")
+	t.Setenv("DATABASE_HOST", "external.example.test")
 	t.Setenv("DATABASE_PASSWORD", "local-database-secret")
 	t.Setenv("JWT_SECRET", "local-session-secret")
 	t.Setenv("DATABASE_NAME", "isolated_test_database")
@@ -26,4 +29,5 @@ func TestLocalKeepsCredentialsAndTelemetrySeparate(t *testing.T) {
 	require.Empty(t, cfg.UmamiWebsiteID)
 	require.Empty(t, cfg.RollbarClientToken)
 	require.Empty(t, cfg.RollbarToken)
+	require.Empty(t, cfg.BlogURL)
 }

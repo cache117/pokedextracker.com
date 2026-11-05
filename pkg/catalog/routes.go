@@ -8,13 +8,13 @@ import (
 	"strconv"
 
 	"github.com/go-pg/pg/v10"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pokedextracker/pokedextracker.com/pkg/auth"
 	"github.com/pokedextracker/pokedextracker.com/pkg/errcodes"
 )
 
 func RegisterRoutes(e *echo.Group, db *pg.DB, enforce, optional echo.MiddlewareFunc) {
-	owner := func(c echo.Context) bool {
+	owner := func(c *echo.Context) bool {
 		s := auth.FromContext(c)
 		if s == nil {
 			return false
@@ -23,7 +23,7 @@ func RegisterRoutes(e *echo.Group, db *pg.DB, enforce, optional echo.MiddlewareF
 		_, err := db.QueryOneContext(c.Request().Context(), pg.Scan(&id), `SELECT min(id) FROM users`)
 		return err == nil && id == s.ID
 	}
-	e.GET("/personal/catalog", func(c echo.Context) error {
+	e.GET("/personal/catalog", func(c *echo.Context) error {
 		out, err := Load(c.Request().Context(), db)
 		if err != nil {
 			return err
@@ -33,7 +33,7 @@ func RegisterRoutes(e *echo.Group, db *pg.DB, enforce, optional echo.MiddlewareF
 			IsOwner bool `json:"is_owner"`
 		}{out, owner(c)})
 	}, optional)
-	e.GET("/personal/catalog/pokemon", func(c echo.Context) error {
+	e.GET("/personal/catalog/pokemon", func(c *echo.Context) error {
 		var rows []struct {
 			ID         int     `json:"id"`
 			Name       string  `json:"name"`
@@ -46,7 +46,7 @@ func RegisterRoutes(e *echo.Group, db *pg.DB, enforce, optional echo.MiddlewareF
 		}
 		return c.JSON(200, rows)
 	}, optional)
-	e.GET("/personal/catalog/encounters/:id", func(c echo.Context) error {
+	e.GET("/personal/catalog/encounters/:id", func(c *echo.Context) error {
 		id, err := strconv.Atoi(c.Param("id"))
 		if err != nil {
 			return errcodes.ValidationError("invalid Pokemon")
@@ -67,7 +67,7 @@ func RegisterRoutes(e *echo.Group, db *pg.DB, enforce, optional echo.MiddlewareF
 		}
 		return c.JSON(200, rows)
 	}, optional)
-	e.POST("/personal/catalog", func(c echo.Context) error {
+	e.POST("/personal/catalog", func(c *echo.Context) error {
 		if !owner(c) {
 			return errcodes.Forbidden("editing this personal catalogue")
 		}

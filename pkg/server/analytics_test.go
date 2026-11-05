@@ -14,6 +14,9 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// upstreamOnlyHeaders would apply to the site's whole origin if forwarded.
+var upstreamOnlyHeaders = []string{"Nel", "Report-To", "Alt-Svc", "Strict-Transport-Security", "Set-Cookie", "Location", "Access-Control-Allow-Origin"}
+
 // upstreamRequest is what a fake Umami saw.
 type upstreamRequest struct {
 	method       string
@@ -49,6 +52,9 @@ func fakeUmami(t *testing.T) (*httptest.Server, func() []upstreamRequest) {
 			body:         string(body),
 		})
 		mu.Unlock()
+		for _, name := range upstreamOnlyHeaders {
+			w.Header().Set(name, "from-umami")
+		}
 		switch r.URL.Path {
 		case "/script.js":
 			if r.Header.Get("If-None-Match") == `"v1"` {
@@ -80,6 +86,8 @@ func analyticsServer(t *testing.T, umamiURL string) http.Handler {
 }
 
 func TestAnalyticsForwardsTheScript(t *testing.T) {
+	t.Parallel()
+
 	upstream, seen := fakeUmami(t)
 	h := analyticsServer(t, upstream.URL)
 
@@ -91,6 +99,11 @@ func TestAnalyticsForwardsTheScript(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 	assert.Equal(t, "/* tracker */", w.Body.String())
 	assert.Equal(t, "public, max-age=3600", w.Header().Get("Cache-Control"), "kept for an hour, whatever Umami says")
+	assert.Equal(t, `"v1"`, w.Header().Get("ETag"))
+	assert.Equal(t, "application/javascript", w.Header().Get("Content-Type"))
+	for _, name := range upstreamOnlyHeaders {
+		assert.Empty(t, w.Header().Get(name), name)
+	}
 	require.Len(t, seen(), 1)
 	got := seen()[0]
 	assert.Equal(t, "/script.js", got.path, "the /stats prefix is stripped")
@@ -100,6 +113,8 @@ func TestAnalyticsForwardsTheScript(t *testing.T) {
 }
 
 func TestAnalyticsForwardsEvents(t *testing.T) {
+	t.Parallel()
+
 	upstream, seen := fakeUmami(t)
 	h := analyticsServer(t, upstream.URL)
 	payload := `{"type":"event","payload":{"website":"site-1","url":"/u/ash"}}`
@@ -132,6 +147,8 @@ func TestAnalyticsForwardsEvents(t *testing.T) {
 }
 
 func TestAnalyticsScriptRevalidationKeepsItsCaching(t *testing.T) {
+	t.Parallel()
+
 	upstream, _ := fakeUmami(t)
 	h := analyticsServer(t, upstream.URL)
 
@@ -142,6 +159,8 @@ func TestAnalyticsScriptRevalidationKeepsItsCaching(t *testing.T) {
 }
 
 func TestAnalyticsOnlyForwardsTheTwoRoutes(t *testing.T) {
+	t.Parallel()
+
 	upstream, seen := fakeUmami(t)
 	h := analyticsServer(t, upstream.URL)
 
@@ -162,6 +181,8 @@ func TestAnalyticsOnlyForwardsTheTwoRoutes(t *testing.T) {
 }
 
 func TestAnalyticsRejectsLargeEvents(t *testing.T) {
+	t.Parallel()
+
 	upstream, seen := fakeUmami(t)
 	h := analyticsServer(t, upstream.URL)
 
@@ -174,6 +195,8 @@ func TestAnalyticsRejectsLargeEvents(t *testing.T) {
 }
 
 func TestUnreachableAnalyticsIsABadGateway(t *testing.T) {
+	t.Parallel()
+
 	upstream := httptest.NewServer(http.NotFoundHandler())
 	upstream.Close()
 	h := analyticsServer(t, upstream.URL)
@@ -185,6 +208,8 @@ func TestUnreachableAnalyticsIsABadGateway(t *testing.T) {
 }
 
 func TestAnalyticsAreOffWithoutBothSettings(t *testing.T) {
+	t.Parallel()
+
 	upstream, seen := fakeUmami(t)
 
 	for _, cfg := range []*config.Config{
@@ -201,6 +226,8 @@ func TestAnalyticsAreOffWithoutBothSettings(t *testing.T) {
 }
 
 func TestAnalyticsScript(t *testing.T) {
+	t.Parallel()
+
 	script := analyticsScript(&config.Config{UmamiURL: "https://umami.example.com", UmamiWebsiteID: `id"><script>alert(1)</script>`})
 
 	assert.True(t, strings.HasPrefix(script, `<script async src="/stats/script.js" data-website-id="`), "async, so a slow Umami can't hold up the app")
@@ -209,15 +236,19 @@ func TestAnalyticsScript(t *testing.T) {
 }
 
 func TestInvalidUmamiURL(t *testing.T) {
+	t.Parallel()
+
 	db := pg.Connect(&pg.Options{Addr: "127.0.0.1:1"})
 	t.Cleanup(func() { _ = db.Close() })
 	for _, raw := range []string{"umami.example.com", "://nope", "/relative"} {
-		_, err := newServer(&config.Config{UmamiURL: raw, UmamiWebsiteID: "site-1"}, db, fakeFrontend)
-		assert.Error(t, err, raw)
+		_, err := newServer(&config.Config{CORSAllowedOrigins: []string{testOrigin}, UmamiURL: raw, UmamiWebsiteID: "site-1"}, db, fakeFrontend)
+		assert.ErrorContains(t, err, "invalid Umami URL", raw)
 	}
 }
 
 func TestAnalyticsAreTaggedWithTheVersion(t *testing.T) {
+	t.Parallel()
+
 	cfg := &config.Config{UmamiURL: "https://umami.example.com", UmamiWebsiteID: "site-1", Version: "08730e5"}
 	assert.Equal(t, `<script async src="/stats/script.js" data-website-id="site-1" data-tag="08730e5"></script>`, analyticsScript(cfg))
 

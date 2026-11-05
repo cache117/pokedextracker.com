@@ -6,6 +6,7 @@ import (
 )
 
 func TestSourceEligibilityAtClosure(t *testing.T) {
+	t.Parallel()
 	cutoff := time.Date(2027, 2, 26, 3, 0, 0, 0, time.UTC)
 	s := Settings{HomeMode: "current", Routes: []Route{{ID: "bank", ReachesHome: true, Enabled: true, EndsAt: &cutoff}}, Games: []Game{{ID: "sun", Included: true, RouteID: "bank", Groups: []string{"3DS"}}}}
 	if !Allowed(s, "sun", cutoff.Add(-time.Second)) || Allowed(s, "sun", cutoff) {
@@ -21,6 +22,7 @@ func TestSourceEligibilityAtClosure(t *testing.T) {
 	}
 }
 func TestOwnedAndUnknownRoutes(t *testing.T) {
+	t.Parallel()
 	s := Settings{HomeMode: "owned", Routes: []Route{{ID: "home", ReachesHome: true, Enabled: true}}, Games: []Game{{ID: "switch", Included: true, RouteID: "home"}}}
 	if Allowed(s, "switch", time.Now()) {
 		t.Fatal("unowned game should be hidden")
@@ -36,9 +38,11 @@ func TestOwnedAndUnknownRoutes(t *testing.T) {
 }
 
 func TestExplicitSourceFiltersAcrossModes(t *testing.T) {
+	t.Parallel()
 	now := time.Now()
 	for _, mode := range []string{"all", "current", "owned"} {
 		t.Run(mode, func(t *testing.T) {
+			t.Parallel()
 			s := Settings{Version: 1, HomeMode: mode,
 				Routes: []Route{{ID: "bank", Name: "Bank", ReachesHome: true, Enabled: true}, {ID: "home", Name: "HOME", ReachesHome: true, Enabled: true}},
 				Games:  []Game{{ID: "sun", Name: "Sun", Generation: 7, Platform: "3DS", Included: true, Owned: true, RouteID: "bank"}, {ID: "violet", Name: "Violet", Generation: 9, Platform: "Switch", Included: true, Owned: true, RouteID: "home"}},
@@ -72,6 +76,7 @@ func TestExplicitSourceFiltersAcrossModes(t *testing.T) {
 }
 
 func TestValidateHiddenSourceRules(t *testing.T) {
+	t.Parallel()
 	s := Settings{Version: 1, HomeMode: "all", Routes: []Route{{ID: "bank", Name: "Bank"}}}
 	s.HiddenRoutes = []string{"missing"}
 	if Validate(s, nil) == nil {

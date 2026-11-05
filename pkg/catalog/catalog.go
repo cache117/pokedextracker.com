@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
+	"slices"
 	"time"
 
 	"github.com/go-pg/pg/v10"
@@ -194,21 +195,12 @@ func Allowed(s Settings, gameID string, now time.Time) bool {
 		if !g.Included {
 			return false
 		}
-		for _, platform := range s.HiddenPlatforms {
-			if g.Platform == platform {
-				return false
-			}
-		}
-		for _, route := range s.HiddenRoutes {
-			if g.RouteID == route {
-				return false
-			}
+		if slices.Contains(s.HiddenPlatforms, g.Platform) || slices.Contains(s.HiddenRoutes, g.RouteID) {
+			return false
 		}
 		for _, group := range g.Groups {
-			for _, hidden := range s.HiddenGroups {
-				if group == hidden {
-					return false
-				}
+			if slices.Contains(s.HiddenGroups, group) {
+				return false
 			}
 		}
 		if s.HomeMode == "all" {

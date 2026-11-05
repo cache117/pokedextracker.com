@@ -5,13 +5,16 @@ Push-Location $taskSource
 try {
   $taskRevision=git rev-parse --short HEAD
   if($LASTEXITCODE -ne 0){throw 'Cannot identify source revision'}
-  $env:PATH=(Split-Path (Get-Command $NodeExe -ErrorAction Stop).Source -Parent)+';'+$env:PATH
+  $env:PATH=(Split-Path (Get-Command $NodeExe -ErrorAction Stop).Source -Parent)+';'+(Split-Path (Get-Command $GoExe -ErrorAction Stop).Source -Parent)+';'+$env:PATH
   $env:NODE_ENV='production'
   $env:VERSION='personal-'+$taskRevision
   # Keep the upstream pnpm lockfile and embedded-frontend build order.
   if($PnpmScript){& $NodeExe $PnpmScript install --frozen-lockfile --ignore-scripts}
   else {pnpm install --frozen-lockfile --ignore-scripts}
   if($LASTEXITCODE -ne 0){throw 'Pinned dependency installation failed'}
+  # Match upstream's generated API types, including personal model fields.
+  & $GoExe run github.com/gzuidhof/tygo@v0.2.21 generate
+  if($LASTEXITCODE -ne 0){throw 'API type generation failed'}
   & $NodeExe node_modules/typescript/bin/tsc -b --noEmit
   if($LASTEXITCODE -ne 0){throw 'TypeScript check failed'}
   # The normal installation keeps the plain token key, preserving its login.

@@ -92,6 +92,7 @@ func run() error {
 			return err
 		}
 		for _, spec := range tables {
+			// #nosec G703 -- The operator chooses a local seed directory; table filenames are fixed.
 			raw, err := os.ReadFile(filepath.Join(os.Args[1], spec.name+".csv"))
 			if err != nil {
 				return err
@@ -169,6 +170,7 @@ func run() error {
 		}
 		sum := sha256.New()
 		for _, spec := range tables {
+			// #nosec G703 -- Hash the same operator-selected local files imported above.
 			raw, err := os.ReadFile(filepath.Join(os.Args[1], spec.name+".csv"))
 			if err != nil {
 				return err

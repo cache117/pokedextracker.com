@@ -4,10 +4,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pkg/errors"
 	"github.com/pokedextracker/pokedextracker.com/pkg/errcodes"
-	"github.com/robinjoseph08/golib/pointerutil"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -15,7 +14,7 @@ type handler struct {
 	authService *Service
 }
 
-func (h *handler) create(c echo.Context) error {
+func (h *handler) create(c *echo.Context) error {
 	ctx := c.Request().Context()
 
 	params := createParams{}
@@ -43,7 +42,7 @@ func (h *handler) create(c echo.Context) error {
 	options := UpdateSessionOptions{
 		Columns: []string{},
 	}
-	session.LastLogin = pointerutil.Time(time.Now())
+	session.LastLogin = new(time.Now())
 	options.Columns = append(options.Columns, "last_login")
 	ip := c.RealIP()
 	if ip != "" {

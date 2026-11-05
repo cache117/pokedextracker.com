@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -128,7 +129,7 @@ func (a *App) start(ctx context.Context, env Environment, args []string) error {
 		return errors.New("start accepts at most one mode")
 	}
 	if len(args) == 1 {
-		mode = args[0]
+		mode = args[0] //nolint:gosec // G602: there's exactly one argument.
 	}
 	switch mode {
 	case startAll, startAir, startAPI, startWeb, startWebStaging, startPreview:
@@ -501,7 +502,7 @@ func (a *App) visual(ctx context.Context, env Environment, args []string) error 
 	}
 	browser, ref := args[0], defaultVisualRef
 	if len(args) == 2 {
-		ref = args[1]
+		ref = args[1] //nolint:gosec // G602: there are exactly two arguments.
 	}
 	var playwrightArgs []string
 	if browser != e2eAll {
@@ -584,11 +585,11 @@ func (a *App) visual(ctx context.Context, env Environment, args []string) error 
 		}
 		retried, err := a.Processes.Visual(ctx, side.site, env, target, lease.Port(), side.name, playwrightArgs...)
 		if len(retried) > 0 {
-			if err := a.printf("\nPassed after a retry for a timeout or dropped connection, not a difference:\n  %s\n", strings.Join(retried, "\n  ")); err != nil {
+			if err := a.printf("\nPassed after a retry for slowness or a dropped connection, not a difference:\n  %s\n", strings.Join(retried, "\n  ")); err != nil {
 				return err
 			}
 		}
-		var failure *VisualFailure
+		var failure *VisualFailureError
 		if err != nil && !errors.As(err, &failure) {
 			return fmt.Errorf("%s: %w", side.name, err)
 		}
@@ -622,7 +623,7 @@ func (a *App) printVisualReview(env Environment, ref string) error {
 
 // visualFailure lists the specs that didn't pass on one side of a visual
 // comparison, and points at that side's report.
-func (a *App) visualFailure(env Environment, ref, side string, failure *VisualFailure) error {
+func (a *App) visualFailure(env Environment, ref, side string, failure *VisualFailureError) error {
 	report := "report"
 	if side == visualReference {
 		report = "report-reference"
@@ -636,6 +637,7 @@ func (a *App) visualFailure(env Environment, ref, side string, failure *VisualFa
 		{"Screenshots that differ from " + ref, failure.Differ},
 		{"Tests that failed before or apart from their screenshot", failure.Failed},
 		{"Tests that passed only on a retry, after a difference or an unexpected error (noise, or a change that only happens sometimes; run it again to see whether it repeats)", failure.Flaky},
+		{"Tests that only timed out or lost their connection, on every attempt (the machine or Docker, not the page; run it again when the machine is quieter)", failure.Interrupted},
 	}
 	if side == visualReference {
 		groups[0].heading = "Reference screenshots that didn't come out the same twice"
@@ -664,12 +666,7 @@ func (a *App) lockBrowserTests(ctx context.Context, env Environment) (func(), er
 }
 
 func isE2EBrowser(name string) bool {
-	for _, browser := range e2eBrowsers {
-		if name == browser {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(e2eBrowsers, name)
 }
 
 // ensureDevelopmentDatabase creates this worktree's database if needed and

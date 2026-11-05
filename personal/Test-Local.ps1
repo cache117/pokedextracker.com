@@ -76,4 +76,4 @@ try{
 }
 $taskAfter=Invoke-RestMethod "$taskApi/users/cache117"
 foreach($taskDex in $taskProfile.dexes){$taskMatch=$taskAfter.dexes|Where-Object id -eq $taskDex.id;if($taskMatch.caught -ne $taskDex.caught -or $taskMatch.total -ne $taskDex.total){throw 'Saved progress changed'}}
-Write-Output 'All 24 existing dex counts preserved; test configuration restored.'
+Write-Output "All $(@($taskProfile.dexes).Count) existing dex counts preserved; test configuration restored."

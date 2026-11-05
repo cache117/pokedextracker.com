@@ -65,6 +65,7 @@ func run() error {
 	}
 	var records []record
 	for id := start; id < start+count; id++ {
+		// #nosec G703 -- This local CLI reads numbered files from the operator-selected directory.
 		raw, err := os.ReadFile(filepath.Join(os.Args[1], fmt.Sprintf("%d.json", id)))
 		if err != nil {
 			return err
@@ -73,6 +74,7 @@ func run() error {
 		if err = json.Unmarshal(raw, &r); err != nil {
 			return err
 		}
+		// #nosec G703 -- Same local directory and validated numeric filename as the record above.
 		meta, err := os.ReadFile(filepath.Join(os.Args[1], fmt.Sprintf("%d.meta.json", id)))
 		if err != nil {
 			return err

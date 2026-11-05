@@ -7,10 +7,14 @@ upstream branch. Keep personal database contents and credentials outside Git.
 
 ## Upstream baseline
 
-Merged through `5f75783` (2026-10-25 review).
-This includes print-friendly dexes, dark browser controls, the unified hue palette, Tailwind CSS 4, device-default night mode, the unified Go server, Vite 8, React 19, Router 8, Query 5,
-TypeScript 6, ESLint 9, upstream browser tests, Node 26.12.0 and
-pnpm 12.14.0. Upstream's structure, production seed CSVs, dependency lockfile,
+Merged through `0568446` (2026-11-05 review).
+This includes phone layout and text-size improvements, keyboard focus rings,
+Go 1.27.0, Echo v5, generated API types with tygo 0.2.21, startup configuration
+validation, and proxy/header fixes. Earlier changes include print-friendly dexes,
+the unified hue palette, Tailwind CSS 4, device-default night mode, the unified
+Go server, Vite 8, React 19, Router 8, Query 5, TypeScript 6, ESLint 9,
+upstream browser tests, Node 26.12.0 and pnpm 12.14.0.
+Upstream's structure, production seed CSVs, dependency lockfile,
 licenses and normal development/deployment code are retained.
 
 ## Personal changes
@@ -47,7 +51,9 @@ Windows. GitHub CI runs upstream's Linux checks, including its browser tests.
 
 Use the tools pinned in `mise.toml`. With Go, Node 26 and pnpm available, install
 with `pnpm install --frozen-lockfile`, then run `personal/Build-Local.ps1`.
-The script type-checks all three upstream TypeScript projects, builds with Vite into
+The script generates API types from the Go models using upstream's pinned tygo,
+including personal reference-import fields, type-checks all three upstream
+TypeScript projects, builds with Vite into
 upstream's `internal/webapp/dist`, lets Vite copy public assets, and then builds the Go
 binary that embeds it. It also builds the data importer and migrations.
 Optional `-GoExe`, `-NodeExe` and `-PnpmScript` parameters support portable tools.
@@ -64,6 +70,10 @@ Push the verified personal branch to `origin`. The clean GitHub `master` branch
 can independently be fast-forwarded from `upstream/master`. Syncing `master`
 alone does not rebuild or upgrade the personal app; never force-push over the
 personal commits to synchronize a fork.
+
+The `frlg-dex-proposal` branch is intentionally left at its submitted commit
+`6ca7e35`; routine personal/upstream updates must not move it. The November
+update contains no database migrations or production seed changes.
 
 For data refreshes, run `personal/Import-UpstreamData.ps1` only after checking a
 copy of the database. It pins imports to the merged upstream revision, verifies

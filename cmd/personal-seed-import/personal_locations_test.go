@@ -9,6 +9,7 @@ import (
 )
 
 func TestPersonalLocationData(t *testing.T) {
+	t.Parallel()
 	rows, err := parsePersonalLocations(fireRedLeafGreenLocations)
 	require.NoError(t, err)
 	byID := map[int]personalLocation{}
@@ -42,6 +43,7 @@ func TestPersonalLocationData(t *testing.T) {
 }
 
 func TestRejectIncompletePersonalLocations(t *testing.T) {
+	t.Parallel()
 	rows, err := parsePersonalLocations(fireRedLeafGreenLocations)
 	require.NoError(t, err)
 	for _, mutate := range []func([]personalLocation) []personalLocation{
@@ -60,6 +62,7 @@ func TestRejectIncompletePersonalLocations(t *testing.T) {
 }
 
 func TestSwitchAcquisitionRoutes(t *testing.T) {
+	t.Parallel()
 	rows, err := parsePersonalLocations(fireRedLeafGreenLocations)
 	require.NoError(t, err)
 	byID := map[int]personalLocation{}

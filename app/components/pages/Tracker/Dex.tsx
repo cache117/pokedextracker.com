@@ -26,6 +26,8 @@ import { useTrackerContext } from "./use-tracker";
 const DEFER_CUTOFF = 1;
 
 interface Props {
+  unavailable: Set<number>;
+  availabilityActive: boolean;
   hideCaught: boolean;
   onScrollButtonClick: MouseEventHandler<HTMLDivElement>;
   query: string;
@@ -36,6 +38,8 @@ interface Props {
 }
 
 export function Dex({
+  unavailable,
+  availabilityActive,
   hideCaught,
   onScrollButtonClick,
   query,
@@ -57,10 +61,21 @@ export function Dex({
   );
   const total = captures.length;
 
-  const groupedCaptures = useMemo(() => groupBoxes(captures), [captures]);
+  const visibleCaptures = useMemo(
+    () => captures.filter((capture) => !unavailable.has(capture.pokemon.id)),
+    [captures, unavailable],
+  );
+  const availableCaught = visibleCaptures.filter(
+    (capture) => capture.captured,
+  ).length;
+  const groupedCaptures = useMemo(
+    () => (visibleCaptures.length ? groupBoxes(visibleCaptures) : []),
+    [visibleCaptures],
+  );
   const boxes = useMemo(() => {
     return groupedCaptures.map((box, i) => (
       <Box
+        availableBoxNumber={availabilityActive ? i + 1 : undefined}
         captures={box}
         deferred={i > DEFER_CUTOFF}
         dexTotal={dex.total}
@@ -68,7 +83,7 @@ export function Dex({
         setSelectedPokemon={setSelectedPokemon}
       />
     ));
-  }, [groupedCaptures, dex.total, setSelectedPokemon]);
+  }, [groupedCaptures, dex.total, setSelectedPokemon, availabilityActive]);
 
   return (
     // A printed dex is scaled to 70%, so two boxes fit on a Letter or A4 page.
@@ -94,19 +109,42 @@ export function Dex({
           <FriendCode />
         </header>
         <div className="mt-20 flex justify-between max-750:mt-15">
-          <Progress caught={caught} total={total} />
+          {availabilityActive ? (
+            <div className="w-full" data-testid="available-progress">
+              <p className="my-8">Available Pokémon</p>
+              {visibleCaptures.length > 0 ? (
+                <Progress
+                  caught={availableCaught}
+                  total={visibleCaptures.length}
+                />
+              ) : (
+                <p>No Pokémon are currently marked available.</p>
+              )}
+              <p className="my-8">
+                Full National Dex: {caught} / {total} caught ·{" "}
+                {captures.length - visibleCaptures.length} hidden
+              </p>
+            </div>
+          ) : (
+            <Progress caught={caught} total={total} />
+          )}
         </div>
         {query.length > 0 || hideCaught ? (
           <SearchResults
-            captures={captures}
+            captures={visibleCaptures}
             hideCaught={hideCaught}
             query={query}
             setHideCaught={setHideCaught}
             setQuery={setQuery}
             setSelectedPokemon={setSelectedPokemon}
           />
-        ) : (
+        ) : visibleCaptures.length ? (
           boxes
+        ) : (
+          <p>
+            Every Pokémon is marked unavailable. Switch off the filter or edit
+            the unavailable list above.
+          </p>
         )}
       </div>
     </div>

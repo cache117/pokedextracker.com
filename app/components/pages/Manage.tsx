@@ -43,6 +43,13 @@ interface Catalogue {
     hidden_routes?: string[] | null;
     games: SourceGame[];
     routes: TransferRoute[];
+    leaf_green_filters?:
+      | {
+          dex_id: number;
+          hide_unavailable: boolean;
+          unavailable_pokemon_ids: number[];
+        }[]
+      | null;
   };
   overrides: EncounterOverride[];
 }
@@ -78,6 +85,16 @@ function validConfiguration(value: Catalogue) {
   try {
     return (
       value.settings.version === 1 &&
+      (value.settings.leaf_green_filters === undefined ||
+        value.settings.leaf_green_filters === null ||
+        (Array.isArray(value.settings.leaf_green_filters) &&
+          value.settings.leaf_green_filters.every(
+            (filter) =>
+              Number.isInteger(filter.dex_id) &&
+              typeof filter.hide_unavailable === "boolean" &&
+              Array.isArray(filter.unavailable_pokemon_ids) &&
+              filter.unavailable_pokemon_ids.every(Number.isInteger),
+          ))) &&
       ["all", "current", "owned"].includes(value.settings.home_mode) &&
       Array.isArray(value.settings.hidden_groups) &&
       value.settings.hidden_groups.every(

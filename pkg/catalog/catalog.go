@@ -33,13 +33,20 @@ type Game struct {
 	Owned      bool     `json:"owned"`
 }
 type Settings struct {
-	Version         int      `json:"version"`
-	HomeMode        string   `json:"home_mode"`
-	HiddenGroups    []string `json:"hidden_groups"`
-	HiddenPlatforms []string `json:"hidden_platforms"`
-	HiddenRoutes    []string `json:"hidden_routes"`
-	Routes          []Route  `json:"routes"`
-	Games           []Game   `json:"games"`
+	Version          int                `json:"version"`
+	HomeMode         string             `json:"home_mode"`
+	HiddenGroups     []string           `json:"hidden_groups"`
+	HiddenPlatforms  []string           `json:"hidden_platforms"`
+	HiddenRoutes     []string           `json:"hidden_routes"`
+	Routes           []Route            `json:"routes"`
+	Games            []Game             `json:"games"`
+	LeafGreenFilters []CollectionFilter `json:"leaf_green_filters"`
+}
+
+type CollectionFilter struct {
+	DexID                 int   `json:"dex_id"`
+	HideUnavailable       bool  `json:"hide_unavailable"`
+	UnavailablePokemonIDs []int `json:"unavailable_pokemon_ids"`
 }
 type Override struct {
 	PokemonID int      `json:"pokemon_id"`
@@ -115,6 +122,9 @@ var errInvalidCatalogue = errors.New("invalid catalogue configuration")
 var idPattern = regexp.MustCompile(`^[a-z][a-z0-9_]{0,59}$`)
 
 func Validate(s Settings, overrides []Override) error {
+	if err := validateCollectionFilterShape(s.LeafGreenFilters); err != nil {
+		return err
+	}
 	if s.Version != 1 {
 		return fmt.Errorf("%w: unsupported catalogue version", errInvalidCatalogue)
 	}

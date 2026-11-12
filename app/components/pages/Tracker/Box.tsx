@@ -8,6 +8,7 @@ import { Pokemon } from "./Pokemon";
 import type { UICapture } from "./use-tracker";
 
 interface Props {
+  availableBoxNumber?: number;
   captures: UICapture[];
   deferred?: boolean;
   dexTotal: number;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export function Box({
+  availableBoxNumber,
   captures,
   deferred = false,
   dexTotal,
@@ -66,7 +68,7 @@ export function Box({
     >
       <div className="mb-10 flex">
         <h1 className="m-0 flex-[1_0] font-secondary text-25 font-bold">
-          {title}
+          {availableBoxNumber ? `Box ${availableBoxNumber} · ${title}` : title}
         </h1>
         <MarkAllButton captures={captures} />
       </div>

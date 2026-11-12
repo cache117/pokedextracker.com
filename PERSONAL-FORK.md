@@ -123,6 +123,35 @@ saved rules.
 
 ## FireRed and LeafGreen (Generation III)
 
+### LeafGreen available-only boxes
+
+The owner's LeafGreen Full National collection has a **Hide Pokémon unobtainable
+in Switch FR/LG** toggle and **Edit unavailable list** panel. The initial 171
+excluded species come from the reviewed Switch-unavailable location entries
+(2026-10-25 review), leaving 215 species across FR/LG play and local trading.
+Breeding/evolution and Switch ticket species remain included. This is an editable
+reviewed list, not an automatically updated claim about future compatibility.
+
+Remaining Pokémon pack in order into boxes of 30 (seven full boxes and five in
+the eighth with the starting list). Progress counts only available Pokémon when
+the filter is enabled, while the full 386-entry caught total is shown separately.
+Box Mark All actions affect only that visible box. Switching the filter off
+restores the complete list and normal full-dex progress; no captures or template
+memberships are removed. Search/Hide Caught remain separate viewing filters.
+
+The owner can search species, mark/unmark unavailability, save/discard edits or
+restore the reviewed starting list. Settings persist per collection in the
+catalogue's `leaf_green_filters` JSON field, participate in configuration exports,
+and survive reference imports. Saves enforce owner access, collection/membership
+scope and catalogue revision checks. Only LeafGreen Full National collections
+are supported by this personal feature. No upstream seed files are changed.
+
+Run `personal/Test-LeafGreenAvailability.ps1` against a copied trial database and
+server to check the starting list, list edits, empty lists, invalid/stale saves,
+configuration import, reference-refresh preservation and unchanged progress.
+
+### Imported reference data
+
 The personal seed importer applies `cmd/personal-seed-import/fire_red_leaf_green.sql`
 after the unmodified upstream CSVs, within the same protected transaction. It
 publishes upstream's existing `fire_red` and `leaf_green` games and adds normal

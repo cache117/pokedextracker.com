@@ -23,6 +23,7 @@ func RegisterRoutes(e *echo.Group, db *pg.DB, enforce, optional echo.MiddlewareF
 		_, err := db.QueryOneContext(c.Request().Context(), pg.Scan(&id), `SELECT min(id) FROM users`)
 		return err == nil && id == s.ID
 	}
+	registerLeafGreenRoutes(e, db, enforce, optional, owner)
 	e.GET("/personal/catalog", func(c *echo.Context) error {
 		out, err := Load(c.Request().Context(), db)
 		if err != nil {
@@ -90,6 +91,11 @@ func RegisterRoutes(e *echo.Group, db *pg.DB, enforce, optional echo.MiddlewareF
 			}
 			if revision != in.Revision {
 				return errcodes.ValidationError("The catalogue changed in another window. Reload it before saving.")
+			}
+			for _, filter := range in.Settings.LeafGreenFilters {
+				if err := validateCollectionFilter(c.Request().Context(), tx, filter); err != nil {
+					return err
+				}
 			}
 			// Imported games can be renamed but cannot be removed by configuration import.
 			var existing []struct{ ID string }

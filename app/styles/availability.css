@@ -1,0 +1,63 @@
+.availability-bar {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-line);
+  padding: 12px 10px;
+  max-height: 48vh;
+  overflow-y: auto;
+  p {
+    margin: 8px 0;
+    line-height: 1.4;
+  }
+  .availability-hint {
+    font-size: 0.95rem;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+  }
+  fieldset {
+    border: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  label {
+    display: block;
+    margin: 8px 0;
+  }
+  input:not([type="checkbox"]) {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+  }
+  input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  .availability-list {
+    max-height: 180px;
+    overflow-y: auto;
+    border-block: 1px solid var(--color-line);
+  }
+  .availability-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  button {
+    cursor: pointer;
+    padding: 6px 10px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+  }
+  button:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}

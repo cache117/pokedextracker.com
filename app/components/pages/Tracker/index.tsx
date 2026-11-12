@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useCaptures } from "../../../hooks/queries/captures";
 import { useUser } from "../../../hooks/queries/users";
 import { useUserParams } from "../../../hooks/use-user-params";
+import type { Dex as DexModel } from "../../../types";
 import { isNotFound } from "../../../utils/api";
 import { Footer } from "../../library/Footer";
 import { pageContainer } from "../../library/layout";
@@ -14,9 +15,13 @@ import { Reload } from "../../library/Reload";
 import { NotFound } from "../NotFound";
 import { Dex } from "./Dex";
 import { Info } from "./Info";
+import {
+  LeafGreenAvailability,
+  useLeafGreenAvailability,
+} from "./LeafGreenAvailability";
 import { SHOW_SCROLL_THRESHOLD } from "./Scroll";
 import { SearchBar } from "./SearchBar";
-import { TrackerContextProvider } from "./use-tracker";
+import { TrackerContextProvider, useTrackerContext } from "./use-tracker";
 
 // Tracker is keyed by the dex, so moving to another one (from the nav, or with
 // Back) mounts it fresh, like loading that page directly: its captures are
@@ -67,20 +72,17 @@ function TrackerPage() {
 
   return (
     <TrackerContextProvider initialCaptures={captures}>
-      <TrackerInner
-        dexTitle={dex.title}
-        initialSelectedPokemon={captures[0].pokemon.id}
-      />
+      <TrackerInner dex={dex} initialSelectedPokemon={captures[0].pokemon.id} />
     </TrackerContextProvider>
   );
 }
 
 interface TrackerInnerProps {
-  dexTitle: string;
+  dex: DexModel;
   initialSelectedPokemon: number;
 }
 
-function TrackerInner({ dexTitle, initialSelectedPokemon }: TrackerInnerProps) {
+function TrackerInner({ dex, initialSelectedPokemon }: TrackerInnerProps) {
   const { username } = useUserParams();
 
   const trackerRef = useRef<HTMLDivElement>(null);
@@ -88,8 +90,24 @@ function TrackerInner({ dexTitle, initialSelectedPokemon }: TrackerInnerProps) {
   // Set here rather than while loading, so a dex that turns out not to exist
   // keeps the not found page's title.
   useEffect(() => {
-    document.title = `${username}'s ${dexTitle} | Pokédex Tracker`;
-  }, [username, dexTitle]);
+    document.title = `${username}'s ${dex.title} | Pokédex Tracker`;
+  }, [username, dex.title]);
+
+  const { captures } = useTrackerContext();
+  const hasAvailability =
+    dex.game.id === "leaf_green" &&
+    dex.game.game_family.id === "fire_red_leaf_green" &&
+    dex.dex_type.tags.includes("full national");
+  const availability = useLeafGreenAvailability(dex.id, hasAvailability);
+  const unavailable = useMemo(
+    () =>
+      new Set(
+        hasAvailability && availability.query.data?.hide_unavailable
+          ? availability.query.data.unavailable_pokemon_ids
+          : [],
+      ),
+    [hasAvailability, availability.query.data],
+  );
 
   const [query, setQuery] = useState("");
   const [hideCaught, setHideCaught] = useState(false);
@@ -130,6 +148,9 @@ function TrackerInner({ dexTitle, initialSelectedPokemon }: TrackerInnerProps) {
             setHideCaught={setHideCaught}
             setQuery={setQuery}
           />
+          {hasAvailability && (
+            <LeafGreenAvailability captures={captures} state={availability} />
+          )}
           {/* Printed whole, keeping the backgrounds that show the sprites
               and what's caught, which printing otherwise drops. */}
           <div
@@ -138,6 +159,9 @@ function TrackerInner({ dexTitle, initialSelectedPokemon }: TrackerInnerProps) {
             ref={trackerRef}
           >
             <Dex
+              availabilityActive={
+                hasAvailability && !!availability.query.data?.hide_unavailable
+              }
               hideCaught={hideCaught}
               onScrollButtonClick={handleScrollButtonClick}
               query={query}
@@ -145,6 +169,7 @@ function TrackerInner({ dexTitle, initialSelectedPokemon }: TrackerInnerProps) {
               setQuery={setQuery}
               setSelectedPokemon={setSelectedPokemon}
               showScrollButton={showScroll}
+              unavailable={unavailable}
             />
             <Footer />
           </div>
